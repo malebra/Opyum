@@ -1,0 +1,8 @@
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\bin\Release\Opyum.TestWindow.exe.config
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\bin\Release\Opyum.TestWindow.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.Form1.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.csproj.GenerateResource.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Release\Opyum.TestWindow.exe

@@ -1,0 +1,9 @@
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\bin\Release\Opyum.Windows.exe.config
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\bin\Release\Opyum.Windows.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.MainWindow.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.csproj.GenerateResource.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.csproj.CopyComplete
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Release\Opyum.Windows.exe

@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.AudioBase", "Opyum.AudioBase\Opyum.AudioBase.csproj", "{BB144CA3-11C2-44FA-97DD-07AC271E928C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.Windows", "Opyum.Windows\Opyum.Windows.csproj", "{778CFFEA-FF72-413F-90DF-33EC650EAE5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.TestWindow", "Opyum.TestWindow\Opyum.TestWindow.csproj", "{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.Structures", "Opyum.Structures\Opyum.Structures.csproj", "{89AEE011-3336-4445-B04E-7305623FA8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.Plugins", "Opyum.Plugins\Opyum.Plugins.csproj", "{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Retor|Any CPU = Retor|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Retor|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Retor|Any CPU.Build.0 = Debug|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Retor|Any CPU.ActiveCfg = Release|Any CPU
+		{778CFFEA-FF72-413F-90DF-33EC650EAE5D}.Retor|Any CPU.Build.0 = Release|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Retor|Any CPU.ActiveCfg = Release|Any CPU
+		{511AB3AB-BBEC-4A2D-9C6B-E98F3FACB0A3}.Retor|Any CPU.Build.0 = Release|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Retor|Any CPU.ActiveCfg = Release|Any CPU
+		{89AEE011-3336-4445-B04E-7305623FA8EA}.Retor|Any CPU.Build.0 = Release|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Retor|Any CPU.ActiveCfg = Release|Any CPU
+		{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}.Retor|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BE467A9-6B71-4550-B417-BB07395E39A8}
+	EndGlobalSection
+EndGlobal

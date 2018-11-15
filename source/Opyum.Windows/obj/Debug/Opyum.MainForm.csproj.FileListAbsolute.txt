@@ -1,0 +1,14 @@
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.MainForm.exe.config
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.MainForm.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.MainForm.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.csproj.GenerateResource.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.MainForm.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.TestWindow.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.TestWindow.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\bin\Debug\Opyum.TestWindow.exe.config
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\AudioBase\Opyum.MainForm\obj\Debug\Opyum.MainForm.csproj.CopyComplete
