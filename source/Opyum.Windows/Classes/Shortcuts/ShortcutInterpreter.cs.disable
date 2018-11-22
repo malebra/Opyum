@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+using System.IO;
+using Newtonsoft.Json;
+using System.Windows.Forms;
+using System.Reflection;
+using Opyum.Windows.Attributes;
+
+namespace Opyum.Windows
+{
+    public class ShortcutInterpreter
+    {
+        public static void Interpret()
+        {
+            KeyBindingArgument.AllBindingsSetup();
+            
+
+        }
+
+        public static void ResolveShortcut(object sender, KeyEventArgs e)
+        {
+            KeyBindingArgument.All.Where(i => i.Shortcut == e.KeyData).FirstOrDefault()?.Run();
+
+        }
+        public static void SetUpShortcuts()
+        {
+            //KeyBindingArgument.All.Where(i => i.Command == "full_screen_mode_switch").FirstOrDefault().AddFunction(GoFullScreen);
+            var info = Assembly.GetExecutingAssembly().GetTypes().SelectMany(i => i.GetMethods().Where(m => m.GetCustomAttributes(typeof(ShortcutMethodAttribute)).Count() > 0)).ToArray();
+
+
+            KeyBindingArgument.All.ForEach(arg =>
+            {
+                var method = info.Where(m => m.GetCustomAttribute<ShortcutMethodAttribute>().Command == arg.Command).FirstOrDefault();
+                if (method != null)
+                {
+                    var tz = typeof(KeyBindingArgument.DELL);
+                    arg.AddFunction(Delegate.CreateDelegate(tz, nameof(MainWindow), method.Name));
+                }
+            });
+
+        }
+    }
+}

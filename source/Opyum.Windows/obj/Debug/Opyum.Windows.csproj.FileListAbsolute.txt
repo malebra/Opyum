@@ -23,5 +23,7 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.Windows.csproj.GenerateResource.cache
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.Windows.csproj.CoreCompileInputs.cache
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.Windows.csproj.CopyComplete
-C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.Windows.exe
-C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.Windows.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Windows\obj\Debug\Opyum.pdb

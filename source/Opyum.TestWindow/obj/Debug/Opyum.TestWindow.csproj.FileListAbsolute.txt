@@ -18,3 +18,6 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWind
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Debug\Opyum.TestWindow.csproj.CoreCompileInputs.cache
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Debug\Opyum.TestWindow.exe
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.TestWindow\obj\Debug\Opyum.TestWindow.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.TestWindow.exe.config
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.TestWindow.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.TestWindow.pdb
