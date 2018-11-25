@@ -6,3 +6,4 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsP
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform\obj\Release\Opyum.WindowsPlatform.csproj.CopyComplete
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform\obj\Release\Opyum.WindowsPlatform.dll
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform\obj\Release\Opyum.WindowsPlatform.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform\obj\Release\Opyum.WindowsPlatform.Settings.Settings.resources

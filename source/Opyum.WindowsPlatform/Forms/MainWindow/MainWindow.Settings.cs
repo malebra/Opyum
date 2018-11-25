@@ -10,6 +10,10 @@ namespace Opyum.WindowsPlatform
 {
     public partial class MainWindow
     {
-        
+        private void OpenSettings_OnClick(object sender, EventArgs e)
+        {
+            var ss = new Settings.Settings();
+            ss.Show();
+        }
     }
 }

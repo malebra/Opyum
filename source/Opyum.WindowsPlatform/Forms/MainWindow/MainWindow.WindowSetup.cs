@@ -45,7 +45,8 @@ namespace Opyum.WindowsPlatform
             //MenuStrip Settings
             this.MenuStripSetup();
 
-            //FullScreenModeChange();
+            FullScreenModeChange();
+
         }
 
         private void PanelSizeAdaptation(object sender, EventArgs e)
