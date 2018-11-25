@@ -1,0 +1,16 @@
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum Launcher.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum Launcher.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum.Launcher.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum.WindowsApplication.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum.Launcher.csproj.GenerateResource.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum.Launcher.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum.Launcher.csproj.CopyComplete
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum Launcher.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsApplication\obj\Debug\Opyum Launcher.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.WindowsApplication.Properties.Resources.resources
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csproj.GenerateResource.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum Launcher.exe
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum Launcher.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csproj.CopyComplete
