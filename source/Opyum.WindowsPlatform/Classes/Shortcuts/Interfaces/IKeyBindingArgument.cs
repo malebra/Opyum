@@ -4,15 +4,15 @@ using System.Xml;
 
 namespace Opyum.WindowsPlatform
 {
-    public interface IKeyBindingArgument
+    public interface IKeyBindingArgument : IDisposable
     {
         string Command { get; }
         Keys Shortcut { get; }
+        string ShortcutString { get; }
 
         void AddFunction(Delegate func);
         void AddFunction(KeyBindingArgument.DELL func);
         void Destroy();
-        void Dispose();
         bool Match(KeyEventArgs e);
         void Run();
         void UpdateFromXML(XmlNode node);

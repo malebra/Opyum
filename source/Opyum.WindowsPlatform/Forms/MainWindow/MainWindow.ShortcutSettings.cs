@@ -11,14 +11,22 @@ namespace Opyum.WindowsPlatform
 {
     partial class MainWindow
     {
+        /// <summary>
+        /// Runs the method assigned to the shortcut
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ResolveShortcut(object sender, KeyEventArgs e)
         {
-            KeyBindingArgument.All.Where(i => i.Shortcut == e.KeyData).FirstOrDefault()?.Run();
+            IKeyBindingArgument z = KeyBindingArgument.All.Where(i => i.Shortcut == e.KeyData).FirstOrDefault();
+            z?.Run();
         }
 
+        /// <summary>
+        /// Binds the shortcuts from the shortcut file to the given method
+        /// </summary>
         void SetUpShortcuts()
         {
-            //KeyBindingArgument.All.Where(i => i.Command == "full_screen_mode_switch").FirstOrDefault().AddFunction(GoFullScreen);
             var info = Assembly.GetExecutingAssembly().GetTypes().SelectMany(i => i.GetMethods().Where(m => m.GetCustomAttributes(typeof(ShortcutMethodAttribute)).Count() > 0)).ToArray();
             
             KeyBindingArgument.All.ForEach(arg =>

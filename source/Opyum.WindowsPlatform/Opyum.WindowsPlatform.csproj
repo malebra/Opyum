@@ -87,6 +87,12 @@
     <Compile Include="Forms\MainWindow\MainWindow.MenuStrip.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\MainWindow\MainWindow.MenuStrip_Shortcut_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindow\MainWindow.OnClosing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\MainWindow\MainWindow.Settings.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace Opyum.AudioBase
 {
-    public class BaseAudioItem : IBaseAudioPlayItem
+    public class BaseAudioItem : IBaseAudioItem
     {
         protected string _ID = String.Empty;
-        protected string _Naziv = String.Empty;
-        protected string _Autor = String.Empty;
-        protected string _Album = String.Empty;
-        protected string _Info = String.Empty;
         protected string _Tip = String.Empty;
         protected string _Color = String.Empty;
         protected string _NaKanalu = String.Empty;
-        protected string _PathName = String.Empty;
         protected string _ItemType = String.Empty;
         protected string _StartCue = String.Empty;
         protected string _EndCue = String.Empty;
@@ -46,22 +41,6 @@ namespace Opyum.AudioBase
         /// </summary>
         public virtual string ID { get { return _ID; } set { _ID = value; OnInformationChange(); } }
         /// <summary>
-        /// Contains the name of the song.
-        /// </summary>
-        public virtual string Naziv { get { return _Naziv; } set { _Naziv = value; OnInformationChange(); } }
-        /// <summary>
-        /// Contains the name of the author.
-        /// </summary>
-        public virtual string Autor { get { return _Autor; } set { _Autor = value; OnInformationChange(); } }
-        /// <summary>
-        /// Contains the name of the album.
-        /// </summary>
-        public virtual string Album { get { return _Album; } set { _Album = value; OnInformationChange(); } }
-        /// <summary>
-        /// Aditional info.
-        /// </summary>
-        public virtual string Info { get { return _Info; } set { _Info = value; OnInformationChange(); } }
-        /// <summary>
         /// The type of the content. If it comes from FirePlay, the "Tip" variable is connected to the color when loading from inside the program.
         /// </summary>
         public virtual string Tip { get { return _Tip; } set { _Tip = value; OnInformationChange(); } }
@@ -73,10 +52,6 @@ namespace Opyum.AudioBase
         /// ???
         /// </summary>
         public virtual string NaKanalu { get { return _NaKanalu; } set { _NaKanalu = value; OnInformationChange(); } }
-        /// <summary>
-        /// Contains the path of the song.
-        /// </summary>
-        public virtual string PathName { get { return _PathName; } set { _PathName = value; OnInformationChange(); } }
         /// <summary>
         /// Denotes the item type.
         /// </summary>

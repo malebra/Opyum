@@ -42,6 +42,8 @@ namespace Opyum.WindowsPlatform
             ResolveShortcut(sender, e);
         }
 
+        
+
 
 
         //////////////////////////////////////////    VARS    //////////////////////////////////////////

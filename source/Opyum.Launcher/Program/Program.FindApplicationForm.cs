@@ -39,7 +39,6 @@ namespace Opyum.Launcher
                                   .Where(a => a.GetCustomAttributes<Opyum.Structures.Attributes.ApplicationPlatformAttribute>().Count() > 0)
                                   .Where(a => ((Opyum.Structures.Attributes.ApplicationPlatformAttribute)a.GetCustomAttribute<Opyum.Structures.Attributes.ApplicationPlatformAttribute>()).Platform == Structures.Enums.ApplicationPlatform.Windows)
                                   .FirstOrDefault();
-
         }
     }
 }

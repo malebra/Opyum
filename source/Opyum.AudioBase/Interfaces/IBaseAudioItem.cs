@@ -6,16 +6,8 @@ using System.Threading.Tasks;
 
 namespace Opyum.AudioBase
 {
-    public interface IBaseAudioPlayItem
+    public interface IBaseAudioItem
     {
-        /// <summary>
-        /// Contains the name of the album.
-        /// </summary>
-        string Album { get; set; }
-        /// <summary>
-        /// Contains the name of the author.
-        /// </summary>
-        string Autor { get; set; }
         /// <summary>
         /// Contains the information about the color in the program.
         /// </summary>
@@ -35,10 +27,6 @@ namespace Opyum.AudioBase
         /// <summary>
         /// Aditional info.
         /// </summary>
-        string Info { get; set; }
-        /// <summary>
-        /// Denotes the item type.
-        /// </summary>
         string ItemType { get; set; }
         /// <summary>
         /// ???
@@ -48,10 +36,6 @@ namespace Opyum.AudioBase
         /// ???
         /// </summary>
         string NaKanalu { get; set; }
-        /// <summary>
-        /// Contains the name of the song.
-        /// </summary>
-        string Naziv { get; set; }
         /// <summary>
         /// Statest the original (default) value of the "EndCue" field.
         /// </summary>
@@ -68,10 +52,6 @@ namespace Opyum.AudioBase
         /// Statest the original (default) value of the "Trajanje" field.
         /// </summary>
         string OriginalTrajanje { get; set; }
-        /// <summary>
-        /// Contains the path of the song.
-        /// </summary>
-        string PathName { get; set; }
         /// <summary>
         /// The duration at whitch the singing begins (in seconds, double). 
         /// </summary>

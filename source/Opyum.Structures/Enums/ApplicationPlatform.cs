@@ -8,7 +8,8 @@ namespace Opyum.Structures.Enums
 {
     public enum ApplicationPlatform
     {
-        Windows,
-        WebApp
+        Windows = 1,
+        WPF = 2,
+        WebApp = 4,
     }
 }

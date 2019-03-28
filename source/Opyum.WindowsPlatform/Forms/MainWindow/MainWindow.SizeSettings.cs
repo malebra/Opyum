@@ -32,31 +32,8 @@ namespace Opyum.WindowsPlatform
             double w = this.Size.Height * WindowRatio.Ratio;
             double h = w * (1 / WindowRatio.Ratio);
 
-            //if ((int)w/(int)h == WindowRatio.Ratio)
-            //{
-                this.Width = (int)w;
-                this.Height = (int)h;
-            //}
-            
-
-            //if ((increase && (w <= _oldSize.Width)))
-            //{
-            //    this.Size = _oldSize;
-            //}
-            //else if ((!increase && (w >= _oldSize.Width)))
-            //{
-            //    this.Size = _oldSize;
-            //}
-            //if (!(increase && (w <= _oldSize.Width)))
-            //{
-            //    //this.Size = _oldSize;
-            //    base.Width = (int)w;
-            //}
-            //else if (!(!increase && (w >= _oldSize.Width)))
-            //{
-            //    //this.Size = _oldSize;
-            //    base.Width = (int)w;
-            //}
+            this.Width = (int)w;
+            this.Height = (int)h;
 
 
             

@@ -47,15 +47,24 @@ namespace Opyum.WindowsPlatform
 
             FullScreenModeChange();
 
+            //Updates the shortcut for the MenuStrip buttons
+            MenuStrip_Shortcut_Update();
+
         }
 
         private void PanelSizeAdaptation(object sender, EventArgs e)
         {
-            panel2.Width = (int)((double)this.Width / 4.8);
+            double WindowOfsetRatio = 1.82;
+
+            if (((double)this.Width / (double)this.Height) < WindowOfsetRatio)
+            {
+                panel2.Width = (int)((double)this.Width / 4.8); 
+            }
             panel2.Width = panel2.Width < 300 ? 300 : panel2.Width;
 
             panel1.Height = (int)((double)this.Height / 7.2);
             panel1.Height = panel1.Height < 120 ? 120 : panel1.Height;
+            
         }
 
         [ShortcutMethod("bullshit")]

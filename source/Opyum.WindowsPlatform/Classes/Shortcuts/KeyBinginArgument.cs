@@ -11,12 +11,14 @@ namespace Opyum.WindowsPlatform
     public class KeyBindingArgument : IKeyBindingArgument
     {
         public static List<IKeyBindingArgument> All { get; private set; } = new List<IKeyBindingArgument>();
-        
+
 
 
         public string Command { get; private set; }
 
         public Keys Shortcut { get; private set; } = 0;
+
+        public string ShortcutString { get; private set; } = string.Empty;
 
         public delegate void DELL();
         private DELL Function;
@@ -29,7 +31,6 @@ namespace Opyum.WindowsPlatform
             All = All.OrderBy(t => t.Command).ToList();
         }
 
-        
 
         public bool Match(KeyEventArgs e)
         {
@@ -59,6 +60,7 @@ namespace Opyum.WindowsPlatform
                         {
                             try
                             {
+                                ShortcutString += ShortcutString == string.Empty ? key : $" + {key}";
                                 Shortcut |= ((System.Windows.Forms.Keys)kc.ConvertFromString(key == "\\plus" ? "+" : key));
                             }
                             catch
@@ -66,23 +68,6 @@ namespace Opyum.WindowsPlatform
 
                             }
                         }
-
-
-                        //List<string> KeyList = node.InnerText.Split('+').ToList();
-
-                        //KeysConverter kc = new System.Windows.Forms.KeysConverter();
-
-                        //KeyList.ForEach((x) =>
-                        //{
-                        //    try
-                        //    {
-                        //        Keys.Add((System.Windows.Forms.Keys)kc.ConvertFromString(x));
-                        //    }
-                        //    catch
-                        //    {
-
-                        //    }
-                        //});
                     }
                 }
 
@@ -110,6 +95,7 @@ namespace Opyum.WindowsPlatform
         public void DefaultShortcut()
         {
             Shortcut = Keys.None;
+            ShortcutString = string.Empty;
         }
 
 
@@ -124,7 +110,14 @@ namespace Opyum.WindowsPlatform
 
         protected virtual void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                this.Shortcut = Keys.None;
+                this.ShortcutString = null;
+                this.Command = null;
 
+                return;
+            }
         }
 
         public void Dispose()
@@ -178,6 +171,7 @@ namespace Opyum.WindowsPlatform
                         {
                             try
                             {
+                                temp.ShortcutString += temp.ShortcutString == string.Empty ? key : $" + {key}";
                                 temp.Shortcut |= (System.Windows.Forms.Keys)kc.ConvertFromString(key == "\\plus" ? "+" : key);
                             }
                             catch
@@ -221,9 +215,9 @@ namespace Opyum.WindowsPlatform
                     KeyBindingArgument.CreateFromXML(n);
                 }
             }
-
+            
         }
-
+        
 
         #endregion
     }

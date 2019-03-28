@@ -11,7 +11,7 @@ namespace Opyum.WindowsPlatform
 {
     public partial class MainWindow
     {
-        public enum ScreenMode {None = 0,  Normal = 1, FullScreen = 2 , Previous = 99};
+        public enum ScreenMode {None = 0,  Normal = 1, FullScreen = 2 , Previous = 4};
 
         private ScreenMode _previousScreenViewMode;
         private ScreenMode _screenViewMode;
@@ -47,8 +47,10 @@ namespace Opyum.WindowsPlatform
         public delegate void ScreenModeEvent(object sender, EventArgs e);
         public event ScreenModeEvent ScreenModeChanged;
 
+        //This function is activated when the application is put into fullscreenmode
         [ShortcutMethod("full_screen_mode_switch")]
-		public void FullScreenModeChange()
+        //[ShortcutMethod("lolicon")]
+        public void FullScreenModeChange()
         {
             if (ScreenViewMode == ScreenMode.FullScreen)
             {

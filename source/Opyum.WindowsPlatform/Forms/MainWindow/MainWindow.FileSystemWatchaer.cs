@@ -12,6 +12,7 @@ namespace Opyum.WindowsPlatform
 
         FileSystemWatcher watcher = new FileSystemWatcher();
 
+        //Monitors wheather any importan file for the application has changed
         private void FileSystemWatcherSetup()
         {
             watcher.Path = Paths.SettingsDirectoryPath;
@@ -22,6 +23,7 @@ namespace Opyum.WindowsPlatform
             {
                 SettingsInterpreter.Load();
                 KeyBindingArgument.AllBindingsSetup(SettingsInterpreter.SettingsXML);
+                this.Invoke(new Action(MenuStrip_Shortcut_Update));
             };
         }
     }
