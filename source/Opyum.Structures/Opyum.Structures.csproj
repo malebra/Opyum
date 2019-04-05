@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Attributes\ShortcutMethodAttribute.cs.disable" />
+    <Compile Include="Attributes\PlaylistItemAttribute.cs" />
     <Compile Include="Enums\ApplicationPlatform.cs" />
     <Compile Include="OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
