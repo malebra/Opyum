@@ -1,0 +1,7 @@
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Test\Debug\Opyum.StandardPlayback.dll
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Test\Debug\Opyum.StandardPlayback.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.csprojAssemblyReference.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.csproj.CoreCompileInputs.cache
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.csproj.CopyComplete
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.dll
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.pdb

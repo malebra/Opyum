@@ -44,30 +44,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ContentAttribute.cs" />
+    <Compile Include="Attributes\PlaylistItemAttribute.cs" />
     <Compile Include="Classes\AudioImage.cs" />
     <Compile Include="Classes\AudioInfo.cs" />
     <Compile Include="Classes\AudioItem.cs" />
     <Compile Include="Classes\BaseAudioItem.cs" />
-    <Compile Include="Classes\PlaylistItem\Classes\BaseContent.cs" />
+    <Compile Include="Classes\Content\BaseContent.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\BaseOptions.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Duration.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Tags.cs" />
-    <Compile Include="Classes\PlaylistItem\Interfaces\IContent.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\IDuration.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\IOptions.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\ITags.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\IWatcher.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\ITime.cs" />
-    <Compile Include="Classes\PlaylistItem\IPlaylistItem.cs" />
     <Compile Include="Classes\PlaylistItem\PlaylistItem.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Time.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Watcher.cs" />
+    <Compile Include="Classes\Slot\PlaylistSlot.cs" />
     <Compile Include="Enums\AudioType.cs" />
+    <Compile Include="Enums\DurationType.cs" />
+    <Compile Include="Enums\TimeType.cs" />
     <Compile Include="Interfaces\IAudioInfo.cs" />
     <Compile Include="Interfaces\IBaseAudioItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Classes\Content\Classes\" />
+    <Folder Include="Classes\Content\Interfaces\" />
+    <Folder Include="Classes\Slot\Classes\" />
+    <Folder Include="Classes\Slot\Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

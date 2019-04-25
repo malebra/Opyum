@@ -8,6 +8,6 @@ namespace Opyum.AudioBase
 {
     public class Time : ITime
     {
-        public object Novo { get; set; }
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.AudioBase", "Opyum.AudioBase\Opyum.AudioBase.csproj", "{BB144CA3-11C2-44FA-97DD-07AC271E928C}"
 EndProject
@@ -16,6 +16,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.WindowsPlatform", "Opyum.WindowsPlatform\Opyum.WindowsPlatform.csproj", "{A5D298FE-228B-4457-9FB8-CC568E017747}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.WindowsPlatform.WPF", "Opyum.WindowsPlatform.WPF\Opyum.WindowsPlatform.WPF.csproj", "{2FE0995D-3218-4586-B163-F9DFF29DA924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.StandardPlayback", "Opyum.StandardPlayback\Opyum.StandardPlayback.csproj", "{46DF7A4B-83BD-4B42-A988-1981EBE715DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlayer", "TestPlayer\TestPlayer.csproj", "{CF72882D-5565-4DCC-B896-B8FC4E67378E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAudio_Solo", "NAudio\NAudio\NAudio_Solo.csproj", "{DA4F02E3-0B5E-42CD-B8D9-5583FA51D66E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{2FE0995D-3218-4586-B163-F9DFF29DA924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE0995D-3218-4586-B163-F9DFF29DA924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE0995D-3218-4586-B163-F9DFF29DA924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46DF7A4B-83BD-4B42-A988-1981EBE715DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46DF7A4B-83BD-4B42-A988-1981EBE715DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46DF7A4B-83BD-4B42-A988-1981EBE715DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46DF7A4B-83BD-4B42-A988-1981EBE715DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF72882D-5565-4DCC-B896-B8FC4E67378E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF72882D-5565-4DCC-B896-B8FC4E67378E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF72882D-5565-4DCC-B896-B8FC4E67378E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF72882D-5565-4DCC-B896-B8FC4E67378E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4F02E3-0B5E-42CD-B8D9-5583FA51D66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4F02E3-0B5E-42CD-B8D9-5583FA51D66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4F02E3-0B5E-42CD-B8D9-5583FA51D66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4F02E3-0B5E-42CD-B8D9-5583FA51D66E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

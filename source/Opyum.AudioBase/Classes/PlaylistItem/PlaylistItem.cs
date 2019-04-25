@@ -3,25 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Opyum.AudioBase.Attributes;
 
 namespace Opyum.AudioBase
 {
-    public class PlaylistItem : IPlaylistItem
+    [Opyum.AudioBase.Attributes.PlaylistItem]
+    public class PlaylistItem
     {
-        public IDuration Duration { get; }
+        public DurationType DurationType { get; private set; }
 
-        public ITime Time { get;  }
+        public TimeType TimeType { get; private set; }
 
-        public ITags Tags { get; }
+        public ITags Tags { get; private set; }
 
-        public IWatcher Watcher { get; }
+        public ITags TempTags { get; set; }
 
+        virtual public IWatcher Watcher { get; }
 
-        public IContent Conntent { get; }
+        
+        //public IContent Content { get; }
 
         public IOptions Options { get; }
 
+        //Fade in
 
+        //Fade out
+
+        //StartCue
+
+        //EndCue
+
+        //VoxStart
+
+        //Volume
 
     }
 }

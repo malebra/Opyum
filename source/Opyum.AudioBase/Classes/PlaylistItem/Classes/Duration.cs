@@ -8,5 +8,6 @@ namespace Opyum.AudioBase
 {
     public class Duration : IDuration
     {
+        
     }
 }
