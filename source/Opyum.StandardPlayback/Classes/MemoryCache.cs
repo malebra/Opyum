@@ -17,6 +17,7 @@ namespace Opyum.StandardPlayback
         private byte[] memoryBuffer = new byte[0];
         private BufferStatus bufferStatus = 0;
 
+        Object load_lock = new Object();
 
         public enum BufferStatus
         {
@@ -25,12 +26,41 @@ namespace Opyum.StandardPlayback
             Done = 2
         }
 
+        /// <summary>
+        /// Returns boolen true if stream can be read
+        /// </summary>
         public override bool CanRead => true;
+        /// <summary>
+        /// Returns boolen true if stream can seek
+        /// </summary>
         public override bool CanSeek => true;
+        /// <summary>
+        /// Returns boolen true if stream can be written
+        /// </summary>
         public override bool CanWrite => false;
+        /// <summary>
+        /// Returns the number of bytes buffered in the memory
+        /// </summary>
         public override long Length => memoryBuffer == null ? 0 : memoryBuffer.Length;
+        /// <summary>
+        /// Gets or sets the current position (the current byte) in the memory buffer
+        /// </summary>
         public override long Position { get => _position; set => _position = value; }
-        public double Percentage { get { return (double)Position / (double)Length; } set => _position = (long)(value * (double)Length); }
+        /// <summary>
+        /// Gets or sets percentage of the current position in the buffer
+        /// </summary>
+        public double Percentage
+        {
+            get => Length == 0 ? 0 : (double)Position / (double)Length;
+            set
+            {
+                if (memoryBuffer != null && Length != 0)
+                {
+                    _position = (long)(value * (double)Length);
+                }
+                
+            }
+        }
 
 
         private MemoryCache()
@@ -82,7 +112,7 @@ namespace Opyum.StandardPlayback
         /// <exception cref="ArgumentNullException"></exception>
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if (memoryBuffer == null)
+            if (memoryBuffer == null || buffer == null)
             {
                 throw new ArgumentNullException();
             }
@@ -101,33 +131,37 @@ namespace Opyum.StandardPlayback
         /// </summary>
         /// <param name="file"></param>
         /// <exception cref="Exception">Unhandled exceptions</exception>
+        /// <exception cref="ArgumentNullException"></exception>
         private void Load(string file)
         {
-            int point = 0;
-            byte[] tempBuffer = new byte[4096];
-            List<byte> buildList = new List<byte>();
-            int readBytes = 0;
-
-            bufferStatus = BufferStatus.Buffering;
-            using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            if (file == null)
             {
-                do
-                {
-                    //readBytes = fs.Read(tempBuffer, 0, 4096);
-                    //buildList.AddRange(tempBuffer);
-                    //memoryBuffer = buildList.ToArray<byte>();
-
-                    readBytes = fs.Read(tempBuffer, 0, 4096);
-                    if (readBytes != 0)
-                    {
-                        Array.Resize<byte>(ref memoryBuffer, tempBuffer.Length + memoryBuffer.Length);
-                        Buffer.BlockCopy(tempBuffer, 0, memoryBuffer, point, readBytes);
-                        point += readBytes;
-                    }
-                } while (readBytes > 0);
+                throw new ArgumentNullException();
             }
+            lock (load_lock)
+            {
+                int point = 0;
+                byte[] tempBuffer = new byte[4096];
+                List<byte> buildList = new List<byte>();
+                int readBytes = 0;
 
-            buildList = null;
+                bufferStatus = BufferStatus.Buffering;
+                using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                {
+                    do
+                    {
+                        readBytes = fs.Read(tempBuffer, 0, 4096);
+                        if (readBytes != 0)
+                        {
+                            Array.Resize<byte>(ref memoryBuffer, tempBuffer.Length + memoryBuffer.Length);
+                            Buffer.BlockCopy(tempBuffer, 0, memoryBuffer, point, readBytes);
+                            point += readBytes;
+                        }
+                    } while (readBytes > 0);
+                }
+
+                buildList = null; 
+            }
         }
 
         void IDisposable.Dispose()
@@ -136,6 +170,8 @@ namespace Opyum.StandardPlayback
         }
 
 
+
+        #region NOT_IMPLEMENTED
 
         /// <summary>
         /// This function is not implemented
@@ -168,7 +204,7 @@ namespace Opyum.StandardPlayback
             throw new InvalidOperationException();
         }
 
-
+        #endregion
 
 
 

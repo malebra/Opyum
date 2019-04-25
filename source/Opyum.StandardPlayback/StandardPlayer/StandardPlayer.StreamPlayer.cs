@@ -76,7 +76,7 @@
 //            try
 //            {
 //                //opens a stream from the file
-//                using (MemoryCache responseStream = MemoryCache.Create(url))
+//                //using (MemoryCache responseStream = MemoryCache.Create(url))
 //                using (var responseStream = new FileStream(url, FileMode.Open))
 //                {
 //                    var readFullyStream = new ReadAheadStream(responseStream);
@@ -97,30 +97,30 @@
 //                            catch (EndOfStreamException)
 //                            {
 //                                fullyDownloaded = true;
-//                                //reached the end of the MP3 file / stream
+//                                // reached the end of the MP3 file / stream
 //                                break;
 //                            }
 //                            if (frame == null) break;
 //                            if (decompressor == null)
 //                            {
-//                                //don't think these details matter too much - just help ACM select the right codec
-//                                //however, the buffered provider doesn't know what sample rate it is working at
-//                                //until we have a frame
+//                                // don't think these details matter too much - just help ACM select the right codec
+//                                // however, the buffered provider doesn't know what sample rate it is working at
+//                                // until we have a frame
 //                                decompressor = CreateFrameDecompressor(frame);
 //                                bufferedWaveProvider = new BufferedWaveProvider(decompressor.OutputFormat);
 //                                bufferedWaveProvider.BufferDuration =
 //                                    TimeSpan.FromSeconds(20); // allow us to get well ahead of ourselves
-//                                this.bufferedWaveProvider.BufferedDuration = 250;
+//                                //this.bufferedWaveProvider.BufferedDuration = 250;
 //                            }
 //                            int decompressed = decompressor.DecompressFrame(frame, buffer, 0);
-//                            Debug.WriteLine(String.Format("Decompressed a frame {0}", decompressed));
+//                            //Debug.WriteLine(String.Format("Decompressed a frame {0}", decompressed));
 //                            bufferedWaveProvider.AddSamples(buffer, 0, decompressed);
 //                        }
 
 //                    } while (playbackState != StreamingPlaybackState.Stopped);
 //                    Debug.WriteLine("Exiting");
-//                    //was doing this in a finally block, but for some reason
-//                    //we are hanging on response stream .Dispose so never get there
+//                    // was doing this in a finally block, but for some reason
+//                    // we are hanging on response stream .Dispose so never get there
 //                    decompressor.Dispose();
 //                }
 //            }
@@ -190,7 +190,7 @@
 //                    waveOut = null;
 //                }
 //                timer1Enabled = false;
-//                //n.b. streaming thread may not yet have exited
+//                // n.b. streaming thread may not yet have exited
 //                Thread.Sleep(500);
 //                ShowBufferState(0);
 //            }
@@ -323,7 +323,6 @@
 //                volumeProvider.Volume = Volume;
 //            }
 //        }
-
 
 //    }
 

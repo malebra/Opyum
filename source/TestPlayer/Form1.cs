@@ -27,7 +27,7 @@ namespace TestPlayer
             if (ofd.ShowDialog() != DialogResult.OK) return;
 
             player.Dispose();
-            player.PlayStream(ofd.FileName);
+            //player.PlayStream(ofd.FileName);
             pauseButton.Enabled = true;
 
         }
