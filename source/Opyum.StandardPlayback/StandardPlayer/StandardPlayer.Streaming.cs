@@ -65,7 +65,7 @@ namespace Opyum.StandardPlayback
                             //however, the buffered provider doesn't know what sample rate it is working at
                             //until we have a frame
                             decompressor = CreateFrameDecompressor(frame);
-                            bufferedWaveProvider = new BufferedWaveProvider(decompressor.OutputFormat) { BufferDuration = 250 };
+                            bufferedWaveProvider = new BufferedWaveProvider(decompressor.OutputFormat);
                             bufferedWaveProvider.BufferDuration = TimeSpan.FromSeconds(20); // allow us to get well ahead of ourselves
 
                         }

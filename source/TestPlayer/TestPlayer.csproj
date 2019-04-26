@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.5\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -88,10 +91,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NAudio\NAudio\NAudio_Solo.csproj">
-      <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
-      <Name>NAudio_Solo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Opyum.StandardPlayback\Opyum.StandardPlayback.csproj">
       <Project>{46df7a4b-83bd-4b42-a988-1981ebe715de}</Project>
       <Name>Opyum.StandardPlayback</Name>

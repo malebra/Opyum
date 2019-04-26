@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.5\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,10 +59,6 @@
     <Compile Include="Classes\VolumeControl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NAudio\NAudio\NAudio_Solo.csproj">
-      <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
-      <Name>NAudio_Solo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Opyum.AudioBase\Opyum.AudioBase.csproj">
       <Project>{bb144ca3-11c2-44fa-97dd-07ac271e928c}</Project>
       <Name>Opyum.AudioBase</Name>
@@ -70,6 +69,8 @@
     <Compile Include="StandardPlayer\StandardPlayer.StreamPlayer.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.Vars.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
