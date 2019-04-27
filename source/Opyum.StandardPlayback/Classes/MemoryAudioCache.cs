@@ -1,21 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Security;
+using System.Text;
 using System.Threading;
+using NAudio.Wave;
 
 namespace Opyum.StandardPlayback
 {
     /// <summary>
     /// Used for caching files into memory
     /// </summary>
-    public class MemoryCache : Stream, IDisposable
+    public class MemoryAudioCache : Stream, IDisposable
     {
+        Mp3Frame frame = null;
+
         private long _position = 0;
         private byte[] memoryBuffer = new byte[0];
         private BufferStatus bufferStatus = 0;
+        int bufferSize = 1024 * 128;
+
+        string path;
 
         Object load_lock = new Object();
 
@@ -25,6 +29,15 @@ namespace Opyum.StandardPlayback
             Buffering = 1,
             Done = 2
         }
+
+        private enum AudioFileType
+        {
+            Unknown = 0,
+            Mp3 = 1,
+            Wave = 2
+        }
+
+        private AudioFileType _fileType = 0;
 
         /// <summary>
         /// Returns boolen true if stream can be read
@@ -58,18 +71,20 @@ namespace Opyum.StandardPlayback
                 {
                     _position = (long)(value * (double)Length);
                 }
-                
+
             }
         }
 
 
-        private MemoryCache()
+        //public bool BufferEmpty => memoryBuffer == null ? true : memoryBuffer.Length > 1024*64 ? false : true; 
+
+        private MemoryAudioCache()
         {
 
         }
 
 
-        
+
 
         /// <summary>
         /// Sets the current position of the stream.
@@ -120,6 +135,7 @@ namespace Opyum.StandardPlayback
             int toCopy = memoryBuffer.Length - _position < (long)count ? (int)(memoryBuffer.Length - _position) : count;
             Array.Copy(memoryBuffer, _position, buffer, offset, toCopy);
 
+
             _position += toCopy;
 
             return toCopy;
@@ -134,6 +150,11 @@ namespace Opyum.StandardPlayback
         /// <exception cref="ArgumentNullException"></exception>
         private void Load(string file)
         {
+            _fileType = Path.GetExtension(file) == ".mp3" ? AudioFileType.Mp3 :
+                Path.GetExtension(file) == ".wav" ? AudioFileType.Wave : AudioFileType.Unknown;
+            path = file;
+
+
             if (file == null)
             {
                 throw new ArgumentNullException();
@@ -141,27 +162,101 @@ namespace Opyum.StandardPlayback
             lock (load_lock)
             {
                 int point = 0;
-                byte[] tempBuffer = new byte[4096];
-                List<byte> buildList = new List<byte>();
+                byte[] tempBuffer = new byte[bufferSize];
                 int readBytes = 0;
 
+                memoryBuffer = new byte[(new FileInfo(path)).Length];
+
+                //byte[] subBuffer;
+
                 bufferStatus = BufferStatus.Buffering;
+
+                #region Dynamic_Loading_Into_Memory
+
+                //using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                //{
+                //    do
+                //    {
+
+                //        tempBuffer = null;
+                //        tempBuffer = new byte[bufferSize];
+                //        readBytes = fs.Read(tempBuffer, 0, bufferSize);
+                //        if (readBytes != 0)
+                //        {
+                //            Array.Resize<byte>(ref memoryBuffer, tempBuffer.Length + memoryBuffer.Length);
+                //            Buffer.BlockCopy(tempBuffer, 0, memoryBuffer, point, readBytes);
+                //            point += readBytes;
+                //        }
+                //        if (frame == null)
+                //        {
+                //            frame = Mp3Frame.LoadFromStream(this);
+                //        }
+                //        Thread.Sleep(100);
+                //    } while (readBytes > 0);
+                //    tempBuffer = null;
+                //}
+
+                MemoryStream ms = new MemoryStream(memoryBuffer);
+                ms.Flush();
                 using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
                     do
                     {
-                        readBytes = fs.Read(tempBuffer, 0, 4096);
+                        readBytes = fs.Read(tempBuffer, 0, bufferSize);
                         if (readBytes != 0)
                         {
-                            Array.Resize<byte>(ref memoryBuffer, tempBuffer.Length + memoryBuffer.Length);
-                            Buffer.BlockCopy(tempBuffer, 0, memoryBuffer, point, readBytes);
+                            ms.Write(tempBuffer, 0, readBytes);
                             point += readBytes;
                         }
+                        if (frame == null)
+                        {
+                            //memoryBuffer = ms.GetBuffer();
+                            frame = Mp3Frame.LoadFromStream(this);
+                        }
+                        //Thread.Sleep(100); 
                     } while (readBytes > 0);
+                    tempBuffer = null;
+                }
+                //ms.Dispose();
+
+                #endregion
+
+                //memoryBuffer = File.ReadAllBytes(file);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="Mp3WaveFormat"/> in form of a <see cref="WaveFormat"/>
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public WaveFormat GetWaveFormat()
+        {
+
+
+            WaveFormat format;
+            if (_fileType == AudioFileType.Mp3)
+            {
+                int counter = 0;
+                while (frame == null)
+                {
+                    frame = Mp3Frame.LoadFromStream(this);
+                    Thread.Sleep(50);
+                    counter++;
+                    if (counter > 100)
+                    {
+                        throw new ArgumentNullException();
+                    }
                 }
 
-                buildList = null; 
+                format = new Mp3WaveFormat(frame.SampleRate, frame.ChannelMode == ChannelMode.Mono ? 1 : 2,
+                    frame.FrameLength, frame.BitRate);
             }
+            else//if (_fileType == AudioFileType.Wave)
+            {
+                format = (new WaveFileReader(path)).WaveFormat;
+            }
+            return format;
         }
 
         void IDisposable.Dispose()
@@ -210,10 +305,10 @@ namespace Opyum.StandardPlayback
 
 
         /// <summary>
-        /// Creates a new <see cref="MemoryCache"/> from a given filepath.
+        /// Creates a new <see cref="MemoryAudioCache"/> from a given filepath.
         /// </summary>
         /// <param name="file"></param>
-        /// <returns><see cref="MemoryCache"/></returns>
+        /// <returns><see cref="MemoryAudioCache"/></returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
@@ -222,7 +317,7 @@ namespace Opyum.StandardPlayback
         /// <exception cref="PathTooLongException"></exception>
         /// <exception cref="NotSupportedException"></exception>
         /// <exception cref="IOException"></exception>
-        public static MemoryCache Create(string file)
+        public static MemoryAudioCache Create(string file)
         {
             if (file == null)
             {
@@ -238,9 +333,10 @@ namespace Opyum.StandardPlayback
                 throw new IOException(message: "File is empty");
             }
 
-            var temp = new MemoryCache();
+            var temp = new MemoryAudioCache();
             ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
             Thread.Sleep(100);
+            //temp.Load(file);
             return temp;
         }
     }

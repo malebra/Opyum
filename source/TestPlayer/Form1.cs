@@ -27,7 +27,7 @@ namespace TestPlayer
             if (ofd.ShowDialog() != DialogResult.OK) return;
 
             player.Dispose();
-            //player.PlayStream(ofd.FileName);
+            player.StartStream(ofd.FileName);
             pauseButton.Enabled = true;
 
         }
@@ -44,6 +44,7 @@ namespace TestPlayer
             {
                 player.PausePlay();
             }
+            player.PlayPauseStream();
         }
     }
 }
