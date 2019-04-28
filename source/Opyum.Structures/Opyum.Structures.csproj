@@ -48,7 +48,7 @@
     <None Include="Attributes\ShortcutMethodAttribute.cs.disable" />
     <Compile Include="Attributes\PlaylistItemAttribute.cs" />
     <Compile Include="Enums\ApplicationPlatform.cs" />
-    <Compile Include="Classes\FileMemoryStream.cs" />
+    <Compile Include="Classes\FileMemoryCacheStream.cs" />
     <Compile Include="OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

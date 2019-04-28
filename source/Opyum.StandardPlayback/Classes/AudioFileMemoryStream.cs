@@ -19,6 +19,7 @@ namespace Opyum.StandardPlayback
         public BufferingState BufferingStatus { get; private set; } = 0;
         public AudioFileType FileType { get; private set; } = 0;
         public string FilePath { get; private set; } = String.Empty;
+        public FileInfo FileInfo { get; set; }
 
         Object load_lock = new Object();
         Mp3Frame frame = null;
@@ -149,15 +150,16 @@ namespace Opyum.StandardPlayback
         /// <exception cref="ArgumentNullException"></exception>
         protected virtual void Load(string file)
         {
-            FileType = System.IO.Path.GetExtension(file) == ".mp3" ? AudioFileType.Mp3 :
-                System.IO.Path.GetExtension(file) == ".wav" ? AudioFileType.Wave : AudioFileType.Unknown;
-            FilePath = file;
-
-
             if (file == null)
             {
                 throw new ArgumentNullException();
             }
+
+            FileType = System.IO.Path.GetExtension(file) == ".mp3" ? AudioFileType.Mp3 :
+                System.IO.Path.GetExtension(file) == ".wav" ? AudioFileType.Wave : AudioFileType.Unknown;
+            FilePath = file;
+            FileInfo = new FileInfo(file);
+
             lock (load_lock)
             {
                 int point = 0;
@@ -248,6 +250,10 @@ namespace Opyum.StandardPlayback
             if (disposing)
             {
                 memoryBuffer = null;
+                FilePath = null;
+                FileInfo = null;
+                load_lock = null;
+                frame = null;
             }
         }
 

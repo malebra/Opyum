@@ -57,9 +57,9 @@
     <Compile Include="Classes\VolumeControl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NAudio\NAudio_Solo.csproj">
+    <ProjectReference Include="..\NAudio\NAudio.csproj">
       <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
-      <Name>NAudio_Solo</Name>
+      <Name>NAudio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Opyum.AudioBase\Opyum.AudioBase.csproj">
       <Project>{bb144ca3-11c2-44fa-97dd-07ac271e928c}</Project>
@@ -71,7 +71,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StandardPlayer\StandardPlayer.Streaming.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.StreamPlayer.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.Vars.cs" />
   </ItemGroup>

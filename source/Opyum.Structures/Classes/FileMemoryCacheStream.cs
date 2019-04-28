@@ -8,23 +8,24 @@ namespace Opyum.StandardPlayback
     /// <summary>
     /// Used for caching files into memory
     /// </summary>
-    public class FileMemoryStream : Stream, IDisposable
+    public class FileMemoryCacheStream : Stream, IDisposable
     {
-        protected long _position = 0;
-        protected byte[] memoryBuffer = new byte[0];
-        protected int tempBufferSize = 1024 * 4;
-
-        public BufferingState BufferingStatus { get; private set; } = 0;
-        public string FilePath { get; private set; } = String.Empty;
-
-        Object load_lock = new Object();
-
         public enum BufferingState
         {
             Empty = 0,
             Buffering = 1,
             Done = 2
         }
+
+        protected long _position = 0;
+        protected byte[] memoryBuffer = new byte[0];
+        protected int tempBufferSize = 1024 * 4;
+
+        Object load_lock = new Object();
+
+        public BufferingState BufferingStatus { get; private set; } = 0;
+        public string FilePath { get; private set; } = String.Empty;
+        public FileInfo FileInfo { get; set; }
 
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Opyum.StandardPlayback
 
         //public bool BufferEmpty => memoryBuffer == null ? true : memoryBuffer.Length > 1024*64 ? false : true; 
 
-        protected FileMemoryStream()
+        protected FileMemoryCacheStream()
         {
 
         }
@@ -138,12 +139,14 @@ namespace Opyum.StandardPlayback
         /// <exception cref="ArgumentNullException"></exception>
         protected virtual void Load(string file)
         {
-            FilePath = file;
-
             if (file == null)
             {
                 throw new ArgumentNullException();
             }
+
+            FilePath = file;
+            FileInfo = new FileInfo(file);
+
             lock (load_lock)
             {
                 int point = 0;
@@ -179,7 +182,6 @@ namespace Opyum.StandardPlayback
                 GC.Collect();
 
                 #endregion
-
             }
         }
 
@@ -205,6 +207,9 @@ namespace Opyum.StandardPlayback
             if (disposing)
             {
                 memoryBuffer = null;
+                FilePath = null;
+                FileInfo = null;
+                load_lock = null;
             }
         }
 
@@ -248,10 +253,10 @@ namespace Opyum.StandardPlayback
 
 
         /// <summary>
-        /// Creates a new <see cref="FileMemoryStream"/> from a given filepath.
+        /// Creates a new <see cref="FileMemoryCacheStream"/> from a given filepath.
         /// </summary>
         /// <param name="file">The audio file. It's not checked for being and actual audio file. That's on you</param>
-        /// <returns><see cref="FileMemoryStream"/></returns>
+        /// <returns><see cref="FileMemoryCacheStream"/></returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
@@ -260,7 +265,7 @@ namespace Opyum.StandardPlayback
         /// <exception cref="PathTooLongException"></exception>
         /// <exception cref="NotSupportedException"></exception>
         /// <exception cref="IOException"></exception>
-        public static FileMemoryStream Create(string file)
+        public static FileMemoryCacheStream Create(string file)
         {
             if (file == null)
             {
@@ -276,7 +281,7 @@ namespace Opyum.StandardPlayback
                 throw new IOException(message: "File is empty");
             }
 
-            var temp = new FileMemoryStream();
+            var temp = new FileMemoryCacheStream();
             ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
             Thread.Sleep(100);
             //temp.Load(file);
