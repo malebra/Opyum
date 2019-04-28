@@ -16,7 +16,7 @@ namespace Opyum.StandardPlayback
         private delegate void StreamDisposer();
         StreamDisposer sdd;
 
-        MemoryAudioCache sourceStream;
+        public AudioFileMemoryStream sourceStream;
 
         enum StreamState
         {
@@ -130,8 +130,7 @@ namespace Opyum.StandardPlayback
 
         private void StreamMp3(object state)
         {
-            IWaveProvider _waveProvider;
-            sourceStream = MemoryAudioCache.Create((string)state);
+            sourceStream = AudioFileMemoryStream.Create((string)state);
             //_waveProvider = new RawSourceWaveStream(sourceStream, sourceStream.GetWaveFormat());
             
             StartPlaying(new RawSourceWaveStream(sourceStream, sourceStream.GetWaveFormat()));
@@ -174,6 +173,12 @@ namespace Opyum.StandardPlayback
                     _streamState = StreamState.Playing;
                 }
             }
+        }
+
+        public void StopStream()
+        {
+            waveOut?.Stop();
+            _streamState = StreamState.Stopped;
         }
     }
 

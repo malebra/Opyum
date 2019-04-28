@@ -95,6 +95,10 @@
       <Project>{46df7a4b-83bd-4b42-a988-1981ebe715de}</Project>
       <Name>Opyum.StandardPlayback</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Opyum.Structures\Opyum.Structures.csproj">
+      <Project>{89aee011-3336-4445-b04e-7305623fa8ea}</Project>
+      <Name>Opyum.Structures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

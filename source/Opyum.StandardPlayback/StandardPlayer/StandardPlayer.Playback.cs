@@ -11,7 +11,7 @@ namespace Opyum.StandardPlayback
 
         public void Play(string path)
         {
-            DisposeOf();
+            Dispose();
 
             _path = path;
 

@@ -42,12 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AudioPlayerAttribute.cs" />
-    <Compile Include="Classes\MemoryAudioCache.cs" />
+    <Compile Include="Classes\AudioFileMemoryStream.cs" />
     <Compile Include="Enums\PlaybackState.cs" />
     <Compile Include="PlayerConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadAheadStream.cs" />
     <Compile Include="ReadFullyStream.cs" />
+    <Compile Include="StandardPlayer\StandardPlayer.Dispose.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.Functions.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.cs" />
     <Compile Include="StandardPlayer\StandardPlayer.Logging.cs" />
@@ -63,6 +64,10 @@
     <ProjectReference Include="..\Opyum.AudioBase\Opyum.AudioBase.csproj">
       <Project>{bb144ca3-11c2-44fa-97dd-07ac271e928c}</Project>
       <Name>Opyum.AudioBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Opyum.Structures\Opyum.Structures.csproj">
+      <Project>{89aee011-3336-4445-b04e-7305623fa8ea}</Project>
+      <Name>Opyum.Structures</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

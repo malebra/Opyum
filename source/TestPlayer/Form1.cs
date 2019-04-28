@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Opyum.StandardPlayback;
+using Opyum.Structures;
 
 namespace TestPlayer
 {
@@ -22,29 +23,61 @@ namespace TestPlayer
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "AudioFile | *.mp3; *.mp2; *.wav; *.aif; *.wma; *.mp4; *.aac";
-            if (ofd.ShowDialog() != DialogResult.OK) return;
+            if (ModifierKeys.HasFlag(Keys.Control))
+            {
+                try
+                {
+                    player.Dispose();
+                    GC.Collect();
+                }
+                catch (Exception)
+                {
 
-            player.Dispose();
-            player.StartStream(ofd.FileName);
-            pauseButton.Enabled = true;
+                }
+            }
+
+            else
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "AudioFile | *.mp3; *.mp2; *.wav; *.aif; *.wma; *.mp4; *.aac";
+                if (ofd.ShowDialog() != DialogResult.OK) return;
+
+                player?.StopStream();
+
+                player.Dispose();
+                player.StartStream(ofd.FileName);
+                pauseButton.Enabled = true; 
+            }
 
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-            {
+        {
             player.Dispose();
             player = null;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-            if (player != null)
+            if (ModifierKeys.HasFlag(Keys.Control))
             {
-                player.PausePlay();
+                try
+                {
+                    player.sourceStream.Position = 0;
+                }
+                catch (Exception)
+                {
+
+                }
             }
-            player.PlayPauseStream();
+            else
+            {
+                if (player != null)
+                {
+                    player.PausePlay();
+                }
+                player.PlayPauseStream(); 
+            }
         }
     }
 }
