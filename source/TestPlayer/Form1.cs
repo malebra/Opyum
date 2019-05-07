@@ -36,7 +36,8 @@ namespace TestPlayer
             //pp = new WaveOutEvent() { DeviceNumber = 0 };
             #endregion
 
-            pp = new AsioOut(AsioOut.GetDriverNames()[0]);
+            //pp = new AsioOut(AsioOut.GetDriverNames()[0]);
+            pp = new WaveOut();
         }
 
         private void openButton_Click(object sender, EventArgs e)

@@ -11,6 +11,8 @@ namespace Opyum.StandardPlayback
 {
     public partial class StandardPlayer
     {
+        WaitCallback waitCallBack;
+
         enum Driver
         {
             Normal = 0,
@@ -29,7 +31,7 @@ namespace Opyum.StandardPlayback
         private IWavePlayer waveOut;
         private BufferedWaveProvider bufferedWaveProvider;
 
-        public FileMemoryCacheStream sourceStream;
+        public IFileFromMemoryStream sourceStream;
 
         enum StreamState
         {
@@ -45,6 +47,10 @@ namespace Opyum.StandardPlayback
             
         }
 
+        /// <summary>
+        /// Creates a new _wavePlayer if a current one doesn't already exist
+        /// </summary>
+        /// <returns></returns>
         private IWavePlayer CreateWaveOut() => _wavePlayer != null ? _wavePlayer : new WaveOut();
 
 
@@ -143,14 +149,19 @@ namespace Opyum.StandardPlayback
 
         public void StartStream(string url)
         {
-            ThreadPool.QueueUserWorkItem(StreamMp3, url);
+            if (waitCallBack != null)
+            {
+                //wcb.
+            }
+            waitCallBack = StreamMp3;
+            ThreadPool.QueueUserWorkItem(waitCallBack, url);
         }
 
         protected void StreamMp3(object state)
         {
-            sourceStream = FileMemoryCacheStream.Create((string)state);
+            sourceStream = FileFromMemoryStream.Create((string)state);
             
-            StartPlaying(new RawSourceWaveStream(sourceStream, GetWaveFormat(sourceStream)));
+            StartPlaying(new RawSourceWaveStream((Stream)sourceStream, GetWaveFormat(sourceStream)));
         }
 
         /// <summary>
@@ -207,7 +218,7 @@ namespace Opyum.StandardPlayback
         /// </summary>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public virtual WaveFormat GetWaveFormat(FileMemoryCacheStream sourceStream)
+        public virtual WaveFormat GetWaveFormat(IFileFromMemoryStream sourceStream)
         {
             WaveFormat format;
             Mp3Frame frame = null; ;
@@ -222,7 +233,7 @@ namespace Opyum.StandardPlayback
                 int counter = 0;
                 while (frame == null)
                 {
-                    frame = Mp3Frame.LoadFromStream(sourceStream);
+                    frame = Mp3Frame.LoadFromStream((Stream)sourceStream);
                     Thread.Sleep(50);
                     counter++;
                     if (counter > 100)

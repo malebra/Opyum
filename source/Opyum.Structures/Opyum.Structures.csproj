@@ -47,9 +47,12 @@
     <Compile Include="Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Attributes\ShortcutMethodAttribute.cs.disable" />
     <Compile Include="Attributes\PlaylistItemAttribute.cs" />
-    <None Include="Classes\AudioFileMemoryStream.cs.old" />
+    <None Include="OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
+    <None Include="OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
+    <Compile Include="Classes\IFileFromMemoryStream.cs" />
     <Compile Include="Enums\ApplicationPlatform.cs" />
-    <Compile Include="Classes\FileMemoryCacheStream.cs" />
+    <Compile Include="Enums\BufferingStatus.cs" />
+    <Compile Include="Classes\FileFromMemoryStream.cs" />
     <Compile Include="OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
