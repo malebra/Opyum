@@ -10,7 +10,7 @@ namespace Opyum.StandardPlayback
     /// </summary>
     public class FileMemoryCacheStream : Stream, IDisposable
     {
-        public enum BufferingState
+        public enum BufferingStatus
         {
             Empty = 0,
             Buffering = 1,
@@ -23,9 +23,9 @@ namespace Opyum.StandardPlayback
 
         Object load_lock = new Object();
 
-        public BufferingState BufferingStatus { get; private set; } = 0;
+        public BufferingStatus BufferingState { get; private set; } = 0;
         public string FilePath { get; private set; } = String.Empty;
-        public FileInfo FileInfo { get; set; }
+        public FileInfo FileInformation { get; set; }
 
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Opyum.StandardPlayback
         /// <summary>
         /// Returns boolen true if stream can be written
         /// </summary>
-        public override bool CanWrite => false;
+        public override bool CanWrite => true;
         /// <summary>
         /// Returns the number of bytes buffered in the memory
         /// </summary>
@@ -63,18 +63,54 @@ namespace Opyum.StandardPlayback
 
             }
         }
-
-
-        //public bool BufferEmpty => memoryBuffer == null ? true : memoryBuffer.Length > 1024*64 ? false : true; 
+        /// <summary>
+        /// Return true if the buffer is empty
+        /// </summary>
+        public bool BufferEmpty => memoryBuffer == null ? true : memoryBuffer.Length > 1024*64 ? false : true; 
 
         protected FileMemoryCacheStream()
         {
 
         }
 
+        ~FileMemoryCacheStream()
+        {
+            memoryBuffer = null;
+        }
+
+
         /// <summary>Returns the internal buffer.</summary>
         public virtual byte[] GetBuffer() => memoryBuffer;
 
+
+
+        /// <summary>
+        /// Reads the cached data from the memory into the buffer.
+        /// </summary>
+        /// <param name="buffer">The buffer the data is being coppied to.</param>
+        /// <param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin storing the data read from the current stream.</param>
+        /// <param name="count">The maximum number of bytes to be read from the current stream.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public override int Read(byte[] buffer, int offset, int count)
+        {
+            if (memoryBuffer == null || buffer == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            int toCopy = memoryBuffer.Length - _position < (long)count ? (int)(memoryBuffer.Length - _position) : count;
+            Array.Copy(memoryBuffer, _position, buffer, offset, toCopy);
+
+
+            _position += toCopy;
+
+            return toCopy;
+        }
+
+        /// <summary>
+        /// Does nothing.
+        /// </summary>
+        public override void Flush() { }
 
         /// <summary>Sets the current position of the stream.
         /// <para>Positive and negative offsets are acceptable in differet contexts.</para>
@@ -105,32 +141,6 @@ namespace Opyum.StandardPlayback
             return _position;
         }
 
-
-
-        /// <summary>
-        /// Reads the cached data from the memory into the buffer.
-        /// </summary>
-        /// <param name="buffer">The buffer the data is being coppied to.</param>
-        /// <param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin storing the data read from the current stream.</param>
-        /// <param name="count">The maximum number of bytes to be read from the current stream.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public override int Read(byte[] buffer, int offset, int count)
-        {
-            if (memoryBuffer == null || buffer == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            int toCopy = memoryBuffer.Length - _position < (long)count ? (int)(memoryBuffer.Length - _position) : count;
-            Array.Copy(memoryBuffer, _position, buffer, offset, toCopy);
-
-
-            _position += toCopy;
-
-            return toCopy;
-        }
-
-
         /// <summary>
         /// Loads the file into the memory buffer.
         /// </summary>
@@ -145,7 +155,7 @@ namespace Opyum.StandardPlayback
             }
 
             FilePath = file;
-            FileInfo = new FileInfo(file);
+            FileInformation = new FileInfo(file);
 
             lock (load_lock)
             {
@@ -153,10 +163,10 @@ namespace Opyum.StandardPlayback
                 byte[] tempBuffer = new byte[tempBufferSize];
                 int readBytes = 0;
 
-                memoryBuffer = new byte[(new FileInfo(FilePath)).Length];
+                memoryBuffer = new byte[FileInformation.Length];
 
 
-                BufferingStatus = BufferingState.Buffering;
+                BufferingState = BufferingStatus.Buffering;
 
                 #region Dynamic_Loading_Into_Memory
 
@@ -164,7 +174,7 @@ namespace Opyum.StandardPlayback
                 ms.Flush();
                 using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
-                    BufferingStatus = BufferingState.Buffering;
+                    BufferingState = BufferingStatus.Buffering;
                     do
                     {
                         readBytes = fs.Read(tempBuffer, 0, tempBufferSize);
@@ -176,7 +186,7 @@ namespace Opyum.StandardPlayback
                     } while (readBytes > 0);
                     tempBuffer = null;
                 }
-                BufferingStatus = BufferingState.Done;
+                BufferingState = BufferingStatus.Done;
 
                 ms.Dispose();
                 GC.Collect();
@@ -187,7 +197,7 @@ namespace Opyum.StandardPlayback
 
 
 
-        #region Garbage_COllectiong
+        #region Garbage_Collection
 
         /// <summary>
         /// Disposes of resources.
@@ -208,47 +218,54 @@ namespace Opyum.StandardPlayback
             {
                 memoryBuffer = null;
                 FilePath = null;
-                FileInfo = null;
+                FileInformation = null;
                 load_lock = null;
             }
         }
 
         #endregion
 
-        #region NOT_IMPLEMENTED
+        #region NOT_SUPPORTED
 
         /// <summary>
-        /// This function is not implemented
+        /// This function is not supported
         /// </summary>
         /// <param name="value"></param>
-        /// <exception cref="InvalidOperationException">Will always throw an exception</exception>
-        public override void SetLength(long value)
-        {
-            throw new InvalidOperationException();
-        }
+        /// <exception cref="NotSupportedException">Will always throw an exception</exception>
+        public override void SetLength(long value) => throw new NotSupportedException("Can't set length of a FileMemoryCacheStream");
 
         /// <summary>
-        /// This function is not implemented
+        /// Function not supported.
         /// </summary>
-        /// <exception cref="InvalidOperationException">Will always throw this exception</exception>
-        public override void Flush()
-        {
-            throw new InvalidOperationException();
-        }
+        public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException("You cannot alter, change or write to the FileMemoryCacheStream.");
 
+
+        /*
         /// <summary>
-        /// This function is not implemented
+        /// Writes the data from the <paramref name="buffer"/> to an array in the memory, and resizes the array if necessary.
         /// </summary>
-        /// <param name="buffer"></param>
-        /// <param name="offset"></param>
-        /// <param name="count"></param>
-        /// <exception cref="InvalidOperationException">Will always throm invalid operation exception</exception>
-        public override void Write(byte[] buffer, int offset, int count)
-        {
-            throw new InvalidOperationException();
-        }
+        /// <param name="buffer">The buffer from which the data is being coppied from.</param>
+        /// <param name="offset">The ofset in the <paramref name="buffer"/> from which to start copying the data from.</param>
+        /// <param name="count">The number of bytes to copy from <paramref name="buffer"/>.</param>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="NotSupportedException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        //public override void Write(byte[] buffer, int offset, int count)
+        //{
+        //    MemoryStream ms = new MemoryStream(memoryBuffer);
+        //    ms.Position = _position;
+        //    ms.Write(buffer, offset, count);
+        //    ms.Dispose();
+        //    ms = null;
+        //}
+        */
+
 
         #endregion
+
 
 
 

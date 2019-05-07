@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio.Wave;
 using Opyum.StandardPlayback;
 using Opyum.Structures;
 
@@ -14,11 +15,28 @@ namespace TestPlayer
 {
     public partial class Form1 : Form
     {
-        private StandardPlayer player = new StandardPlayer();
+        private StandardPlayer player;
+
+        IWavePlayer pp;
 
         public Form1()
         {
             InitializeComponent();
+
+            this.MinimumSize = this.Size;
+
+            #region WaveOutEvent
+
+            //for (int i = 0; i < WaveOut.DeviceCount; i++)
+            //{
+            //    var caps = WaveOut.GetCapabilities(i);
+            //    richTextBox1.AppendText($"{caps.ProductName} \t\t {caps.ProductGuid}\n");
+            //}
+
+            //pp = new WaveOutEvent() { DeviceNumber = 0 };
+            #endregion
+
+            pp = new AsioOut(AsioOut.GetDriverNames()[0]);
         }
 
         private void openButton_Click(object sender, EventArgs e)
@@ -42,6 +60,19 @@ namespace TestPlayer
                 ofd.Filter = "AudioFile | *.mp3; *.mp2; *.wav; *.aif; *.wma; *.mp4; *.aac";
                 if (ofd.ShowDialog() != DialogResult.OK) return;
 
+                if (player == null)
+                {
+                    if (pp != null)
+                    {
+                        richTextBox1.AppendText("Instantiated\n");
+                        player = new StandardPlayer(pp);
+                    }
+                    else
+                    {
+                        player = new StandardPlayer(); 
+                    }
+                }
+                
                 player?.StopStream();
 
                 player.Dispose();
@@ -53,8 +84,9 @@ namespace TestPlayer
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            player.Dispose();
+            this.Dispose();
             player = null;
+            GC.Collect();
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
