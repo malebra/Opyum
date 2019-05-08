@@ -24,7 +24,7 @@ namespace Opyum.AudioBase
 
         public AudioImage Image => throw new NotImplementedException();
 
-        public AudioType Type => AudioType.None;
+        public ItemType Type => ItemType.None;
 
         public string AditionalInfo => throw new NotImplementedException();
 

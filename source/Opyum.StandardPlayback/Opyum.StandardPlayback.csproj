@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AudioPlayerAttribute.cs" />
-    <Compile Include="Classes\AudioFileMemoryStream.cs" />
+    <None Include="Classes\AudioFileMemoryStream.cs.old" />
     <Compile Include="Enums\PlaybackState.cs" />
     <Compile Include="PlayerConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

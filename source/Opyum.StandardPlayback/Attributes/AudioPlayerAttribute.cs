@@ -18,7 +18,7 @@ namespace Opyum.StandardPlayback.Attributes
 
         public string Version { get; set; } = String.Empty;
 
-        public Opyum.AudioBase.AudioType Type { get; set; } = Opyum.AudioBase.AudioType.None;
+        public Opyum.AudioBase.ItemType Type { get; set; } = Opyum.AudioBase.ItemType.None;
 
         public string SupportedFormats { get; set; } = String.Empty;
     }

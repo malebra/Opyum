@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Opyum.Structures
 {
@@ -13,7 +15,13 @@ namespace Opyum.Structures
         protected long _position = 0;
         protected byte[] memoryBuffer = new byte[0];
         protected int tempBufferSize = 1024 * 4;
-		 
+        protected int writtenBytes = 0;
+
+        /// <summary>
+        /// If set to true will wait till it can read the requested number of data (if possible).
+        /// </summary>
+        public bool ReadAsyncOn { get; set; } = false;
+
         Object load_lock = new Object();
 
         public BufferingStatus BufferingState { get; private set; } = 0;
@@ -44,13 +52,20 @@ namespace Opyum.Structures
         /// </summary>
         public override long Position { get => _position; set => _position = value; }
         /// <summary>
-        /// Gets or sets percentage of the current position in the buffer
+        /// Gets or sets percentage of the current position in the buffer.
+        /// <para>The range for this value is from 0 to 1.</para>
+        /// <para>Setting this value outside of the range will trigger an <see cref="ArgumentOutOfRangeException"/>.</para>
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"/>
         public double PositionPercentage
         {
-            get => Length == 0 ? 0 : (double)Position / (double)Length;
+            get => Length == 0 || memoryBuffer == null ? 0 : (double)Position / (double)Length;
             set
             {
+                if (value > 1 || value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("The range for this value is from 0 to 1");
+                }
                 if (memoryBuffer != null && Length != 0)
                 {
                     _position = (long)(value * (double)Length);
@@ -59,9 +74,9 @@ namespace Opyum.Structures
             }
         }
         /// <summary>
-        /// Return true if the buffer is empty
+        /// Return true if the buffer is empty or non-existent.
         /// </summary>
-        public bool BufferEmpty => memoryBuffer == null ? true : memoryBuffer.Length > 1024*64 ? false : true; 
+        public bool BufferEmpty => memoryBuffer == null || writtenBytes == 0 ? true : memoryBuffer.Length > 1024 * 64 ? false : true;
 
         protected FileFromMemoryStream()
         {
@@ -80,6 +95,12 @@ namespace Opyum.Structures
 
         /// <summary>Returns the internal buffer.</summary>
         public virtual byte[] GetBuffer() => memoryBuffer;
+        public virtual byte[] GetBufferClone()
+        {
+            var temp = new byte[memoryBuffer.Length];
+            Buffer.BlockCopy(memoryBuffer, 0, temp, 0, memoryBuffer.Length);
+            return temp;
+        }
 
 
 
@@ -93,13 +114,59 @@ namespace Opyum.Structures
         /// <exception cref="ArgumentOutOfRangeException"/>
         public override int Read(byte[] buffer, int offset, int count)
         {
+            if (ReadAsyncOn)
+            {
+                var t = ReadAsync(buffer, offset, count).Result;
+                return t;
+            }
+            else
+            {
+                if (memoryBuffer == null || buffer == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                if (offset < 0 || offset > buffer.Length - 1 || count > buffer.Length || buffer.Length - offset < count)
+                {
+                    throw new ArgumentOutOfRangeException("The Offset cannot be set to a value less then 0");
+                }
+
+                int toCopy = memoryBuffer.Length - _position < (long)count ? (int)(memoryBuffer.Length - _position) : count;
+                Array.Copy(memoryBuffer, _position, buffer, offset, toCopy);
+
+
+                _position += toCopy;
+
+                return toCopy;
+            }
+        }
+
+        /// <summary>
+        /// Reads the cached data from the memory into the buffer.
+        /// </summary>
+        /// <param name="buffer">The buffer the data is being coppied to.</param>
+        /// <param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin storing the data read from the current stream.</param>
+        /// <param name="count">The maximum number of bytes to be read from the current stream.</param>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        public async Task<int> ReadAsync(byte[] buffer, int offset, int count)
+        {
             if (memoryBuffer == null || buffer == null)
             {
                 throw new ArgumentNullException();
             }
-            if (offset < 0 || offset > buffer.Length-1 || count > buffer.Length || buffer.Length - offset > count)
+            if (offset < 0 || offset > buffer.Length - 1 || count > buffer.Length || buffer.Length - offset < count)
             {
                 throw new ArgumentOutOfRangeException("The Offset cannot be set to a value less then 0");
+            }
+
+            if (writtenBytes - _position < count)
+            {
+                int pos = Int32.Parse(_position.ToString());
+                var t = memoryBuffer.Length - pos < count ? memoryBuffer.Length - pos : pos + count;
+                if (writtenBytes != memoryBuffer.Length)
+                {
+                    await WaitForBufferToFill(t); 
+                }
             }
 
             int toCopy = memoryBuffer.Length - _position < (long)count ? (int)(memoryBuffer.Length - _position) : count;
@@ -108,8 +175,27 @@ namespace Opyum.Structures
 
             _position += toCopy;
 
+
             return toCopy;
         }
+
+        /// <summary>
+        /// Waits until the buffer can read the requested number of bytes if possible
+        /// </summary>
+        /// <param name="minWrittenBytesRequired"></param>
+        /// <returns></returns>
+        private async Task<int> WaitForBufferToFill(int minWrittenBytesRequired)
+        {
+            Task t = Task.Run(() =>
+            {
+                while (writtenBytes < minWrittenBytesRequired) Thread.Sleep(5);
+            });
+
+            await t;
+
+            return writtenBytes;
+        }
+
 
         /// <summary>
         /// Does nothing.
@@ -176,7 +262,7 @@ namespace Opyum.Structures
                 #region Dynamic_Loading_Into_Memory
 
                 MemoryStream ms = new MemoryStream(memoryBuffer);
-                
+
                 using (Stream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
                     BufferingState = BufferingStatus.Buffering;
@@ -191,6 +277,7 @@ namespace Opyum.Structures
                         {
                             ms.Write(tempBuffer, 0, readBytes);
                             point += readBytes;
+                            writtenBytes += readBytes;
                         }
                     } while (readBytes > 0);
                     tempBuffer = null;
@@ -203,8 +290,7 @@ namespace Opyum.Structures
                 #endregion
             }
         }
-
-
+        
 
         #region Garbage_Collection
 
@@ -223,6 +309,8 @@ namespace Opyum.Structures
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
+            List<int> iii = new List<int>();
+
             if (disposing)
             {
                 cts.Cancel();
@@ -286,7 +374,7 @@ namespace Opyum.Structures
 
             var temp = new FileFromMemoryStream(file);
             ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
-            //Thread.Sleep(50);
+            Thread.Sleep(100);
             //temp.Load(file);
             return temp;
         }

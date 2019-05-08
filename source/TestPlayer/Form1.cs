@@ -86,7 +86,6 @@ namespace TestPlayer
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
-            player = null;
             GC.Collect();
         }
 

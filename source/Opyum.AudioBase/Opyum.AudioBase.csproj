@@ -51,6 +51,8 @@
     <Compile Include="Classes\AudioItem.cs" />
     <Compile Include="Classes\BaseAudioItem.cs" />
     <Compile Include="Classes\Content\BaseContent.cs" />
+    <Compile Include="Classes\Content\Classes\FileContent.cs" />
+    <Compile Include="Classes\Content\IContent.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\BaseOptions.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Duration.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Tags.cs" />
@@ -63,7 +65,7 @@
     <Compile Include="Classes\PlaylistItem\Classes\Time.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Watcher.cs" />
     <Compile Include="Classes\Slot\PlaylistSlot.cs" />
-    <Compile Include="Enums\AudioType.cs" />
+    <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\DurationType.cs" />
     <Compile Include="Enums\TimeType.cs" />
     <Compile Include="Interfaces\IAudioInfo.cs" />
@@ -71,10 +73,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\Content\Classes\" />
     <Folder Include="Classes\Content\Interfaces\" />
     <Folder Include="Classes\Slot\Classes\" />
     <Folder Include="Classes\Slot\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NAudio\NAudio.csproj">
+      <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
+      <Name>NAudio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Opyum.Structures\Opyum.Structures.csproj">
+      <Project>{89aee011-3336-4445-b04e-7305623fa8ea}</Project>
+      <Name>Opyum.Structures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

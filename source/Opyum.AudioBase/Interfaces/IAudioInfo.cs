@@ -24,7 +24,7 @@ namespace Opyum.AudioBase
 
         AudioImage Image { get; }
 
-        AudioType Type { get; }
+        ItemType Type { get; }
 
         string AditionalInfo { get; }
 

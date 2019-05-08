@@ -10,14 +10,22 @@ namespace Opyum.AudioBase
     [Opyum.AudioBase.Attributes.PlaylistItem]
     public class PlaylistItem
     {
+        public IContent Content { get; protected set; }
+
         public DurationType DurationType { get; private set; }
 
         public TimeType TimeType { get; private set; }
-
+        /// <summary>
+        /// Tags that are pulled from the database or imported list.
+        /// </summary>
         public ITags Tags { get; private set; }
-
+        /// <summary>
+        /// Temporary tags that can be set in the running list.
+        /// </summary>
         public ITags TempTags { get; set; }
-
+        /// <summary>
+        /// Used to monitor canges in the file.
+        /// </summary>
         virtual public IWatcher Watcher { get; }
 
         

@@ -54,6 +54,8 @@
     <Compile Include="Enums\BufferingStatus.cs" />
     <Compile Include="Classes\FileFromMemoryStream.cs" />
     <Compile Include="OpyumAttributes.cs" />
+    <Compile Include="Playlist\Content.cs" />
+    <Compile Include="Playlist\PlaylistItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
