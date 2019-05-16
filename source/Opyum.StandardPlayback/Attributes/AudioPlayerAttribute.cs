@@ -14,12 +14,24 @@ namespace Opyum.StandardPlayback.Attributes
             Name = name;
         }
 
+        public AudioPlayerAttribute(string name, string[] supportedFormats)
+        {
+            Name = name;
+            SupportedFormats.AddRange(supportedFormats);
+        }
+
+        public AudioPlayerAttribute(string name, string supportedFormats)
+        {
+            Name = name;
+            SupportedFormats.AddRange(supportedFormats.Replace(" ", string.Empty).Split(';'));
+        }
+
         public string Name { get; set; } = String.Empty;
 
         public string Version { get; set; } = String.Empty;
 
-        public Opyum.AudioBase.ItemType Type { get; set; } = Opyum.AudioBase.ItemType.None;
+        public Opyum.Playlist.ItemType Type { get; set; } = Opyum.Playlist.ItemType.None;
 
-        public string SupportedFormats { get; set; } = String.Empty;
+        public List<string> SupportedFormats { get; set; } = new List<string>();
     }
 }

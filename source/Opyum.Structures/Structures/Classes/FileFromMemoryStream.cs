@@ -17,10 +17,6 @@ namespace Opyum.Structures
         protected int tempBufferSize = 1024 * 4;
         protected int writtenBytes = 0;
 
-        /// <summary>
-        /// If set to true will wait till it can read the requested number of data (if possible).
-        /// </summary>
-        public bool ReadAsyncOn { get; set; } = false;
 
         Object load_lock = new Object();
 
@@ -31,6 +27,11 @@ namespace Opyum.Structures
         CancellationTokenSource cts = new CancellationTokenSource();
 
 
+
+        /// <summary>
+        /// If set to true will wait till it can read the requested number of data (if possible).
+        /// </summary>
+        public bool ReadAsyncOn { get; set; } = false;
         /// <summary>
         /// Returns boolen true if stream can be read
         /// </summary>
@@ -148,7 +149,7 @@ namespace Opyum.Structures
         /// <param name="count">The maximum number of bytes to be read from the current stream.</param>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="ArgumentOutOfRangeException"/>
-        public async Task<int> ReadAsync(byte[] buffer, int offset, int count)
+        public new async Task<int> ReadAsync(byte[] buffer, int offset, int count)
         {
             if (memoryBuffer == null || buffer == null)
             {

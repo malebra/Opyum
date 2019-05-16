@@ -27,6 +27,10 @@ namespace Opyum.AudioBase
         /// Used to monitor canges in the file.
         /// </summary>
         virtual public IWatcher Watcher { get; }
+        /// <summary>
+        /// The state of the item (wheather it can be used, if it's playing...).
+        /// </summary>
+        virtual public ItemStatus State { get; private set; }
 
         
         //public IContent Content { get; }
@@ -44,6 +48,20 @@ namespace Opyum.AudioBase
         //VoxStart
 
         //Volume
+
+        #region Change_Events
+
+
+        public delegate void PlaylistItemChangedEventHandler(object sender, PlaylistItemChangedEventArgs e);
+        public event PlaylistItemChangedEventHandler ItemChanged;
+
+        protected virtual void OnItemChange()
+        {
+            ItemChanged?.Invoke(this, new PlaylistItemChangedEventArgs() { Changes = ItemChanges.None });
+        }
+
+
+        #endregion
 
     }
 }

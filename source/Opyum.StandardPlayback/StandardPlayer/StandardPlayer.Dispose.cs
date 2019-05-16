@@ -38,7 +38,7 @@ namespace Opyum.StandardPlayback
                     output.Dispose();
                     output = null;
                 }
-                sourceStream?.Dispose();
+                ((IDisposable)sourceStream)?.Dispose();
             }
         }
 

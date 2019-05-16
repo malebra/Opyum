@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opyum.Structures.Attributes
+namespace Opyum.Playlist
 {
-    public class PlaylistItemAttribute : Attribute
+    public class AudioItem
     {
-        public string Version { get; set; }
 
     }
 }

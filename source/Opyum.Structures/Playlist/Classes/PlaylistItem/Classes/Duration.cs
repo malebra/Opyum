@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opyum.Structures.Playlist
+namespace Opyum.Playlist
 {
-    public class PlaylistItem
+    public class Duration : IDuration
     {
-
+        
     }
 }

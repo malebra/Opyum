@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Opyum.StandardPlayback.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +18,7 @@ namespace TestPlayer
 {
     public partial class Form1 : Form
     {
+        private static Type[] possiblePlayers;
         private StandardPlayer player;
 
         IWavePlayer pp;
@@ -24,7 +28,10 @@ namespace TestPlayer
             InitializeComponent();
 
             this.MinimumSize = this.Size;
-
+            if (possiblePlayers == null)
+            {
+                possiblePlayers = GetAllPlayers(); 
+            }
             #region WaveOutEvent
 
             //for (int i = 0; i < WaveOut.DeviceCount; i++)
@@ -61,17 +68,26 @@ namespace TestPlayer
                 ofd.Filter = "AudioFile | *.mp3; *.mp2; *.wav; *.aif; *.wma; *.mp4; *.aac";
                 if (ofd.ShowDialog() != DialogResult.OK) return;
 
+                if (player != null)
+                {
+                    player.Dispose(); 
+                    GC.Collect();
+                }
                 if (player == null)
                 {
+                    player = (Opyum.StandardPlayback.StandardPlayer)GetInstance(GetTheRightPlayer(ofd.FileName));
                     if (pp != null)
                     {
                         richTextBox1.AppendText("Instantiated\n");
-                        player = new StandardPlayer(pp);
+                        //player = new StandardPlayer(pp);
+                        //var type = player.GetType();
+                        player.InstantiatePlayerOutput(pp);
+
                     }
-                    else
-                    {
-                        player = new StandardPlayer(); 
-                    }
+                    //else
+                    //{
+                    //    //player = new StandardPlayer(); 
+                    //}
                 }
                 
                 player?.StopStream();
@@ -111,5 +127,35 @@ namespace TestPlayer
                 player.PlayPauseStream(); 
             }
         }
+
+
+        private static Type[] GetAllPlayers()
+        {
+            var temp = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            List<Assembly> allAssemblies = new List<Assembly>();
+            foreach (var dll in Directory.GetFiles(temp, "*.dll"))
+            {
+                allAssemblies.Add(Assembly.LoadFile(dll));
+            }
+
+            var t = allAssemblies.SelectMany((a) =>
+                a.GetTypes().
+                Where((x) =>
+                    x.GetCustomAttributes(typeof(Opyum.StandardPlayback.Attributes.AudioPlayerAttribute), true).Length > 0));
+                        
+
+            return t.ToArray();
+        }
+
+        private static Type GetTheRightPlayer(string file)
+        {
+            var t2 = $"*{Path.GetExtension(file)}";
+
+            var players = possiblePlayers.ToList().Where((p) => ((AudioPlayerAttribute)p.GetCustomAttribute(typeof(AudioPlayerAttribute))).SupportedFormats.Contains($"*{Path.GetExtension(file)}"));
+            return players.FirstOrDefault();
+        }
+
+        private static object GetInstance(Type t) => Activator.CreateInstance(t);
     }
 }

@@ -9,7 +9,10 @@ namespace Opyum.StandardPlayback
             output = new DirectSoundOut();
         }
         
-
+        public void InstantiatePlayerOutput(IWavePlayer provider)
+        {
+            _wavePlayer = provider;
+        }
 
         //On the change of volume
 

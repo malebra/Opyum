@@ -29,7 +29,6 @@ namespace Opyum.StandardPlayback
         private Driver DriverToUSer { get; set; } = 0;
 
         private IWavePlayer waveOut;
-        private BufferedWaveProvider bufferedWaveProvider;
 
         public IFileFromMemoryStream sourceStream;
 
@@ -78,18 +77,16 @@ namespace Opyum.StandardPlayback
             sourceStream = FileFromMemoryStream.Create((string)state);
 
             Thread.Sleep(300);
-            //StartPlaying(new RawSourceWaveStream((Stream)sourceStream, GetWaveFormat(sourceStream)));
             if (sourceStream.FilePath.EndsWith(".mp3"))
             {
                 try
                 {
-                    //StartPlaying(new BlockAlignReductionStream(WaveFormatConversionStream.CreatePcmStream(new Mp3FileReader((Stream)sourceStream))));
                     StartPlaying(new Mp3FileReader((Stream)sourceStream));
                     throw new InvalidOperationException();
                 }
                 catch (InvalidOperationException)
                 {
-                    ((FileFromMemoryStream)sourceStream).ReadAsyncOn = true;
+                    ((FileFromMemoryStream)sourceStream).ReadAsyncOn = false;
                     sourceStream.Position = 0;
                     StartPlaying(new Mp3FileReader((Stream)sourceStream));
                 }
@@ -120,14 +117,6 @@ namespace Opyum.StandardPlayback
             {
                 waveOut = CreateWaveOut(); 
             }
-            //if (waveOut != null)
-            //{
-            //    waveOut.Dispose();
-            //    for (int i = 0; i < 50; i++)
-            //    {
-            //        Thread.Sleep(100);
-            //    }
-            //}
             waveOut.Init(waveProvider);
             waveOut.Play();
             _streamState = StreamState.Playing;
@@ -166,43 +155,41 @@ namespace Opyum.StandardPlayback
         /// <exception cref="ArgumentNullException"></exception>
         public virtual WaveFormat GetWaveFormat(IFileFromMemoryStream sourceStream)
         {
-            //WaveFormat format;
-            //Mp3Frame frame = null; ;
-            //AudioFileType fileType = sourceStream.FilePath.EndsWith(".mp3") ? 
-            //    AudioFileType.Mp3 : 
-            //    sourceStream.FilePath.EndsWith(".wav") ? 
-            //        AudioFileType.Wave : 
-            //        AudioFileType.Unknown;
+            WaveFormat format;
+            Mp3Frame frame = null; ;
+            AudioFileType fileType = sourceStream.FilePath.EndsWith(".mp3") ?
+                AudioFileType.Mp3 :
+                sourceStream.FilePath.EndsWith(".wav") ?
+                    AudioFileType.Wave :
+                    AudioFileType.Unknown;
 
-            //if (fileType == AudioFileType.Mp3)
-            //{
-            //    int counter = 0;
-            //    while (frame == null)
-            //    {
-            //        frame = Mp3Frame.LoadFromStream((Stream)sourceStream);
-            //        Thread.Sleep(50);
-            //        counter++;
-            //        if (counter > 100)
-            //        {
-            //            throw new ArgumentNullException();
-            //        }
-            //    }
+            if (fileType == AudioFileType.Mp3)
+            {
+                int counter = 0;
+                while (frame == null)
+                {
+                    frame = Mp3Frame.LoadFromStream((Stream)sourceStream);
+                    Thread.Sleep(50);
+                    counter++;
+                    if (counter > 100)
+                    {
+                        throw new ArgumentNullException();
+                    }
+                }
 
-            //    format = new Mp3WaveFormat(frame.SampleRate, frame.ChannelMode == ChannelMode.Mono ? 1 : 2,
-            //        frame.FrameLength, frame.BitRate);
-            //}
-            //else if (fileType == AudioFileType.Wave)
-            //{
-            //    format = (new WaveFileReader(sourceStream.FilePath)).WaveFormat;
-            //}
-            //else
-            //{
-            //    throw new ArgumentException("The file type is currently unsupported");
-            //}
+                format = new Mp3WaveFormat(frame.SampleRate, frame.ChannelMode == ChannelMode.Mono ? 1 : 2,
+                    frame.FrameLength, frame.BitRate);
+            }
+            else if (fileType == AudioFileType.Wave)
+            {
+                format = (new WaveFileReader(sourceStream.FilePath)).WaveFormat;
+            }
+            else
+            {
+                throw new ArgumentException("The file type is currently unsupported");
+            }
 
-            //return format;
-            Thread.Sleep(100);
-            return new WaveFormat(new BinaryReader((Stream)sourceStream));
+            return format;
         }
     }
 

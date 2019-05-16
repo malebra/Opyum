@@ -72,10 +72,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Opyum.AudioBase\Opyum.AudioBase.csproj">
-      <Project>{bb144ca3-11c2-44fa-97dd-07ac271e928c}</Project>
-      <Name>Opyum.AudioBase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Opyum.OSInteraction\Opyum.OSInteraction.csproj">
       <Project>{ba831fff-2b78-41e7-9cd7-a258fcdef1ee}</Project>
       <Name>Opyum.OSInteraction</Name>

@@ -44,21 +44,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ApplicationPlatformAttribute.cs" />
-    <None Include="Attributes\ShortcutMethodAttribute.cs.disable" />
-    <Compile Include="Attributes\PlaylistItemAttribute.cs" />
-    <None Include="OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
-    <None Include="OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
-    <Compile Include="Classes\IFileFromMemoryStream.cs" />
-    <Compile Include="Enums\ApplicationPlatform.cs" />
-    <Compile Include="Enums\BufferingStatus.cs" />
-    <Compile Include="Classes\FileFromMemoryStream.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
+    <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
+    <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />
+    <Compile Include="Structures\Attributes\PlaylistItemAttribute.cs" />
+    <None Include="zzz_OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
+    <None Include="zzz_OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
+    <Compile Include="Structures\Attributes\ContentAttribute.cs" />
+    <Compile Include="Playlist\Classes\AudioImage.cs" />
+    <Compile Include="Playlist\Classes\AudioInfo.cs" />
+    <Compile Include="Playlist\Classes\AudioItem.cs" />
+    <Compile Include="Playlist\Classes\BaseAudioItem.cs" />
+    <Compile Include="Playlist\Classes\Content\BaseContent.cs" />
+    <Compile Include="Playlist\Classes\Content\Classes\FileContent.cs" />
+    <Compile Include="Playlist\Classes\Content\IContent.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\BaseOptions.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Duration.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Tags.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Time.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Watcher.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\ItemChanges.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\ItemStatus.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventArgs.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IDuration.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IOptions.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITags.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITime.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IWatcher.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\PlaylistItem.cs" />
+    <Compile Include="Playlist\Classes\Slot\PlaylistSlot.cs" />
+    <Compile Include="Playlist\Classes\VoumeCurve\VolumeCurve.cs" />
+    <Compile Include="Playlist\Enums\DurationType.cs" />
+    <Compile Include="Playlist\Enums\ItemType.cs" />
+    <Compile Include="Playlist\Enums\TimeType.cs" />
+    <Compile Include="Playlist\Interfaces\IAudioInfo.cs" />
+    <Compile Include="Playlist\Interfaces\IBaseAudioItem.cs" />
+    <Compile Include="Structures\Classes\IFileFromMemoryStream.cs" />
+    <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
+    <Compile Include="Structures\Enums\BufferingStatus.cs" />
+    <Compile Include="Structures\Classes\FileFromMemoryStream.cs" />
     <Compile Include="OpyumAttributes.cs" />
-    <Compile Include="Playlist\Content.cs" />
-    <Compile Include="Playlist\PlaylistItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Playlist\Classes\Content\Interfaces\" />
+    <Folder Include="Playlist\Classes\Slot\Classes\" />
+    <Folder Include="Playlist\Classes\Slot\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NAudio\NAudio.csproj">
+      <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
+      <Name>NAudio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

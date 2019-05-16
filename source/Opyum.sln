@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.AudioBase", "Opyum.AudioBase\Opyum.AudioBase.csproj", "{BB144CA3-11C2-44FA-97DD-07AC271E928C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.Structures", "Opyum.Structures\Opyum.Structures.csproj", "{89AEE011-3336-4445-B04E-7305623FA8EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opyum.Plugins", "Opyum.Plugins\Opyum.Plugins.csproj", "{47A6A4C1-4434-4A6E-AE6E-71124BB157B5}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB144CA3-11C2-44FA-97DD-07AC271E928C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89AEE011-3336-4445-B04E-7305623FA8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89AEE011-3336-4445-B04E-7305623FA8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89AEE011-3336-4445-B04E-7305623FA8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU

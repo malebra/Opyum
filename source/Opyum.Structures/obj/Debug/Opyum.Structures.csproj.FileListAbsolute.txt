@@ -6,3 +6,4 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Structur
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Structures\obj\Debug\Opyum.Structures.pdb
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.Structures.dll
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.Structures.pdb
+C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Structures\obj\Debug\Opyum.Structures.csproj.CopyComplete

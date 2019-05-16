@@ -55,7 +55,10 @@
     <Compile Include="Classes\Content\IContent.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\BaseOptions.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Duration.cs" />
+    <Compile Include="Classes\PlaylistItem\Enums\ItemStatus.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Tags.cs" />
+    <Compile Include="Classes\PlaylistItem\Enums\ItemChanges.cs" />
+    <Compile Include="Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventArgs.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\IDuration.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\IOptions.cs" />
     <Compile Include="Classes\PlaylistItem\Interfaces\ITags.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="Classes\PlaylistItem\Classes\Time.cs" />
     <Compile Include="Classes\PlaylistItem\Classes\Watcher.cs" />
     <Compile Include="Classes\Slot\PlaylistSlot.cs" />
+    <Compile Include="Classes\VoumeCurve\VolumeCurve.cs" />
     <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\DurationType.cs" />
     <Compile Include="Enums\TimeType.cs" />

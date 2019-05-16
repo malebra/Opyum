@@ -3,7 +3,7 @@ using NAudio.Wave;
 
 namespace Opyum.StandardPlayback
 {
-    [Opyum.StandardPlayback.Attributes.AudioPlayer("Standard Player", Version = "1.0.0", SupportedFormats = "*.mp3; *.wav")]
+    [Opyum.StandardPlayback.Attributes.AudioPlayer("Standard Player", "*.mp3; *.wav", Version = "1.0.0")]
     public partial class StandardPlayer : IDisposable
     {
         IWavePlayer _wavePlayer;

@@ -5,7 +5,13 @@ namespace Opyum.Structures
 {
     public interface IFileFromMemoryStream
     {
+        /// <summary>
+        /// The location of the file loaded into the memory.
+        /// </summary>
         string FilePath { get; }
+        /// <summary>
+        /// Informatin about the file loaded into the memory.
+        /// </summary>
         FileInfo FileInformation { get; set; }
         BufferingStatus BufferingState { get; }
         /// <summary>
@@ -23,15 +29,22 @@ namespace Opyum.Structures
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"/>
         double PositionPercentage { get; set; }
+        /// <summary>
+        /// Returns the current position (the current byte) in the buffer.
+        /// </summary>
         long Position { get; set; }
         /// <summary>
         /// If set to true will wait till it can read the requested number of data (if possible).
         /// </summary>
         bool ReadAsyncOn { get; set; }
 
-        /// <summary>Returns the internal buffer.</summary>
+        /// <summary>
+        /// Returns the internal buffer.
+        /// </summary>
         byte[] GetBuffer();
-        /// <summary>Coppies the intermal memory buffer into a new array and returns that.</summary>
+        /// <summary>
+        /// Coppies the intermal memory buffer into a new array and returns that.
+        /// </summary>
         byte[] GetBufferClone();
         /// <summary>
         /// Reads the cached data from the memory into the buffer.
@@ -51,6 +64,5 @@ namespace Opyum.Structures
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="ArgumentOutOfRangeException"/>
         Task<int> ReadAsync(byte[] buffer, int offset, int count);
-        void Dispose();
     }
 }
