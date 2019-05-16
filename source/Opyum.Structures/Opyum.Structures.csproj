@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\PlaylistItemType.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
     <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />

@@ -3,6 +3,6 @@
     public enum TimeType
     {
         Dynamic = 0,
-        Static = 1
+        Set = 1
     }
 }
