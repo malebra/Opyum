@@ -8,6 +8,6 @@ namespace Opyum.Playlist
 {
     public class Watcher : IWatcher
     {
-        
+
     }
 }

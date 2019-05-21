@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using NAudio.Wave;
+using System.IO;
 
 namespace Opyum.Playlist
 {
@@ -20,5 +21,11 @@ namespace Opyum.Playlist
         /// The audio file type extention.
         /// </summary>
         public string FileType { get; set; }
+        /// <summary>
+        /// File audio format.
+        /// </summary>
+        public WaveFormat Format { get; }
+
+        public abstract void Dispose();
     }
 }

@@ -23,6 +23,14 @@
         /// <summary>
         /// The end of a zone.
         /// </summary>
-        ZoneEnd = 8
+        ZoneEnd = 8,
+        /// <summary>
+        /// Used to differentiate special commecial audio files from songs, jingles etc.
+        /// </summary>
+        Comemrcial = 16,
+        /// <summary>
+        /// A type of file used for raadio denotation, station identification or transitions between songs.
+        /// </summary>
+        Jingle = 32
     }
 }

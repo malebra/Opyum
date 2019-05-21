@@ -6,7 +6,7 @@ using NAudio.Wave;
 namespace Opyum.Playlist
 {
     [Opyum.Structures.Attributes.Content(ItemType.File, "Audio file stream loaded into the memory.")]
-    public class FileContent : BaseContent, IContent, IDisposable
+    public class FileContent : BaseContent, IContent
     {
         /// <summary>
         /// The <see cref="IFileFromMemoryStream"/> that contains the full file loaded into the memory.
@@ -23,16 +23,22 @@ namespace Opyum.Playlist
         /// <summary>
         /// The file path of the audio from <see cref="IFileFromMemoryStream"/> loaded into the memory.
         /// </summary>
-        public new string Path => FileMemoryStream.FilePath;
+        public new string Path => FileMemoryStream?.FilePath;
         /// <summary>
         /// Returns the <see cref="WaveFormat"/> from the file stream.   
         /// </summary>
-        public WaveFormat FileWaveFormat { get => new WaveFormat(new BinaryReader(AudioStream)); }
+        public new WaveFormat Format { get { if(_format == null) { _format = new WaveFormat(new BinaryReader(AudioStream)); } return _format;} private set => _format = value; }
         /// <summary>
         /// Used to monitor canges in the file.
         /// </summary>
         virtual public IWatcher Watcher { get; private set; }
 
+
+
+        /// <summary>
+        /// private format.
+        /// </summary>
+        private WaveFormat _format;
 
         protected FileContent()
         {
@@ -57,7 +63,7 @@ namespace Opyum.Playlist
 
         #region Garbage_Collection
 
-        public void Dispose()
+        public override void Dispose()
         {
             Dispose(true);
             GC.Collect();
@@ -67,6 +73,8 @@ namespace Opyum.Playlist
         {
             if (disposing)
             {
+                _format = null;
+                FileMemoryStream = null;
 
             }
         }

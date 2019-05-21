@@ -16,6 +16,7 @@ namespace Opyum.Structures
         protected byte[] memoryBuffer = new byte[0];
         protected int tempBufferSize = 1024 * 4;
         protected int writtenBytes = 0;
+        protected bool isLoading = false;
 
 
         Object load_lock = new Object();
@@ -31,7 +32,7 @@ namespace Opyum.Structures
         /// <summary>
         /// If set to true will wait till it can read the requested number of data (if possible).
         /// </summary>
-        public bool ReadAsyncOn { get; set; } = false;
+        public bool WaitForRead { get; set; } = false;
         /// <summary>
         /// Returns boolen true if stream can be read
         /// </summary>
@@ -115,7 +116,7 @@ namespace Opyum.Structures
         /// <exception cref="ArgumentOutOfRangeException"/>
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if (ReadAsyncOn)
+            if (WaitForRead)
             {
                 var t = ReadAsync(buffer, offset, count).Result;
                 return t;
@@ -250,11 +251,19 @@ namespace Opyum.Structures
             FilePath = file;
             FileInformation = new FileInfo(file);
 
+            isLoading = true;
+
             lock (load_lock)
             {
                 int point = 0;
                 byte[] tempBuffer = new byte[tempBufferSize];
                 int readBytes = 0;
+
+                if (memoryBuffer != null)
+                {
+                    memoryBuffer = null;
+                    GC.Collect();
+                }
 
                 memoryBuffer = new byte[FileInformation.Length];
 
@@ -269,10 +278,10 @@ namespace Opyum.Structures
                     BufferingState = BufferingStatus.Buffering;
                     do
                     {
-                        if (ct.IsCancellationRequested)
-                        {
-                            break;
-                        }
+                        //if (ct.IsCancellationRequested)
+                        //{
+                        //    break;
+                        //}
                         readBytes = fs.Read(tempBuffer, 0, tempBufferSize);
                         if (readBytes != 0)
                         {
@@ -290,8 +299,70 @@ namespace Opyum.Structures
 
                 #endregion
             }
+            isLoading = false;
         }
-        
+
+        /// <summary>
+        /// Used to reload if necessary.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FileNotFoundException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="Exception"/>
+        public virtual IFileFromMemoryStream Reload()
+        {
+            if (FilePath == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (!File.Exists(FilePath))
+            {
+                throw new FileNotFoundException();
+            }
+            var info = new FileInfo(FilePath);
+            if (info.Length == 0)
+            {
+                throw new IOException(message: "File is empty");
+            }
+
+            if (isLoading)
+            {
+                CancleLoading();
+            }
+            int safetyCounter = 0;
+            while (safetyCounter < 50)
+            {
+                try
+                {
+                    using (Stream s = new FileStream(FilePath, FileMode.Open))
+                    {
+
+                    }
+                    break;
+                }
+                catch 
+                {
+                    Thread.Sleep(100);
+                    safetyCounter++;
+                    if (safetyCounter == 50)
+                    {
+                        throw new IOException("5 second timeout: the file cannot be accessed");
+                    }
+                }
+            }
+            //ThreadPool.QueueUserWorkItem((i) => this.Load(FilePath));
+            Task.Run(() => this.Load(FilePath), cts.Token);
+            Thread.Sleep(100);
+            return this;
+        }
+
+        private void CancleLoading()
+        {
+            cts.Cancel();
+            //cts.Dispose();
+            cts = new CancellationTokenSource();
+        }
+
 
         #region Garbage_Collection
 
@@ -374,7 +445,8 @@ namespace Opyum.Structures
             }
 
             var temp = new FileFromMemoryStream(file);
-            ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
+            //ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
+            Task.Run(() => temp.Load(file), temp.cts.Token);
             Thread.Sleep(100);
             //temp.Load(file);
             return temp;

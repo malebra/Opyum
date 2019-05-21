@@ -44,8 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemSettings.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Enums\PlaylistItemType.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
+    <Compile Include="Playlist\Classes\PlaylistManager\PlaylistManager.cs" />
+    <Compile Include="Playlist\Classes\PlaylistRearranger\PlaylistRearranger.cs" />
+    <Compile Include="Playlist\Classes\PlaylistZone\PlaylistZone.cs" />
+    <Compile Include="Playlist\Classes\Playlist\Playlist.cs" />
     <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />
     <Compile Include="Structures\Attributes\PlaylistItemAttribute.cs" />
@@ -73,7 +78,7 @@
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITime.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IWatcher.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\PlaylistItem.cs" />
-    <Compile Include="Playlist\Classes\Slot\PlaylistSlot.cs" />
+    <Compile Include="Playlist\Classes\PlaylistSlot\PlaylistSlot.cs" />
     <Compile Include="Playlist\Classes\VoumeCurve\VolumeCurve.cs" />
     <Compile Include="Playlist\Enums\DurationType.cs" />
     <Compile Include="Playlist\Enums\ItemType.cs" />
@@ -89,8 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Playlist\Classes\Content\Interfaces\" />
-    <Folder Include="Playlist\Classes\Slot\Classes\" />
-    <Folder Include="Playlist\Classes\Slot\Interfaces\" />
+    <Folder Include="Playlist\Classes\PlaylistSlot\Classes\" />
+    <Folder Include="Playlist\Classes\PlaylistSlot\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NAudio\NAudio.csproj">

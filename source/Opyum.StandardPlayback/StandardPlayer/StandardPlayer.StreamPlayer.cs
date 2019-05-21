@@ -81,14 +81,15 @@ namespace Opyum.StandardPlayback
             {
                 try
                 {
-                    StartPlaying(new Mp3FileReader((Stream)sourceStream));
-                    throw new InvalidOperationException();
+                    Thread.Sleep(1000);
+                    //((FileFromMemoryStream)sourceStream).WaitForRead = true;
+                    StartPlaying(new MediaFoundationReader(sourceStream.FilePath));// (Stream)sourceStream));
                 }
-                catch (InvalidOperationException)
+                catch (Exception)
                 {
-                    ((FileFromMemoryStream)sourceStream).ReadAsyncOn = false;
-                    sourceStream.Position = 0;
-                    StartPlaying(new Mp3FileReader((Stream)sourceStream));
+                    //((FileFromMemoryStream)sourceStream).WaitForRead = false;
+                    //sourceStream.Position = 0;
+                    //StartPlaying(new StreamMediaFoundationReader((Stream)sourceStream));
                 }
             }
             else if (sourceStream.FilePath.EndsWith(".wav"))

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System;
 using System.Threading.Tasks;
 
 namespace Opyum.Structures
@@ -36,7 +37,16 @@ namespace Opyum.Structures
         /// <summary>
         /// If set to true will wait till it can read the requested number of data (if possible).
         /// </summary>
-        bool ReadAsyncOn { get; set; }
+        bool WaitForRead { get; set; }
+
+        /// <summary>
+        /// Used to reload if necessary.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FileNotFoundException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="Exception"/>
+        IFileFromMemoryStream Reload();
 
         /// <summary>
         /// Returns the internal buffer.

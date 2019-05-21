@@ -1,8 +1,9 @@
 ﻿using System.IO;
+using NAudio.Wave;
 
 namespace Opyum.Playlist
 {
-    public interface IContent
+    public interface IContent : System.IDisposable
     {
         /// <summary>
         /// The stream of the audio.
@@ -20,5 +21,9 @@ namespace Opyum.Playlist
         /// The audio file type extention.
         /// </summary>
         string FileType { get; }
+        /// <summary>
+        /// File audio format.
+        /// </summary>
+        WaveFormat Format { get; }
     }
 }

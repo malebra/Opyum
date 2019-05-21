@@ -8,7 +8,7 @@ namespace Opyum.Playlist
 {
     public enum DurationType
     {
-        Dynamic = 0,
-        Set = 1
+        Set = 0,
+        Dynamic = 1
     }
 }
