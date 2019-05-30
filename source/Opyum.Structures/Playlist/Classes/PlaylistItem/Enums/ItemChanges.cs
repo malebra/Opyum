@@ -8,11 +8,19 @@ namespace Opyum.Playlist
 {
     public enum ItemChanges
     {
-        None = 0,
-        Content = 1,
-        Tags = 2,
-        Time = 4,
-        Duration = 8,
-        Extra = 16
+        NotDefined          = 0,
+        Content             = 1,
+        Begining            = 2,
+        Duration            = 4,
+        PlayTime            = 8,
+        DurationType        = 16,
+        TimeType            = 32,
+        Tags                = 64,
+        State               = 128,
+        AudioInformation    = 256,
+        VolumeCurve         = 512,
+        Settings            = 1024,
+        History             = 2048,
+        ItemType            = 4096
     }
 }

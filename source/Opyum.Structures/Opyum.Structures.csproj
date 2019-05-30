@@ -44,7 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Playlist\Classes\Content\Classes\AudioInfo.cs" />
+    <Compile Include="Playlist\Classes\Content\Enums\ContentStatus.cs" />
+    <Compile Include="Playlist\Classes\Content\IContent.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItemAccessor\PlaylistItemAccessor.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemHistory.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemSettings.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\LeewayOrientation.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\LeewayOvershoot.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Enums\PlaylistItemType.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
     <Compile Include="Playlist\Classes\PlaylistManager\PlaylistManager.cs" />
@@ -58,12 +65,11 @@
     <None Include="zzz_OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
     <Compile Include="Structures\Attributes\ContentAttribute.cs" />
     <Compile Include="Playlist\Classes\AudioImage.cs" />
-    <Compile Include="Playlist\Classes\AudioInfo.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemInfo.cs" />
     <Compile Include="Playlist\Classes\AudioItem.cs" />
     <Compile Include="Playlist\Classes\BaseAudioItem.cs" />
-    <Compile Include="Playlist\Classes\Content\BaseContent.cs" />
-    <Compile Include="Playlist\Classes\Content\Classes\FileContent.cs" />
-    <Compile Include="Playlist\Classes\Content\IContent.cs" />
+    <Compile Include="Playlist\Classes\Content\Content.cs" />
+    <Compile Include="Playlist\Classes\Content\FileContent.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Classes\BaseOptions.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Classes\Duration.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Classes\Tags.cs" />
@@ -80,10 +86,9 @@
     <Compile Include="Playlist\Classes\PlaylistItem\PlaylistItem.cs" />
     <Compile Include="Playlist\Classes\PlaylistSlot\PlaylistSlot.cs" />
     <Compile Include="Playlist\Classes\VoumeCurve\VolumeCurve.cs" />
-    <Compile Include="Playlist\Enums\DurationType.cs" />
-    <Compile Include="Playlist\Enums\ItemType.cs" />
-    <Compile Include="Playlist\Enums\TimeType.cs" />
-    <Compile Include="Playlist\Interfaces\IAudioInfo.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\DurationType.cs" />
+    <Compile Include="Playlist\Classes\Content\Enums\ContentType.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Enums\TimeType.cs" />
     <Compile Include="Playlist\Interfaces\IBaseAudioItem.cs" />
     <Compile Include="Structures\Classes\IFileFromMemoryStream.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />

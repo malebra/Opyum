@@ -2,55 +2,8 @@
 
 namespace Opyum.Playlist
 {
-    public enum LeewayOvershoot
+    public class ItemSettings
     {
-        /// <summary>
-        /// The item will be set to the closest position based on the item start time and leeway.
-        /// </summary>
-        ClosestToLeeway = 0,
-        /// <summary>
-        /// Some other <see cref="PlaylistItem"/> will be adjusted to correctly place this item.
-        /// </summary>
-        ReplaceLinkedItem = 1,
-        /// <summary>
-        /// The linked <see cref="PlaylistItem"/> will be deleted so this item can be placed correctly in the list.
-        /// </summary>
-        DeleteLinkedItem = 2,
-        /// <summary>
-        /// The linked <see cref="PlaylistItem"/> will be deleted  or replaced so this item can be placed correctly in the list.
-        /// </summary>
-        ReplaceOrDeleteLinkedItem = 3,
-        /// <summary>
-        /// Will check if a jingle is set and:
-        /// <para>1.) if a JINGLE is set then fade out the playling song, play JINGLE then play the Item,</para>
-        /// <para>2.) if a JINGLE isn't set then fade out the playling song and play the Item. </para>
-        /// </summary>
-        Fixed = 4
-    }
-
-    public enum LeewayOrientation
-    {
-        /// <summary>
-        /// Not set.
-        /// </summary>
-        None = 0,
-        /// <summary>
-        /// Before the selected time
-        /// </summary>
-        Before = 1,
-        /// <summary>
-        /// After the selected item
-        /// </summary>
-        After = 2,
-        /// <summary>
-        /// Both before and after.
-        /// </summary>
-        BeforeAndAfter = 3
-    }
-
-    public  class ItemSettings
-    {
-
         /// <summary>
         /// The leeway amount for the item to find acceptable to overshoot or undershoot if the <see cref="TimeType"/> is set ot <see cref="TimeType.Set"/>.
         /// <para>This means that if the set time cannot be reached the item will try to arrange itself a leeway amount above or below the set time.</para>
@@ -61,7 +14,7 @@ namespace Opyum.Playlist
         /// <summary>
         /// Determins what shood be done if the item cannot be inserted in the selected leeway.
         /// </summary>
-        public LeewayOvershoot Overshoot { get; set; }
+        public LeewayOvershoot LeewayOvershoot { get; set; }
         /// <summary>
         /// Determines if the leeway is being lookd at before and/or after the designated time for the item.
         /// </summary>

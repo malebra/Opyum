@@ -13,6 +13,6 @@ namespace Opyum.Playlist
     [Opyum.Structures.Attributes.PlaylistItem]
     public class PlaylistZone : PlaylistItem
     {
-
+        
     }
 }

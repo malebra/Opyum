@@ -30,7 +30,7 @@ namespace Opyum.StandardPlayback.Attributes
 
         public string Version { get; set; } = String.Empty;
 
-        public Opyum.Playlist.ItemType Type { get; set; } = Opyum.Playlist.ItemType.None;
+        public Opyum.Playlist.ContentType Type { get; set; } = Opyum.Playlist.ContentType.None;
 
         public List<string> SupportedFormats { get; set; } = new List<string>();
     }

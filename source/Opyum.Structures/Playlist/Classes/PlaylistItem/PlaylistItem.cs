@@ -1,15 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Opyum.Playlist
 {
     [Opyum.Structures.Attributes.PlaylistItem]
-    public class PlaylistItem
+    public class PlaylistItem : IDisposable
     {
         /// <summary>
         /// The content to play from.
         /// </summary>
         protected IContent Content { get; set; }
+
 
 
         /// <summary>
@@ -24,6 +26,8 @@ namespace Opyum.Playlist
         /// </summary>
         public TimeSpan Duration { get; private set; }
 
+
+
         /// <summary>
         /// The time the audio is supposed to start playing.
         /// </summary>
@@ -32,6 +36,7 @@ namespace Opyum.Playlist
         /// The time the audio is going to be played to start playing.
         /// </summary>
         public DateTime PlayTime { get; private set; }
+
 
 
         /// <summary>
@@ -46,17 +51,17 @@ namespace Opyum.Playlist
         
 
 
-        /// <summary>
-        /// Tags that are pulled from the database or imported list.
-        /// <para>These tags cannot be altered or deleted unles done so from inside the database or from the editor or admin.</para>
-        /// </summary>
-        public ITags AudioTags { get; private set; }
+        ///// <summary>
+        ///// Tags that are pulled from the database or imported list.
+        ///// <para>These tags cannot be altered or deleted unles done so from inside the database or from the editor or admin.</para>
+        ///// </summary>
+        //public ITags ItemTags { get; private set; }
 
         /// <summary>
         /// Temporary tags that can be set in the running list.
         /// <para>These tags are applicable to only one item and are deleted the moment the item stops playling.</para>
         /// </summary>
-        public ITags ItemTags { get; set; }
+        public ITags Tags { get; set; }
 
         /// <summary>
         /// The state of the item (wheather it can be used, if it's playing...).
@@ -66,22 +71,23 @@ namespace Opyum.Playlist
         /// <summary>
         /// The audio information like name, artists, album, year etc.
         /// </summary>
-        virtual public AudioInfo AudioInformation { get; private set; }/*get from file (filepath) and database [file type, audio type, waveformat, duration, artist, cover image, etc. ]*/
+        virtual public ItemInfo ItemInformation { get; private set; }/*get from file (filepath) and database [file type, audio type, waveformat, duration, artist, cover image, etc. ]*/
 
         /// <summary>
         /// The curve determening the volume of the audio while playing.
         /// </summary>
         virtual public VolumeCurve VolumeCurve { get; set; }
 
+        virtual public ItemSettings Settings { get; set; }
+
+        virtual public ItemHistory History { get; set; }
+
         /// <summary>
         /// Additional options editor to change or specity the item capabilities.
         /// </summary>
         virtual public IOptions Options { get; set; }
 
-        virtual public ItemSettings Settings { get; set; }
 
-
-        protected PlaylistItemType _itemType = PlaylistItemType.None;
         /// <summary>
         /// The type of the item.
         /// <para>Impropper assignment will throw an <see cref="InvalidOperationException"/></para>
@@ -106,6 +112,7 @@ namespace Opyum.Playlist
                 _itemType = value;
             }
         } 
+        protected PlaylistItemType _itemType = PlaylistItemType.None;
 
         public PlaylistItem NextItem { get; protected internal set; }
         public PlaylistItem PreviousItem { get; protected internal set; }
@@ -115,10 +122,12 @@ namespace Opyum.Playlist
         #region Change Events
 
         public event PlaylistItemChangedEventHandler Changed;
+        public event PlaylistItemChangedEventHandler NextItemUpdateRequest;
+        public event PlaylistItemChangedEventHandler ItemLengthChanged;
 
         protected virtual void OnItemChange()
         {
-            OnItemChange(new PlaylistItemChangedEventArgs() { Changes = ItemChanges.None });
+            OnItemChange(new PlaylistItemChangedEventArgs() { Changes = ItemChanges.NotDefined });
         }
 
         protected virtual void OnItemChange(PlaylistItemChangedEventArgs changes)
@@ -132,7 +141,7 @@ namespace Opyum.Playlist
 
         protected PlaylistItem()
         {
-
+            
         }
 
         ~PlaylistItem()
@@ -178,6 +187,7 @@ namespace Opyum.Playlist
 
             return temp;
         }
+
 
         #endregion
     }

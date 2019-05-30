@@ -1,29 +1,50 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using NAudio.Wave;
 
 namespace Opyum.Playlist
 {
-    public interface IContent : System.IDisposable
+    public interface IContent : IDisposable
     {
         /// <summary>
-        /// The stream of the audio.
+        /// The object tasked with turning the raw audio data into audio samples.
+        /// </summary>
+        object AudioSampleProvider { get; }
+
+        /// <summary>
+        /// Audio file information
+        /// </summary>
+        AudioInfo AudioInfo { get; }
+
+        /// <summary>
+        /// The stream of the audio samples.
         /// </summary>
         Stream AudioStream { get; }
+
         /// <summary>
         /// The <see cref="PlaylistItem"/> content type
         /// </summary>
-        ItemType ItemType { get; }
+        ContentType ContentType { get; }
+
         /// <summary>
-        /// The location of the audio.
+        /// The state of the content.
         /// </summary>
-        string Path { get; }
+        ContentStatus State { get; }
+
         /// <summary>
-        /// The audio file type extention.
+        /// The raw data stream of the audio.
         /// </summary>
-        string FileType { get; }
+        Stream DataStream { get; }
+
         /// <summary>
         /// File audio format.
         /// </summary>
         WaveFormat Format { get; }
+
+        /// <summary>
+        /// The location of the audio.
+        /// </summary>
+        string Source { get; }
+
     }
 }
