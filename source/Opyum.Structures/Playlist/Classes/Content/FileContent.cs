@@ -41,7 +41,7 @@ namespace Opyum.Playlist
         /// <summary>
         /// The object tasked with turning the raw audio data into audio samples.
         /// </summary>
-        public new object AudioSampleProvider { get; protected set; }
+        public new object AudioSampleConverter { get; protected set; }
 
 
 
@@ -68,6 +68,8 @@ namespace Opyum.Playlist
         /// <returns></returns>
         public static FileContent Create(string file) => new FileContent() { FileMemoryStream = FileFromMemoryStream.Create(file) };
         
+
+        public override void AddSampleConverter(object converter) => AudioSampleConverter = converter;
 
 
 

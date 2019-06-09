@@ -90,10 +90,10 @@
     <Compile Include="Playlist\Classes\Content\Enums\ContentType.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Enums\TimeType.cs" />
     <Compile Include="Playlist\Interfaces\IBaseAudioItem.cs" />
-    <Compile Include="Structures\Classes\IFileFromMemoryStream.cs" />
+    <Compile Include="Structures\Classes\FileFromMemoryStream\IFileFromMemoryStream.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
     <Compile Include="Structures\Enums\BufferingStatus.cs" />
-    <Compile Include="Structures\Classes\FileFromMemoryStream.cs" />
+    <Compile Include="Structures\Classes\FileFromMemoryStream\FileFromMemoryStream.cs" />
     <Compile Include="OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +101,7 @@
     <Folder Include="Playlist\Classes\Content\Interfaces\" />
     <Folder Include="Playlist\Classes\PlaylistSlot\Classes\" />
     <Folder Include="Playlist\Classes\PlaylistSlot\Interfaces\" />
+    <Folder Include="Structures\Classes\OnlineStreamBuffer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NAudio\NAudio.csproj">

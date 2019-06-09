@@ -9,7 +9,7 @@ namespace Opyum.Playlist
         /// <summary>
         /// The object tasked with turning the raw audio data into audio samples.
         /// </summary>
-        object AudioSampleProvider { get; }
+        object AudioSampleConverter { get; }
 
         /// <summary>
         /// Audio file information
@@ -45,6 +45,14 @@ namespace Opyum.Playlist
         /// The location of the audio.
         /// </summary>
         string Source { get; }
+
+        /// <summary>
+        /// Adds a sample converter to the Content.
+        /// </summary>
+        /// <param name="converter"></param>
+        void AddSampleConverter(object converter);
+
+        
 
     }
 }
