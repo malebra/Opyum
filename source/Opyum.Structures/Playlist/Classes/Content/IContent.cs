@@ -7,19 +7,20 @@ namespace Opyum.Playlist
     public interface IContent : IDisposable
     {
         /// <summary>
-        /// The object tasked with turning the raw audio data into audio samples.
+        /// The duration of the item.
+        /// <para>(for a <see cref="System.IO.Stream"/> it's set to 0.)</para>
         /// </summary>
-        object AudioSampleConverter { get; }
+        TimeSpan Duration { get; }
+
+        /// <summary>
+        /// The object tasked with turning the raw audio data into audio samples & additional funcitionality.
+        /// </summary>
+        ContentResolver ContentResolver { get; }
 
         /// <summary>
         /// Audio file information
         /// </summary>
         AudioInfo AudioInfo { get; }
-
-        /// <summary>
-        /// The stream of the audio samples.
-        /// </summary>
-        Stream AudioStream { get; }
 
         /// <summary>
         /// The <see cref="PlaylistItem"/> content type
@@ -42,17 +43,24 @@ namespace Opyum.Playlist
         WaveFormat Format { get; }
 
         /// <summary>
-        /// The location of the audio.
+        /// The location of the audio (current).
         /// </summary>
-        string Source { get; }
+        string SourcePath { get; }
+
+        /// <summary>
+        /// The location of the audio (original).
+        /// </summary>
+        string OriginalSourcePath { get; }
 
         /// <summary>
         /// Adds a sample converter to the Content.
         /// </summary>
         /// <param name="converter"></param>
-        void AddSampleConverter(object converter);
+        void AddContentResolver(ContentResolver resolver);
 
-        
-
+        /// <summary>
+        /// Event raised by state change.
+        /// </summary>
+        event EventHandler StateChanged;
     }
 }

@@ -7,6 +7,6 @@
         protected PlaylistItem NextItem { get; private set; }
 
 
-        protected PlaylistRearranger Rearranger { get; private set; }
+        protected PlaylistRearranger Rearranger { get; private set; } = PlaylistRearranger.Create();
     }
 }

@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Playlist\PlaylistSupport\ItemSupporter\Classes\JSONInstantiator.cs" />
+    <Compile Include="Playlist\PlaylistSupport\ItemSupporter\ItemSupporter.cs" />
     <Compile Include="Playlist\Classes\Content\Classes\AudioInfo.cs" />
+    <Compile Include="Playlist\Classes\Content\Classes\ContentResolver.cs" />
     <Compile Include="Playlist\Classes\Content\Enums\ContentStatus.cs" />
     <Compile Include="Playlist\Classes\Content\IContent.cs" />
     <Compile Include="Playlist\Classes\PlaylistItemAccessor\PlaylistItemAccessor.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Playlist\Classes\Playlist\Playlist.cs" />
     <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />
+    <Compile Include="Structures\Attributes\AudioSampleConverterAttribute.cs" />
     <Compile Include="Structures\Attributes\PlaylistItemAttribute.cs" />
     <None Include="zzz_OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
     <None Include="zzz_OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
@@ -79,7 +83,7 @@
     <Compile Include="Playlist\Classes\PlaylistItem\Enums\ItemStatus.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventArgs.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IDuration.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IOptions.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IItemOptions.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITags.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITime.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IWatcher.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Global\" />
     <Folder Include="Playlist\Classes\Content\Interfaces\" />
     <Folder Include="Playlist\Classes\PlaylistSlot\Classes\" />
     <Folder Include="Playlist\Classes\PlaylistSlot\Interfaces\" />

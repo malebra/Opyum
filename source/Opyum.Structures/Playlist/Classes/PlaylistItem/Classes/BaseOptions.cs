@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Opyum.Playlist
 {
-    public class BaseOptions : IOptions
+    public class BaseOptions : IItemOptions
     {
     }
 }

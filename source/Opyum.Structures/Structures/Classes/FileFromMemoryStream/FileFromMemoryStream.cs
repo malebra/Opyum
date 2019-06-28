@@ -104,6 +104,8 @@ namespace Opyum.Structures
             return temp;
         }
 
+        public virtual Stream GetStream() => (Stream)this;
+
 
 
         /// <summary>

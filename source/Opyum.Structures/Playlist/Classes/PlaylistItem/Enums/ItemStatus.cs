@@ -3,6 +3,7 @@
     public enum ItemStatus
     {
         None = 0,
+        Empty = 0,
         InUse = 1,
         Playing = 2,
         PlayingAndInUse = 3,
@@ -18,6 +19,7 @@
         LoadingAndInUse = 65,
         Waiting = 128,
         WaitingAndInUse = 129,
-        Done = 256
+        Done = 256,
+        UnsuccessfulLoading = 512,
     }
 }

@@ -23,5 +23,8 @@ namespace Opyum.Playlist
         {
 
         }
+
+
+        public static PlaylistRearranger Create() => new PlaylistRearranger();
     }
 }

@@ -10,20 +10,20 @@
         /// Audio itme. 
         /// <para>May be a file, a stream etc.</para>
         /// </summary>
-        Item = 1,
+        Item = 2,
         /// <summary>
         /// Audio slot. 
         /// <para>Might be empty or waiting for the requested audio.</para>
         /// </summary>
-        Slot = 2,
+        Slot = 4,
         /// <summary>
         /// The beginning of a zone.
         /// </summary>
-        ZoneStart = 4,
+        ZoneStart = 8,
         /// <summary>
         /// The end of a zone.
         /// </summary>
-        ZoneEnd = 8,
+        ZoneEnd = 9,
         /// <summary>
         /// Used to differentiate special commecial audio files from songs, jingles etc.
         /// </summary>

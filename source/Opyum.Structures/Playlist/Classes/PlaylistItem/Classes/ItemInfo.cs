@@ -6,28 +6,92 @@ using System.Threading.Tasks;
 
 namespace Opyum.Playlist
 {
+    /// <summary>
+    /// Unfinished
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// <para>Unfinished</para>
+    /// 
+    /// </summary>
     public class ItemInfo
     {
-        public string Name => throw new NotImplementedException();
+        public string Name { get; internal protected set; }
 
-        public string Album => throw new NotImplementedException();
+        public string Album { get; internal protected set; }
 
-        public string Author => throw new NotImplementedException();
+        public string Author { get; internal protected set; }
 
-        public string Lyrica => throw new NotImplementedException();
+        public string Lyrics { get; internal protected set; } //could be a class with lyrics that follow along the time progression
 
-        public double Duration => throw new NotImplementedException();
+        public string AlbumYear { get; internal protected set;
+        }
+        public AudioImage Image { get; internal protected set; }
 
-        public string Format => throw new NotImplementedException();
+        //public ContentType Type => ContentType.None;
 
-        public string Path => throw new NotImplementedException();
+        public string AditionalInfo { get; internal protected set; }
 
-        public AudioImage Image => throw new NotImplementedException();
+        public string Notes { get; internal protected set; }
 
-        public ContentType Type => ContentType.None;
 
-        public string AditionalInfo => throw new NotImplementedException();
 
-        public string Notes => throw new NotImplementedException();
+
+        /// <summary>
+        /// Unfinished
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// 
+        /// </summary>
+        public static ItemInfo CrearteDefault()
+        {
+            var temp = new ItemInfo();
+
+            temp.Name = "";
+            temp.Album = "";
+            temp.Author = "";
+            temp.Lyrics = "";
+            temp.AlbumYear = "";
+            temp.AditionalInfo = "";
+            temp.Notes = "";
+
+            return temp;
+        }
+
+        /// <summary>
+        /// Unfinished
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// <para>Unfinished</para>
+        /// 
+        /// </summary>
+        public static ItemInfo CreateFromPath(string path)
+        {
+            return ItemInfo.CrearteDefault();
+        }
     }
 }
