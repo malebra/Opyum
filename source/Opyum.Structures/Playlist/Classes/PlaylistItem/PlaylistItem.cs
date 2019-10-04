@@ -27,7 +27,7 @@ namespace Opyum.Playlist
         /// The duration of the item.
         /// <para>(or to be more precise, for a <see cref="System.IO.Stream"/>, after what <see cref="TimeSpan"/> of playing should the item stop.)</para>
         /// </summary>
-        public TimeSpan Duration { get => VolumeCurve.Duration; }
+        public TimeSpan Duration { get => VolumeCurve.Duration; set => VolumeCurve.Duration = value; }
         ///////////////////////////////////////////////////////////////////////////////////    LINKED TO VOLUMECURVE    ///////////////////////////////////////////////////////////////////////////////////
 
 
@@ -141,7 +141,7 @@ namespace Opyum.Playlist
 
         #endregion
 
-        protected PlaylistItem()
+        internal protected PlaylistItem()
         {
             
         }

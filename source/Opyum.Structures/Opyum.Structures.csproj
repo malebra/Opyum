@@ -44,19 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Playlist\PlaylistSupport\ItemSupporter\Classes\JSONInstantiator.cs" />
-    <Compile Include="Playlist\PlaylistSupport\ItemSupporter\ItemSupporter.cs" />
-    <Compile Include="Playlist\Classes\Content\Classes\AudioInfo.cs" />
-    <Compile Include="Playlist\Classes\Content\Classes\ContentResolver.cs" />
-    <Compile Include="Playlist\Classes\Content\Enums\ContentStatus.cs" />
+    <Compile Include="PlaylistSupport\Classes\JSONConverter\JSONConverter.cs" />
+    <Compile Include="PlaylistSupport\Classes\ItemSupporter\ItemSupporter.cs" />
+    <Compile Include="Playlist\Classes\AudioInfo\AudioInfo.cs" />
+    <Compile Include="Playlist\Classes\ContentResolver\ContentResolver.cs" />
+    <Compile Include="Playlist\Enums\ContentStatus.cs" />
     <Compile Include="Playlist\Classes\Content\IContent.cs" />
     <Compile Include="Playlist\Classes\PlaylistItemAccessor\PlaylistItemAccessor.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemHistory.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemSettings.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\LeewayOrientation.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\LeewayOvershoot.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\PlaylistItemType.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
+    <Compile Include="Playlist\Classes\ItemHistory\ItemHistory.cs" />
+    <Compile Include="Playlist\Classes\ItemSettings\ItemSettings.cs" />
+    <Compile Include="Playlist\Enums\LeewayOrientation.cs" />
+    <Compile Include="Playlist\Enums\LeewayOvershoot.cs" />
+    <Compile Include="Playlist\Enums\PlaylistItemType.cs" />
+    <Compile Include="Playlist\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
     <Compile Include="Playlist\Classes\PlaylistManager\PlaylistManager.cs" />
     <Compile Include="Playlist\Classes\PlaylistRearranger\PlaylistRearranger.cs" />
     <Compile Include="Playlist\Classes\PlaylistZone\PlaylistZone.cs" />
@@ -68,32 +68,31 @@
     <None Include="zzz_OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
     <None Include="zzz_OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
     <Compile Include="Structures\Attributes\ContentAttribute.cs" />
-    <Compile Include="Playlist\Classes\AudioImage.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\ItemInfo.cs" />
-    <Compile Include="Playlist\Classes\AudioItem.cs" />
-    <Compile Include="Playlist\Classes\BaseAudioItem.cs" />
+    <Compile Include="Playlist\Classes\AudioImage\AudioImage.cs" />
+    <Compile Include="Playlist\Classes\ItemInfo\ItemInfo.cs" />
+    <Compile Include="Playlist\KEEP-BUT-DELETE-LATER\BaseAudioItem.cs" />
     <Compile Include="Playlist\Classes\Content\Content.cs" />
     <Compile Include="Playlist\Classes\Content\FileContent.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\BaseOptions.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Duration.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Tags.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Time.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Classes\Watcher.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\ItemChanges.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\ItemStatus.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Events and EventArgs\PlaylistItemChangedEventArgs.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IDuration.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IItemOptions.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITags.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\ITime.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Interfaces\IWatcher.cs" />
+    <Compile Include="Playlist\Classes\ItemOptions\BaseOptions.cs" />
+    <Compile Include="Playlist\Classes\Duration\Duration.cs" />
+    <Compile Include="Playlist\Classes\Tags\Tags.cs" />
+    <Compile Include="Playlist\Classes\Time\Time.cs" />
+    <Compile Include="Playlist\Classes\Watcher\Watcher.cs" />
+    <Compile Include="Playlist\Enums\ItemChanges.cs" />
+    <Compile Include="Playlist\Enums\ItemStatus.cs" />
+    <Compile Include="Playlist\Events and EventArgs\PlaylistItemChangedEventArgs.cs" />
+    <Compile Include="Playlist\Classes\Duration\IDuration.cs" />
+    <Compile Include="Playlist\Classes\ItemOptions\IItemOptions.cs" />
+    <Compile Include="Playlist\Classes\Tags\ITags.cs" />
+    <Compile Include="Playlist\Classes\Time\ITime.cs" />
+    <Compile Include="Playlist\Classes\Watcher\IWatcher.cs" />
     <Compile Include="Playlist\Classes\PlaylistItem\PlaylistItem.cs" />
     <Compile Include="Playlist\Classes\PlaylistSlot\PlaylistSlot.cs" />
     <Compile Include="Playlist\Classes\VoumeCurve\VolumeCurve.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\DurationType.cs" />
-    <Compile Include="Playlist\Classes\Content\Enums\ContentType.cs" />
-    <Compile Include="Playlist\Classes\PlaylistItem\Enums\TimeType.cs" />
-    <Compile Include="Playlist\Interfaces\IBaseAudioItem.cs" />
+    <Compile Include="Playlist\Enums\DurationType.cs" />
+    <Compile Include="Playlist\Enums\ContentType.cs" />
+    <Compile Include="Playlist\Enums\TimeType.cs" />
+    <Compile Include="Playlist\KEEP-BUT-DELETE-LATER\IBaseAudioItem.cs" />
     <Compile Include="Structures\Classes\FileFromMemoryStream\IFileFromMemoryStream.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
     <Compile Include="Structures\Enums\BufferingStatus.cs" />
@@ -103,9 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Global\" />
-    <Folder Include="Playlist\Classes\Content\Interfaces\" />
-    <Folder Include="Playlist\Classes\PlaylistSlot\Classes\" />
-    <Folder Include="Playlist\Classes\PlaylistSlot\Interfaces\" />
     <Folder Include="Structures\Classes\OnlineStreamBuffer\" />
   </ItemGroup>
   <ItemGroup>
