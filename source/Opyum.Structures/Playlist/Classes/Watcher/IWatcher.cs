@@ -1,4 +1,4 @@
-﻿namespace Opyum.Playlist
+﻿namespace Opyum.Structures.Playlist
 {
     public interface IWatcher
     {

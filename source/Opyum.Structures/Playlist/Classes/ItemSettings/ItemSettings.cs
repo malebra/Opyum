@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     public class ItemSettings
     {

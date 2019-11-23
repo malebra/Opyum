@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Opyum.Playlist
+﻿namespace Opyum.Structures.Playlist
 {
     /// <summary>
     /// A <see cref="PlaylistZone"/> is a playlistitem that determines the start or end of a Zone inside the playlist.

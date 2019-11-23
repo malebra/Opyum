@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     public abstract class Content : IContent
     {

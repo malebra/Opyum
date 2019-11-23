@@ -2,7 +2,7 @@
 using System.IO;
 using NAudio.Wave;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     public interface IContent : IDisposable
     {

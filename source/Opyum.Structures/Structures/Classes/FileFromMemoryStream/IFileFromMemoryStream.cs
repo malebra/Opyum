@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Opyum.Structures
+namespace Opyum.Structures.FileSupport
 {
     public interface IFileFromMemoryStream
     {

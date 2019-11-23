@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Opyum.Structures.Playlist;
 
-namespace Opyum.Playlist.PlaylistSupport
+namespace Opyum.Structures.PlaylistSupport
 {
     /// <summary>
     /// Unfinished
@@ -27,7 +24,7 @@ namespace Opyum.Playlist.PlaylistSupport
 
         protected Content Content { get; set; }
 
-
+        
 
 
         public ItemSupporter(string path)

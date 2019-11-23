@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opyum.PlaylistSupport
+namespace Opyum.Structures.PlaylistSupport
 {
     /// <summary>
     /// Used for conversion between PlaylistItem and JSON files

@@ -1,5 +1,5 @@
 ﻿using System;
-using Opyum.Playlist;
+using Opyum.Structures.Playlist;
 
 namespace Opyum.Structures.Attributes
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     public enum ItemChanges
     {

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     [Opyum.Structures.Attributes.PlaylistItem]
     [Serializable]

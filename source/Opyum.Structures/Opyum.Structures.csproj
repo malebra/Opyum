@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,9 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Boo|AnyCPU'">
-    <OutputPath>..\Boo\Debug\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -70,7 +67,7 @@
     <Compile Include="Structures\Attributes\ContentAttribute.cs" />
     <Compile Include="Playlist\Classes\AudioImage\AudioImage.cs" />
     <Compile Include="Playlist\Classes\ItemInfo\ItemInfo.cs" />
-    <Compile Include="Playlist\KEEP-BUT-DELETE-LATER\BaseAudioItem.cs" />
+    <None Include="Playlist\KEEP-BUT-DELETE-LATER\BaseAudioItem.cs.old" />
     <Compile Include="Playlist\Classes\Content\Content.cs" />
     <Compile Include="Playlist\Classes\Content\FileContent.cs" />
     <Compile Include="Playlist\Classes\ItemOptions\BaseOptions.cs" />
@@ -92,16 +89,18 @@
     <Compile Include="Playlist\Enums\DurationType.cs" />
     <Compile Include="Playlist\Enums\ContentType.cs" />
     <Compile Include="Playlist\Enums\TimeType.cs" />
-    <Compile Include="Playlist\KEEP-BUT-DELETE-LATER\IBaseAudioItem.cs" />
+    <None Include="Playlist\KEEP-BUT-DELETE-LATER\IBaseAudioItem.cs.old" />
     <Compile Include="Structures\Classes\FileFromMemoryStream\IFileFromMemoryStream.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
     <Compile Include="Structures\Enums\BufferingStatus.cs" />
     <Compile Include="Structures\Classes\FileFromMemoryStream\FileFromMemoryStream.cs" />
-    <Compile Include="OpyumAttributes.cs" />
+    <Compile Include="Structures\Attributes\OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Global\" />
+    <Folder Include="PlaylistSupport\Interfaces\" />
+    <Folder Include="Playlist\Classes\Logger\" />
     <Folder Include="Structures\Classes\OnlineStreamBuffer\" />
   </ItemGroup>
   <ItemGroup>

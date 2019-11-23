@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using Opyum.Structures;
+using Opyum.Structures.FileSupport;
 using NAudio.Wave;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     [Opyum.Structures.Attributes.Content(ContentType.File, "Audio file stream loaded into the memory.")]
     public class FileContent : Content, IContent

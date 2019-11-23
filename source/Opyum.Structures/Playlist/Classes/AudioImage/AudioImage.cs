@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Opyum.Playlist
+﻿namespace Opyum.Structures.Playlist
 {
     public class AudioImage
     {

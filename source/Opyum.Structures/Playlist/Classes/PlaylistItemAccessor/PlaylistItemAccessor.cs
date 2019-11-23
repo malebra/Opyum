@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Opyum.Structures.Playlist.Classes.PlaylistItemAccessor
+﻿namespace Opyum.Structures.Playlist
 {
     public class PlaylistItemAccessor
     {

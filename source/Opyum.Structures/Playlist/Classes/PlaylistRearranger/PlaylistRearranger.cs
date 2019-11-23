@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Opyum.Playlist
+namespace Opyum.Structures.Playlist
 {
     public class PlaylistRearranger
     {

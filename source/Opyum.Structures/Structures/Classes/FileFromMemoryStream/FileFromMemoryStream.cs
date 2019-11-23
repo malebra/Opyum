@@ -5,7 +5,7 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Opyum.Structures
+namespace Opyum.Structures.FileSupport
 {
     /// <summary>
     /// Used for caching files into memory
