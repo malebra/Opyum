@@ -35,6 +35,8 @@
 
         public string Notes { get; internal protected set; }
 
+        public string References { get; protected internal set; }
+
 
 
 

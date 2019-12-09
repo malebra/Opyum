@@ -17,18 +17,29 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\builds\debug\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>..\..\builds\release\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Player|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\builds\test_player\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,21 +54,34 @@
   <ItemGroup>
     <Compile Include="PlaylistSupport\Classes\JSONConverter\JSONConverter.cs" />
     <Compile Include="PlaylistSupport\Classes\ItemSupporter\ItemSupporter.cs" />
+    <Compile Include="Playlist\Attributes\Classes\ContentCreatorAssistantAttribute.cs" />
     <Compile Include="Playlist\Classes\AudioInfo\AudioInfo.cs" />
-    <Compile Include="Playlist\Classes\ContentResolver\ContentResolver.cs" />
+    <Compile Include="Playlist\Classes\Content\ContentInterpreter.cs" />
+    <Compile Include="Playlist\Classes\Content\ContentCreator.cs" />
+    <Compile Include="Playlist\Classes\Content\ContentCreatorAssistant.cs" />
+    <Compile Include="Playlist\Classes\Content\ContentManager.cs" />
+    <Compile Include="Playlist\Classes\Content\FileContent.cs" />
+    <Compile Include="Playlist\Classes\PlaylistBlock\BlockStack.cs" />
+    <Compile Include="Playlist\Classes\PlaylistBlock\IBlockStack.cs" />
+    <Compile Include="Playlist\Classes\PlaylistBlock\PlaylistBlock.cs" />
+    <Compile Include="Playlist\Classes\PlaylistItem\IPlaylistItem.cs" />
     <Compile Include="Playlist\Enums\ContentStatus.cs" />
     <Compile Include="Playlist\Classes\Content\IContent.cs" />
     <Compile Include="Playlist\Classes\PlaylistItemAccessor\PlaylistItemAccessor.cs" />
     <Compile Include="Playlist\Classes\ItemHistory\ItemHistory.cs" />
     <Compile Include="Playlist\Classes\ItemSettings\ItemSettings.cs" />
+    <Compile Include="Playlist\Enums\ItemHistoryAction.cs" />
     <Compile Include="Playlist\Enums\LeewayOrientation.cs" />
     <Compile Include="Playlist\Enums\LeewayOvershoot.cs" />
     <Compile Include="Playlist\Enums\PlaylistItemType.cs" />
+    <Compile Include="Playlist\Events and EventArgs\ContentChangeEventArgs.cs" />
+    <Compile Include="Playlist\Events and EventArgs\PlaylistItemActionCallEventHandler.cs" />
     <Compile Include="Playlist\Events and EventArgs\PlaylistItemChangedEventHandler.cs" />
     <Compile Include="Playlist\Classes\PlaylistManager\PlaylistManager.cs" />
     <Compile Include="Playlist\Classes\PlaylistRearranger\PlaylistRearranger.cs" />
     <Compile Include="Playlist\Classes\PlaylistZone\PlaylistZone.cs" />
     <Compile Include="Playlist\Classes\Playlist\Playlist.cs" />
+    <Compile Include="Playlist\Events and EventArgs\ReportChangeToHistoryEventHandler.cs" />
     <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
     <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />
     <Compile Include="Structures\Attributes\AudioSampleConverterAttribute.cs" />
@@ -69,7 +93,7 @@
     <Compile Include="Playlist\Classes\ItemInfo\ItemInfo.cs" />
     <None Include="Playlist\KEEP-BUT-DELETE-LATER\BaseAudioItem.cs.old" />
     <Compile Include="Playlist\Classes\Content\Content.cs" />
-    <Compile Include="Playlist\Classes\Content\FileContent.cs" />
+    <None Include="Playlist\Classes\Content\FileContent.cs.old" />
     <Compile Include="Playlist\Classes\ItemOptions\BaseOptions.cs" />
     <Compile Include="Playlist\Classes\Duration\Duration.cs" />
     <Compile Include="Playlist\Classes\Tags\Tags.cs" />
@@ -87,20 +111,21 @@
     <Compile Include="Playlist\Classes\PlaylistSlot\PlaylistSlot.cs" />
     <Compile Include="Playlist\Classes\VoumeCurve\VolumeCurve.cs" />
     <Compile Include="Playlist\Enums\DurationType.cs" />
-    <Compile Include="Playlist\Enums\ContentType.cs" />
+    <Compile Include="Playlist\Enums\SourceType.cs" />
     <Compile Include="Playlist\Enums\TimeType.cs" />
     <None Include="Playlist\KEEP-BUT-DELETE-LATER\IBaseAudioItem.cs.old" />
+    <Compile Include="Structures\Classes\FileFromMemoryStream\FileFromMemoryStream.cs" />
     <Compile Include="Structures\Classes\FileFromMemoryStream\IFileFromMemoryStream.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
     <Compile Include="Structures\Enums\BufferingStatus.cs" />
-    <Compile Include="Structures\Classes\FileFromMemoryStream\FileFromMemoryStream.cs" />
     <Compile Include="Structures\Attributes\OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Global\" />
+    <Folder Include="Global\Settings\" />
     <Folder Include="PlaylistSupport\Interfaces\" />
     <Folder Include="Playlist\Classes\Logger\" />
+    <Folder Include="Playlist\Classes\Rules\" />
     <Folder Include="Structures\Classes\OnlineStreamBuffer\" />
   </ItemGroup>
   <ItemGroup>

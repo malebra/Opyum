@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Opyum.Structures.FileSupport
 {
-    public interface IFileFromMemoryStream
+    public interface IFileFromMemoryStream : IDisposable
     {
         /// <summary>
         /// The location of the file loaded into the memory.

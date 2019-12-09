@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Opyum.Structures;
+using Opyum.Structures.FileSupport;
 using NAudio.Wave;
 using NAudio;
 

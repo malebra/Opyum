@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\
 Opyum.WindowsPlatform.WPF
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 21413788504
 
-8226420184
-14753383262
+5377737862
+14-255447328
 Themes\Generic.xaml;Windows\MainWindow.xaml;
 
 False

@@ -6,3 +6,10 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.OSIntera
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.pdb
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.OSInteraction.dll
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\bin\Debug\Opyum.OSInteraction.pdb
+D:\repos\Opyum\Debug\Opyum.OSInteraction.dll
+D:\repos\Opyum\Debug\Opyum.OSInteraction.pdb
+D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.dll
+D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.pdb
+D:\repos\Opyum\Debug\bin\Opyum.OSInteraction.dll
+D:\repos\Opyum\Debug\bin\Opyum.OSInteraction.pdb

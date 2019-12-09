@@ -7,52 +7,31 @@ namespace Opyum.Structures.Playlist
 {
     [Opyum.Structures.Attributes.PlaylistItem]
     [Serializable]
-    public class PlaylistItem : IDisposable
+    public class PlaylistItem : IDisposable, IPlaylistItem
     {
         /// <summary>
         /// The content to play from.
         /// </summary>
-        public IContent Content { get; set; }
+        public IContent Content { get => _content; protected internal set { _content = value; } }
+        protected IContent _content;
 
-
-
-        /// <summary>
-        /// The point in the song where the audio starts.
-        /// <para>This should be ignored if the <see cref="IContent"/> is a <see cref="System.IO.Stream"/>.</para>
-        /// </summary>
-        public TimeSpan Begining { get; internal protected set; } = TimeSpan.Zero; //ignore if Content is stream
-
-        ///////////////////////////////////////////////////////////////////////////////////    LINKED TO VOLUMECURVE    ///////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// The duration of the item.
-        /// <para>(or to be more precise, for a <see cref="System.IO.Stream"/>, after what <see cref="TimeSpan"/> of playing should the item stop.)</para>
-        /// </summary>
-        public TimeSpan Duration { get => VolumeCurve.Duration; set => VolumeCurve.Duration = value; }
-        ///////////////////////////////////////////////////////////////////////////////////    LINKED TO VOLUMECURVE    ///////////////////////////////////////////////////////////////////////////////////
 
 
 
         /// <summary>
         /// The time the audio is supposed to start playing.
         /// </summary>
-        public DateTime PresetTime { get; internal protected set; }
+        public DateTime SetTime { get; internal protected set; }
         /// <summary>
         /// The time the audio is going to be played to start playing.
         /// </summary>
         public DateTime PlayTime { get; internal protected set; }
-
-
-
-        /// <summary>
-        /// The type of item duration (SET or DYNAMIC)
-        /// </summary>
-        public DurationType DurationType { get; internal protected set; } = 0;
-
         /// <summary>
         /// The type of item start time duration (SET or DYNAMIC)
         /// </summary>
         public TimeType TimeType { get; internal protected set; } = 0;
-        
+
+
 
 
         /// <summary>
@@ -62,24 +41,19 @@ namespace Opyum.Structures.Playlist
         public ITags Tags { get; set; }
 
         /// <summary>
-        /// The state of the item (wheather it can be used, if it's playing...).
+        /// The status of the item (wheather it can be used, if it's playing...).
         /// </summary>
-        virtual public ItemStatus State { get; internal protected set; }
+        virtual public ItemStatus Status { get; internal protected set; }
 
         /// <summary>
         /// The audio information like name, artists, album, year etc.
         /// </summary>
-        virtual public ItemInfo ItemInformation { get; internal protected set; }/*get from file (filepath) and database [file type, audio type, waveformat, duration, artist, cover image, etc. ]*/
-
-        /// <summary>
-        /// The curve determening the volume of the audio while playing.
-        /// </summary>
-        virtual public VolumeCurve VolumeCurve { get; set; }
+        virtual public ItemInfo ItemInformation { get; set; }/*get from file (filepath) and database [file type, audio type, waveformat, duration, artist, cover image, etc. ]*/
 
         /// <summary>
         /// The standard settings for each item.
         /// </summary>
-        virtual public ItemSettings Settings { get; internal protected set; }
+        virtual public ItemSettings Settings { get; set; }
 
         /// <summary>
         /// The item history...
@@ -90,7 +64,7 @@ namespace Opyum.Structures.Playlist
         /// <summary>
         /// Additional options editor to change or specity the item capabilities.
         /// </summary>
-        virtual public IItemOptions Options { get; set; }
+        virtual public IItemOptions Options { get; protected internal set; }//     set; }
 
 
         /// <summary>
@@ -110,23 +84,35 @@ namespace Opyum.Structures.Playlist
                 {
                     throw new InvalidOperationException($"Impropper value assignment! {value.ToString()} cannot be assigned to a {this.GetType().ToString()} item type.");
                 }
-                if (typeof(PlaylistZone) == this.GetType() && (value != PlaylistItemType.ZoneStart && value != PlaylistItemType.ZoneEnd))
+                if (typeof(PlaylistZone) == this.GetType() && (value != PlaylistItemType.Zone))//Start && value != PlaylistItemType.ZoneEnd))
                 {
                     throw new InvalidOperationException($"Impropper value assignment! {value.ToString()} cannot be assigned to a {this.GetType().ToString()} item type.");
                 }
                 _itemType = value;
             }
-        } 
+        }
         protected PlaylistItemType _itemType = PlaylistItemType.None;
 
         internal protected Playlist CurrentPlaylist { get; set; }
 
+
+        internal protected PlaylistItem()
+        {
+            History = new ItemHistory();
+
+        }
+
+        ~PlaylistItem()
+        {
+            Dispose();
+        }
 
         #region Change Events
 
         public event PlaylistItemChangedEventHandler Changed;
         public event PlaylistItemChangedEventHandler NextItemUpdateRequest;
         public event PlaylistItemChangedEventHandler ItemLengthChanged;
+        public event PlaylistItemActionCallEventHandler ItemActionCall;
 
         protected virtual void OnItemChange()
         {
@@ -139,18 +125,27 @@ namespace Opyum.Structures.Playlist
             Changed?.Invoke(this, changes);
         }
 
+        protected virtual void OnActionCall(Action a)
+        {
+            ItemActionCall?.Invoke(this, a);
+        }
+
         #endregion
 
-        internal protected PlaylistItem()
+        #region Methods
+
+        protected virtual void UpdateSetup()
         {
-            
+            Content.ContentChanged += UpdateItem;
+            Content.StateChanged += UpdateItem;
         }
 
-        ~PlaylistItem()
+        protected virtual void UpdateItem(object sender, EventArgs e)
         {
-            Dispose();
+
         }
 
+        #endregion
 
         #region Garbage Collection
 
@@ -168,14 +163,14 @@ namespace Opyum.Structures.Playlist
                 this.Content = null;
                 this.Tags = null;
                 this.Options = null;
-                this.VolumeCurve = null;
+                this.Content.VolumeCurve = null;
             }
         }
 
         #endregion
 
         #region >>>>>>>>>>>>>>>>>>>> UNFINISHED <<<<<<<<<<<<<<<<<<<<<<<<
-        
+
         /// <summary>
         /// UNFINISHED
         /// </summary>

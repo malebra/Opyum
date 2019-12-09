@@ -1,0 +1,10 @@
+D:\repos\Opyum\Debug\Test Player\Opyum.WindowsPlatform.dll
+D:\repos\Opyum\Debug\Test Player\Opyum.WindowsPlatform.pdb
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.MainWindow.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.Settings.Settings.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.Properties.Resources.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.csproj.GenerateResource.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.csproj.CopyComplete
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.dll
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Test Player\Opyum.WindowsPlatform.pdb

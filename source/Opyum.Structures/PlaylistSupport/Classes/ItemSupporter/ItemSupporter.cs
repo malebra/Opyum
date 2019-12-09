@@ -38,22 +38,22 @@ namespace Opyum.Structures.PlaylistSupport
             //Check if the file exists
             if (!System.IO.File.Exists(Path))
             {
-                Content.State = ContentStatus.UnsuccessfulPathResolution;
+                Content.Status = ContentStatus.UnsuccessfulPathResolution;
                 return;
             }
 
             //needs immeditate change
-            var contentResolver = new ContentResolver(Path);
+            var contentResolver = new ContentInterpreter(Path);
             if (contentResolver == null)
             {
-                Content.State = ContentStatus.UnsupportedFormat;
+                Content.Status = ContentStatus.UnsupportedFormat;
             }
 
             //Add content resolver so the audio can be played
             Content.AddContentResolver(contentResolver);
 
             //Update status
-            Content.State = ContentStatus.Preloading;
+            Content.Status = ContentStatus.Preloading;
 
             //send caching request 
 
@@ -82,12 +82,12 @@ namespace Opyum.Structures.PlaylistSupport
         /// </summary>
         protected void ItemSetup(PlaylistItem item)
         {
-            item.Begining = TimeSpan.Zero;
-            item.DurationType = 0;
+            item.Content.Begining = TimeSpan.Zero;
+            item.Content.DurationType = 0;
             item.TimeType = 0;
             //item.Tags = 
             item.ItemInformation = ItemInfo.CrearteDefault();
-            item.VolumeCurve = VolumeCurve.CreateDefault(item.Content.Duration);
+            item.Content.VolumeCurve = VolumeCurve.CreateDefault(item.Content.Duration);
             //item.Settings =
             //item.History = 
             //item.ItemType =
@@ -119,11 +119,11 @@ namespace Opyum.Structures.PlaylistSupport
         /// Unfinished.
         /// </summary>
         /// <returns></returns>
-        protected ContentType DeterminContentTypeFromPath()
+        protected SourceType DeterminContentTypeFromPath()
         {
-            return ContentType.None;
+            return SourceType.None;
         }
 
-        protected IContent InstantiateContentFromContentType(ContentType type) => FileContent.Create(Path);// <-------------------    CHANGE ASAP    -------------------> //
+        protected IContent InstantiateContentFromContentType(SourceType type) => FileContent.Create(Path);// <-------------------    CHANGE ASAP    -------------------> //
     }
 }

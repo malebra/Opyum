@@ -1,0 +1,11 @@
+D:\repos\Opyum\Debug\Test Player\netcoreapp3.0\Opyum.Core (make new).deps.json
+D:\repos\Opyum\Debug\Test Player\netcoreapp3.0\Opyum.Core (make new).dll
+D:\repos\Opyum\Debug\Test Player\netcoreapp3.0\Opyum.Core (make new).pdb
+D:\repos\Opyum\source\Opyum.Core\obj\Test Player\netcoreapp3.0\Opyum.Core (make new).csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.Core\obj\Test Player\netcoreapp3.0\Opyum.Core (make new).AssemblyInfoInputs.cache
+D:\repos\Opyum\source\Opyum.Core\obj\Test Player\netcoreapp3.0\Opyum.Core (make new).AssemblyInfo.cs
+D:\repos\Opyum\source\Opyum.Core\obj\Test Player\netcoreapp3.0\Opyum.Core (make new).dll
+D:\repos\Opyum\source\Opyum.Core\obj\Test Player\netcoreapp3.0\Opyum.Core (make new).pdb
+D:\repos\Opyum\builds\test_player\bin\netcoreapp3.0\Opyum.Core (make new).deps.json
+D:\repos\Opyum\builds\test_player\bin\netcoreapp3.0\Opyum.Core (make new).dll
+D:\repos\Opyum\builds\test_player\bin\netcoreapp3.0\Opyum.Core (make new).pdb

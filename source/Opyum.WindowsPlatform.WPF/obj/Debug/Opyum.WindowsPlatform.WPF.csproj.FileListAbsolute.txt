@@ -13,3 +13,19 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsP
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.CopyComplete
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Windows\MainWindow.g.cs
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Windows\MainWindow.baml
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Windows\MainWindow.g.cs
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF_MarkupCompile.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF_MarkupCompile.lref
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.dll
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.pdb
+D:\repos\Opyum\Debug\Opyum.WindowsPlatform.WPF.dll
+D:\repos\Opyum\Debug\Opyum.WindowsPlatform.WPF.pdb
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Themes\Generic.baml
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Windows\MainWindow.baml
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.g.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.Properties.Resources.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.GenerateResource.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.CopyComplete
+D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.WPF.dll
+D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.WPF.pdb

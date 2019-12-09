@@ -19,6 +19,7 @@ namespace Opyum.Structures.FileSupport
         protected bool isLoading = false;
 
 
+
         Object load_lock = new Object();
 
         public BufferingStatus BufferingState { get; private set; } = 0;
@@ -26,8 +27,6 @@ namespace Opyum.Structures.FileSupport
         public FileInfo FileInformation { get; set; }
 
         CancellationTokenSource cts = new CancellationTokenSource();
-
-
 
         /// <summary>
         /// If set to true will wait till it can read the requested number of data (if possible).
@@ -84,9 +83,14 @@ namespace Opyum.Structures.FileSupport
         {
 
         }
-        protected FileFromMemoryStream(string file)
+        protected FileFromMemoryStream(string file) : base()
         {
             FilePath = file;
+        }
+        public FileFromMemoryStream(byte[] buffer, string file) : base()
+        {
+            FilePath = file;
+            memoryBuffer = buffer;
         }
 
         ~FileFromMemoryStream()
@@ -280,10 +284,10 @@ namespace Opyum.Structures.FileSupport
                     BufferingState = BufferingStatus.Buffering;
                     do
                     {
-                        //if (ct.IsCancellationRequested)
-                        //{
-                        //    break;
-                        //}
+                        if (ct.IsCancellationRequested)
+                        {
+                            break;
+                        }
                         readBytes = fs.Read(tempBuffer, 0, tempBufferSize);
                         if (readBytes != 0)
                         {
@@ -447,10 +451,44 @@ namespace Opyum.Structures.FileSupport
             }
 
             var temp = new FileFromMemoryStream(file);
-            //ThreadPool.QueueUserWorkItem((i) => temp.Load(file));
             Task.Run(() => temp.Load(file), temp.cts.Token);
             Thread.Sleep(100);
-            //temp.Load(file);
+            return temp;
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="FileFromMemoryStream"/> from a given filepath and directly loads the memory buffer.
+        /// </summary>
+        /// <param name="file">The audio file. It's not checked for being and actual audio file. That's on you</param>
+        /// <returns><see cref="FileFromMemoryStream"/></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="SecurityException"></exception>
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <exception cref="PathTooLongException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        /// <exception cref="IOException"></exception>
+        public static FileFromMemoryStream Create(byte[] buffer, string file)
+        {
+            if (file == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (!File.Exists(file))
+            {
+                throw new FileNotFoundException();
+            }
+            if (buffer == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (buffer.Length == 0)
+            {
+                throw new IOException(message: "Memory is empty");
+            }
+
+            var temp = new FileFromMemoryStream(buffer, file);
             return temp;
         }
     }

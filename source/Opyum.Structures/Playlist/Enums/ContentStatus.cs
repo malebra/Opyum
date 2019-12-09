@@ -8,16 +8,14 @@ namespace Opyum.Structures.Playlist
 {
     public enum ContentStatus
     {
-        Empty = 0,
-        Preloading = 1,
-        Preloaded = 2,
-        LoadingDataToMemory = 4,
-        Ready = 8,
-        Playling = 16,
-        Stopped = 32,
-        Disposing = 64,
-        Disposed = 128,
-        UnsuccessfulPathResolution = 256,
-        UnsupportedFormat = 512
+        NoContentFound = 0,
+        Loading = 1,
+        Ready = 2,
+        Playling = 4,
+        Stopped = 8,
+        Disposing = 16,
+        Disposed = 32,
+        UnsuccessfulPathResolution = 64
+        //UnsupportedFormat = 128
     }
 }

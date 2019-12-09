@@ -19,18 +19,27 @@
         /// <summary>
         /// The beginning of a zone.
         /// </summary>
-        ZoneStart = 8,
+        //ZoneStart = 8,
         /// <summary>
         /// The end of a zone.
         /// </summary>
-        ZoneEnd = 9,
+        //ZoneEnd = 9,
         /// <summary>
         /// Used to differentiate special commecial audio files from songs, jingles etc.
         /// </summary>
-        Comemrcial = 16,
+        Comemrcial = 8,
         /// <summary>
         /// A type of file used for raadio denotation, station identification or transitions between songs.
         /// </summary>
-        Jingle = 32
+        Jingle = 16,
+        /// <summary>
+        /// The beginning of a <see cref="PlaylistZone"/>.
+        /// </summary>
+        Zone = 32,
+        /// <summary>
+        /// The item is a <see cref="PlaylistBlock"/>
+        /// </summary>
+        Block = 64
+
     }
 }

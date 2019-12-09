@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\Opyum\\source\\Opyum.Core\\Opyum.Core.csproj",
-      "projectName": "Opyum.Core",
-      "projectPath": "D:\\repos\\Opyum\\source\\Opyum.Core\\Opyum.Core.csproj",
+      "projectUniqueName": "D:\\repos\\Opyum\\source\\Opyum.Core\\Opyum.Core (make new).csproj",
+      "projectName": "Opyum.Core (make new)",
+      "projectPath": "D:\\repos\\Opyum\\source\\Opyum.Core\\Opyum.Core (make new).csproj",
       "packagesPath": "C:\\Users\\Borno\\.nuget\\packages\\",
       "outputPath": "D:\\repos\\Opyum\\source\\Opyum.Core\\obj\\",
       "projectStyle": "PackageReference",
