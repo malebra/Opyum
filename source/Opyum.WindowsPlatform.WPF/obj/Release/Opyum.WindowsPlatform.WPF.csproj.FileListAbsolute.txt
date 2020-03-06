@@ -1,0 +1,4 @@
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Release\Opyum.WindowsPlatform.WPF.csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Release\Windows\MainWindow.g.cs
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Release\Opyum.WindowsPlatform.WPF_MarkupCompile.cache
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Release\Opyum.WindowsPlatform.WPF_MarkupCompile.lref
