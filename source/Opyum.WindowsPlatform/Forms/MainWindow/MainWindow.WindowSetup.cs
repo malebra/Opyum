@@ -64,7 +64,7 @@ namespace Opyum.WindowsPlatform
             
         }
 
-        [OpyumShortcutMethod("hide_panels", Description = "Shows or hides the main panels.", Action = "Hide panels")]
+        [OpyumShortcutMethod("hide_panelss", Description = "Shows or hides the main panels.", Action = "Hide panels")]
         public void Kill()
         {
             panel1.Visible = !panel1.Visible;
