@@ -1,0 +1,9 @@
+D:\repos\Opyum\builds\release\netcoreapp3.1\Opyum.Application.Core.deps.json
+D:\repos\Opyum\builds\release\netcoreapp3.1\Opyum.Application.Core.dll
+D:\repos\Opyum\builds\release\netcoreapp3.1\Opyum.Application.Core.pdb
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.csprojAssemblyReference.cache
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.AssemblyInfoInputs.cache
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.AssemblyInfo.cs
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.dll
+D:\repos\Opyum\source\Opyum.Application.Core\obj\Release\netcoreapp3.1\Opyum.Application.Core.pdb

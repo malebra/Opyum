@@ -141,10 +141,9 @@
             // fullScreenToolStripMenuItem
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
-            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fullScreenToolStripMenuItem.Tag = "full_screen_mode_switch";
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.fullScreenToolStripMenuItem.Tag = "fullscreen";
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
-            this.fullScreenToolStripMenuItem.Click += (a, b) => FullScreenModeChange();
             // 
             // preferencesToolStripMenuItem
             // 
@@ -157,7 +156,8 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Tag = "open_settings";
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.OpenSettings_OnClick);
             // 
@@ -281,6 +281,7 @@
             this.Name = "MainWindow";
             this.Text = "Opyum";
             this.MaximizedBoundsChanged += new System.EventHandler(this.MainWindow_MaximizedBoundsChanged);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing_Safety_Question);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
@@ -288,7 +289,6 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnClosing_Safety_Question);
 
         }
 

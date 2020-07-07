@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Opyum.Structures</RootNamespace>
     <AssemblyName>Opyum.Structures</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowedReferenceRelatedFileExtensions>
+      <!-- Prevent default XML and PDB files copied to output in RELEASE.
+           Only *.allowedextension files will be included, which doesn't exist in my case.
+       -->
+      .allowedextension
+ 
+      <!-- or set to "-" to exclude all files -->
+      -
+    </AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Player|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -41,25 +51,34 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=5.1.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.5.1.2\lib\net461\Autofac.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +87,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\OpyumSettingsPanelElementAttribute.cs" />
+    <Compile Include="Global\Logger\Logger.cs" />
+    <Compile Include="Global\Settings\ISettingElement.cs" />
+    <Compile Include="Global\Settings\SettingElement.cs" />
     <Compile Include="PlaylistSupport\JSONConverter\JSONConverter.cs" />
     <Compile Include="PlaylistSupport\ItemSupporter\ItemSupporter.cs" />
     <Compile Include="Playlist\Attributes\Classes\ContentCreatorAssistantAttribute.cs" />
@@ -101,15 +124,15 @@
     <Compile Include="Playlist\PlaylistZone\PlaylistZone.cs" />
     <Compile Include="Playlist\Playlist\Playlist.cs" />
     <Compile Include="Playlist\Events and EventArgs\ReportChangeToHistoryEventHandler.cs" />
-    <Compile Include="Structures\Attributes\ApplicationPlatformAttribute.cs" />
+    <Compile Include="Attributes\OpyumApplicationPlatformAttribute.cs" />
     <None Include="packages.config" />
-    <None Include="Structures\Attributes\ShortcutMethodAttribute.cs.disable" />
-    <Compile Include="Structures\Attributes\AudioSampleConverterAttribute.cs" />
-    <Compile Include="Structures\Attributes\PlaylistItemAttribute.cs" />
+    <Compile Include="Attributes\OpyumAudioSampleConverterAttribute.cs" />
+    <Compile Include="Attributes\OpyumSettingsGroupAttribute.cs" />
+    <Compile Include="Attributes\OpyumPlaylistItemAttribute.cs" />
     <None Include="zzz_OUTDATED - PRE-DELETION\AudioFileMemoryStream.cs.old" />
     <None Include="zzz_OUTDATED - PRE-DELETION\FileFromMemoryStream.cs.bad" />
-    <Compile Include="Structures\Attributes\ContentAttribute.cs" />
-    <Compile Include="Playlist\AudioImage\AudioImage.cs" />
+    <Compile Include="Attributes\OpyumContentAttribute.cs" />
+    <Compile Include="Playlist\AudioPicture\AudioPicture.cs" />
     <None Include="Playlist\KEEP-BUT-DELETE-LATER\BaseAudioItem.cs.old" />
     <Compile Include="Playlist\Content\Content.cs" />
     <None Include="Playlist\Content\FileContent.cs.old" />
@@ -137,19 +160,22 @@
     <Compile Include="Structures\ObjectFactory\ObjectFactory.cs" />
     <Compile Include="Structures\Enums\ApplicationPlatform.cs" />
     <Compile Include="Structures\Enums\BufferingStatus.cs" />
-    <Compile Include="Structures\Attributes\OpyumAttributes.cs" />
+    <Compile Include="Attributes\OpyumAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Global\Settings\SettingsContainer\" />
     <Folder Include="Global\Settings\SettingsInterpreter\" />
     <Folder Include="Playlist\Logger\" />
     <Folder Include="Settings\" />
     <Folder Include="Structures\OnlineStreamBuffer\" />
+    <Folder Include="Support\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NAudio\NAudio.csproj">
       <Project>{da4f02e3-0b5e-42cd-b8d9-5583fa51d66e}</Project>
       <Name>NAudio</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

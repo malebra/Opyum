@@ -11,7 +11,6 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsP
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Settings.Settings.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csprojAssemblyReference.cache
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.MainWindow.resources
-D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Settings.Settings.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Properties.Resources.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csproj.GenerateResource.cache
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.dll
@@ -21,3 +20,8 @@ D:\repos\Opyum\Debug\Opyum.WindowsPlatform.pdb
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csproj.CopyComplete
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.dll
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.pdb
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Settings.SettingsForm.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.dll
+D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.pdb
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Forms.Settings.ShortcutPanelElement.resources

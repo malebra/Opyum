@@ -15,3 +15,6 @@ D:\repos\Opyum\Debug\Opyum.Structures.pdb
 D:\repos\Opyum\source\Opyum.Structures\obj\Debug\Opyum.Structures.csproj.CopyComplete
 D:\repos\Opyum\Debug\bin\Opyum.Structures.dll
 D:\repos\Opyum\Debug\bin\Opyum.Structures.pdb
+D:\repos\Opyum\source\Opyum.Structures\obj\Debug\Opyum.Structures.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\builds\debug\bin\Opyum.Structures.dll
+D:\repos\Opyum\builds\debug\bin\Opyum.Structures.pdb

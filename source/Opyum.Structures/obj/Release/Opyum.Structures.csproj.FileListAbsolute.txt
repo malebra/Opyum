@@ -4,3 +4,6 @@ C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\source\Opyum.Structur
 C:\Users\Borno\Documents\Visual Studio 2017\Projects\Opyum\bin\Opyum.Structures.dll
 D:\repos\Opyum\source\Opyum.Structures\obj\Release\Opyum.Structures.csprojAssemblyReference.cache
 D:\repos\Opyum\source\Opyum.Structures\obj\Release\Opyum.Structures.dll
+D:\repos\Opyum\builds\release\bin\Opyum.Structures.dll
+D:\repos\Opyum\source\Opyum.Structures\obj\Release\Opyum.Structures.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\source\Opyum.Structures\obj\Release\Opyum.Structures.csproj.CopyComplete

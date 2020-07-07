@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using Opyum.Structures.Global;
 using System;
 using System.IO;
 
@@ -11,7 +12,7 @@ namespace Opyum.Structures.Playlist
 
         }
 
-        internal Content(TimeSpan beginning, TimeSpan duration, DurationType dType, VolumeCurve curve, ContentInfo info, SourceType sType, Stream stream, string source, ContentInterpreter interpreter) : this()
+        internal Content(TimeSpan beginning, TimeSpan duration, DurationType dType, VolumeCurve curve, ContentInfo info, SourceType sType, Stream stream, string source, ContentInterpreter interpreter, Logger logger) : this()
         {
 
             DurationType = dType;
@@ -21,6 +22,7 @@ namespace Opyum.Structures.Playlist
             Stream = stream;
             Source = source;
             ContentInterpreter = interpreter;
+            Logger = logger;
         }
 
 
@@ -67,6 +69,13 @@ namespace Opyum.Structures.Playlist
         /// The object tasked with turning the raw audio data into audio samples & additional funcitionality.
         /// </summary>
         public virtual ContentInterpreter ContentInterpreter { get; internal protected set; }
+
+
+        /// <summary>
+        /// Used to log the events form the <see cref="IContent"/> into 
+        /// the log file specified in the settings, or the default location.
+        /// </summary>
+        public Logger Logger { get; protected internal set; }
 
 
 

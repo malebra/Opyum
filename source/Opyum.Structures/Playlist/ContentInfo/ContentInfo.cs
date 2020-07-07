@@ -26,13 +26,13 @@
         /// <summary>
         /// The audio image that will be shown from the content
         /// </summary>
-        public AudioImage Image { get; set; }
+        public AudioPicture Image { get; set; }
 
 
 
         public ContentInfo(string path)
         {
-            Image = new AudioImage(path);
+            Image = new AudioPicture(path);
         }
 
 

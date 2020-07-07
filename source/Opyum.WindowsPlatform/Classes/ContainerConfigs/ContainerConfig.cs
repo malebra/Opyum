@@ -14,7 +14,7 @@ namespace Opyum.WindowsPlatform
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<KeyBindingArgument>().As<IKeyBindingArgument>();
+            builder.RegisterType<ShortcutKeyBinding>().As<IShortcutKeyBinding>();
 
             //builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
             //    .Where(t => t.Namespace == "Opyum.Windows")

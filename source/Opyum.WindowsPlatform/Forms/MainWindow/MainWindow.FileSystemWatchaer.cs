@@ -1,4 +1,5 @@
 ﻿using System;
+using Opyum.WindowsPlatform.Settings;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +22,7 @@ namespace Opyum.WindowsPlatform
             watcher.EnableRaisingEvents = true;
             watcher.Changed += (a, b) =>
             {
-                SettingsInterpreter.Load();
-                KeyBindingArgument.AllBindingsSetup(SettingsInterpreter.SettingsXML);
+                SettingsManager.UpdateSettingsFromFile(b.FullPath);
                 this.Invoke(new Action(MenuStrip_Shortcut_Update));
             };
         }

@@ -1,12 +1,8 @@
 ﻿using Autofac;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using Opyum.Structures.Attributes;
+using Opyum.WindowsPlatform.Settings;
+using Opyum.WindowsPlatform.Attributes;
 
 namespace Opyum.WindowsPlatform
 {
@@ -20,15 +16,15 @@ namespace Opyum.WindowsPlatform
         void WindowSetup()
         {
             //Autofac setup
-            IContainer build = ContainerConfig.Configure();
-            _scope = build.BeginLifetimeScope();
+            //IContainer build = ContainerConfig.Configure();
+            //_scope = build.BeginLifetimeScope();
 
             //Load settings from file
-            SettingsInterpreter.Load();
+            SettingsManager.LoadSettings();
 
             //Bind all shortcuts
-            KeyBindingArgument.AllBindingsSetup(SettingsInterpreter.SettingsXML.Clone());
-            SetUpShortcuts();
+            //KeyBindingArgument.AllBindingsSetup(SettingsInterpreter.SettingsXML.Clone());
+            //SetUpShortcuts();
 
 
             //Size Settings
@@ -44,8 +40,9 @@ namespace Opyum.WindowsPlatform
 
             //MenuStrip Settings
             this.MenuStripSetup();
-
-            FullScreenModeChange();
+            
+            //go fullscreen
+            //FullScreenModeChange();
 
             //Updates the shortcut for the MenuStrip buttons
             MenuStrip_Shortcut_Update();
@@ -67,7 +64,7 @@ namespace Opyum.WindowsPlatform
             
         }
 
-        [ShortcutMethod("bullshit")]
+        [OpyumShortcutMethod("hide_panels", Description = "Shows or hides the main panels.", Action = "Hide panels")]
         public void Kill()
         {
             panel1.Visible = !panel1.Visible;

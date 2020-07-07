@@ -15,3 +15,7 @@ D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum.Launcher.csprojAssemblyRe
 D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum.WindowsApplication.Properties.Resources.resources
 D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum.Launcher.csproj.GenerateResource.cache
 D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum Launcher.exe
+D:\repos\Opyum\builds\release\bin\Opyum Launcher.exe.config
+D:\repos\Opyum\builds\release\bin\Opyum Launcher.exe
+D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum.Launcher.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\source\Opyum.Launcher\obj\Release\Opyum.Launcher.csproj.CopyComplete

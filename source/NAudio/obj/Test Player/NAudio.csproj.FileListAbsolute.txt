@@ -10,3 +10,7 @@ D:\repos\Opyum\source\NAudio\obj\Test Player\NAudio.Utils.ProgressLog.resources
 D:\repos\Opyum\source\NAudio\obj\Test Player\NAudio.csproj.GenerateResource.cache
 D:\repos\Opyum\source\NAudio\obj\Test Player\NAudio.dll
 D:\repos\Opyum\source\NAudio\obj\Test Player\NAudio.pdb
+D:\repos\Opyum\debug_build\bin\Test Player\NAudio.dll
+D:\repos\Opyum\debug_build\bin\Test Player\NAudio.pdb
+D:\repos\Opyum\source\NAudio\obj\Test Player\NAudio.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\debug_build\bin\Test Player\NAudio.dll.config

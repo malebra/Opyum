@@ -160,44 +160,49 @@
     <Compile Include="Dsp\EnvelopeGenerator.cs" />
     <Compile Include="Dsp\WdlResampler.cs" />
     <Compile Include="FileFormats\Wav\WaveFileChunkReader.cs" />
-    <Compile Include="MediaFoundation\AudioSubtypes.cs" />
-    <Compile Include="MediaFoundation\IMFReadWriteClassFactory.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationErrors.cs" />
-    <Compile Include="MediaFoundation\MediaTypes.cs" />
+    <Compile Include="Midi\MediaFoundation\AudioSubtypes.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFReadWriteClassFactory.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationErrors.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaTypes.cs" />
     <Compile Include="Midi\RawMetaEvent.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ChunkIdentifier.cs" />
     <Compile Include="Utils\FieldDescriptionAttribute.cs" />
-    <Compile Include="MediaFoundation\IMFActivate.cs" />
-    <Compile Include="MediaFoundation\IMFCollection.cs" />
-    <Compile Include="MediaFoundation\IMFMediaEvent.cs" />
-    <Compile Include="MediaFoundation\IMFSinkWriter.cs" />
-    <Compile Include="MediaFoundation\IMFTransform.cs" />
-    <Compile Include="MediaFoundation\MediaEventType.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationAttributes.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationHelpers.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationInterop.cs" />
-    <Compile Include="MediaFoundation\IMFAttributes.cs" />
-    <Compile Include="MediaFoundation\IMFByteStream.cs" />
-    <Compile Include="MediaFoundation\IMFMediaBuffer.cs" />
-    <Compile Include="MediaFoundation\IMFMediaType.cs" />
-    <Compile Include="MediaFoundation\IMFSample.cs" />
-    <Compile Include="MediaFoundation\IMFSourceReader.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationTransformCategories.cs" />
-    <Compile Include="MediaFoundation\MFT_INPUT_STREAM_INFO.cs" />
-    <Compile Include="MediaFoundation\MFT_OUTPUT_DATA_BUFFER.cs" />
-    <Compile Include="MediaFoundation\MFT_OUTPUT_STREAM_INFO.cs" />
-    <Compile Include="MediaFoundation\MFT_MESSAGE_TYPE.cs" />
-    <Compile Include="MediaFoundation\MFT_REGISTER_TYPE_INFO.cs" />
-    <Compile Include="MediaFoundation\MF_SINK_WRITER_STATISTICS.cs" />
-    <Compile Include="MediaFoundation\_MFT_ENUM_FLAG.cs" />
-    <Compile Include="MediaFoundation\_MFT_INPUT_STATUS_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_INPUT_STREAM_INFO_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_OUTPUT_DATA_BUFFER_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_OUTPUT_STATUS_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_OUTPUT_STREAM_INFO_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_PROCESS_OUTPUT_FLAGS.cs" />
-    <Compile Include="MediaFoundation\_MFT_PROCESS_OUTPUT_STATUS.cs" />
-    <Compile Include="MediaFoundation\_MFT_SET_TYPE_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFActivate.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFCollection.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFMediaEvent.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFSinkWriter.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFTransform.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaEventType.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationAttributes.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationHelpers.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationInterop.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFAttributes.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFByteStream.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFMediaBuffer.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFMediaType.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFSample.cs" />
+    <Compile Include="Midi\MediaFoundation\IMFSourceReader.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationTransformCategories.cs" />
+    <Compile Include="Midi\MediaFoundation\MFT_INPUT_STREAM_INFO.cs" />
+    <Compile Include="Midi\MediaFoundation\MFT_OUTPUT_DATA_BUFFER.cs" />
+    <Compile Include="Midi\MediaFoundation\MFT_OUTPUT_STREAM_INFO.cs" />
+    <Compile Include="Midi\MediaFoundation\MFT_MESSAGE_TYPE.cs" />
+    <Compile Include="Midi\MediaFoundation\MFT_REGISTER_TYPE_INFO.cs" />
+    <Compile Include="Midi\MediaFoundation\MF_SINK_WRITER_STATISTICS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_ENUM_FLAG.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_INPUT_STATUS_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_INPUT_STREAM_INFO_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_OUTPUT_DATA_BUFFER_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_OUTPUT_STATUS_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_OUTPUT_STREAM_INFO_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_PROCESS_OUTPUT_FLAGS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_PROCESS_OUTPUT_STATUS.cs" />
+    <Compile Include="Midi\MediaFoundation\_MFT_SET_TYPE_FLAGS.cs" />
     <Compile Include="Midi\MidiInMessageEventArgs.cs" />
     <Compile Include="Utils\ByteArrayExtensions.cs" />
     <Compile Include="Utils\FieldDescriptionHelper.cs" />
@@ -468,7 +473,7 @@
     <Compile Include="Wave\WaveOutputs\BwfWriter.cs" />
     <Compile Include="Wave\WaveOutputs\CueWaveFileWriter.cs" />
     <Compile Include="Wave\WaveOutputs\MediaFoundationEncoder.cs" />
-    <Compile Include="MediaFoundation\MediaType.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaType.cs" />
     <Compile Include="Wave\WaveOutputs\StoppedEventArgs.cs" />
     <Compile Include="Wave\WaveOutputs\IWaveBuffer.cs" />
     <Compile Include="Wave\WaveOutputs\IWavePlayer.cs" />
@@ -492,7 +497,7 @@
     <Compile Include="Wave\SampleProviders\MonoToStereoSampleProvider.cs" />
     <Compile Include="Wave\WaveProviders\DmoEffectWaveProvider.cs" />
     <Compile Include="Wave\WaveProviders\MediaFoundationResampler.cs" />
-    <Compile Include="MediaFoundation\MediaFoundationTransform.cs" />
+    <Compile Include="Midi\MediaFoundation\MediaFoundationTransform.cs" />
     <Compile Include="Wave\WaveProviders\MixingWaveProvider32.cs" />
     <Compile Include="Wave\WaveProviders\MultiplexingWaveProvider.cs" />
     <Compile Include="Wave\WaveProviders\SilenceWaveProvider.cs" />
@@ -594,7 +599,13 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

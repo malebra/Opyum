@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using NAudio.Wave;
 using Opyum.StandardPlayback;
 using Opyum.Structures;
+using Opyum.Structures.Playlist;
 
 namespace TestPlayer
 {
@@ -20,7 +21,6 @@ namespace TestPlayer
     {
         private static Type[] possiblePlayers;
         private StandardPlayer player;
-
         IWavePlayer pp;
 
         public Form1()

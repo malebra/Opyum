@@ -65,7 +65,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Release\NAudio.XML</DocumentationFile>
+    <!--DocumentationFile>bin\Release\NAudio.XML</DocumentationFile-->
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

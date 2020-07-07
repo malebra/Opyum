@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
+using Opyum.WindowsPlatform.Settings;
+using Opyum.WindowsPlatform.Attributes;
 
 namespace Opyum.WindowsPlatform
 {
@@ -12,8 +14,13 @@ namespace Opyum.WindowsPlatform
     {
         private void OpenSettings_OnClick(object sender, EventArgs e)
         {
-            var ss = new Settings.Settings();
-            ss.Show();
+            OpenSettings();
+        }
+
+        [OpyumShortcutMethod("open_settings", Action = "Open settings", Description = "Opens the settings.")]
+        public void OpenSettings()
+        {
+            Settings.SettingsForm.OpenSettings();
         }
     }
 }

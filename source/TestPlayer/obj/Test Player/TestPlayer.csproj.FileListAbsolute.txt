@@ -6,3 +6,6 @@ D:\repos\Opyum\source\TestPlayer\obj\Test Player\TestPlayer.Properties.Resources
 D:\repos\Opyum\source\TestPlayer\obj\Test Player\TestPlayer.csproj.GenerateResource.cache
 D:\repos\Opyum\source\TestPlayer\obj\Test Player\TestPlayer.csproj.CopyComplete
 D:\repos\Opyum\source\TestPlayer\obj\Test Player\TestPlayer.exe
+D:\repos\Opyum\source\TestPlayer\obj\Test Player\TestPlayer.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\builds\test_player\bin\TestPlayer.exe.config
+D:\repos\Opyum\builds\test_player\bin\TestPlayer.exe

@@ -22,3 +22,7 @@ D:\repos\Opyum\source\Opyum.Launcher\obj\Debug\Opyum Launcher.pdb
 D:\repos\Opyum\Debug\bin\Opyum Launcher.exe
 D:\repos\Opyum\Debug\bin\Opyum Launcher.pdb
 D:\repos\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csproj.CopyComplete
+D:\repos\Opyum\builds\debug\bin\Opyum Launcher.exe
+D:\repos\Opyum\builds\debug\bin\Opyum Launcher.pdb
+D:\repos\Opyum\source\Opyum.Launcher\obj\Debug\Opyum.Launcher.csproj.CoreCompileInputs.cache
+D:\repos\Opyum\builds\debug\bin\Opyum Launcher.exe.config

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Opyum.Structures.Global;
 using NAudio.Wave;
 
 namespace Opyum.Structures.Playlist
@@ -41,6 +42,12 @@ namespace Opyum.Structures.Playlist
         /// Used to initialize the content.
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Used to log the events form the <see cref="IContent"/> into 
+        /// the log file specified in the settings, or the default location.
+        /// </summary>
+        Logger Logger { get; }
 
 
         /// <summary>

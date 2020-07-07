@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Opyum.Structures.Global;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Opyum.Structures.Playlist
 {
-    [Opyum.Structures.Attributes.Content(SourceType.File, "Audio file stream loaded into the memory.")]
+    [Opyum.Structures.Attributes.OpyumContent(SourceType.File, "Audio file stream loaded into the memory.")]
     public class FileContent : IContent, IDisposable
     {
 
@@ -72,6 +73,8 @@ namespace Opyum.Structures.Playlist
         /// </summary>
         public string Source { get; protected internal set; }
 
+        public Logger Logger => throw new NotImplementedException();
+
         /// <summary>
         /// The location of the audio (original).
         /// </summary>
@@ -109,7 +112,7 @@ namespace Opyum.Structures.Playlist
 
         #region Garbage Collection
 
-        public override void Dispose()
+        public void Dispose()
         {
             Dispose(true);
             GC.Collect();
@@ -123,6 +126,12 @@ namespace Opyum.Structures.Playlist
             }
         }
 
+
         #endregion
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

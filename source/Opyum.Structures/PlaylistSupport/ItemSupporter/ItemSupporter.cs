@@ -82,10 +82,10 @@ namespace Opyum.Structures.PlaylistSupport
         /// </summary>
         protected void ItemSetup(IPlaylistItem item)
         {
-            item.Content.Beginning = TimeSpan.Zero;
-            item.Content.DurationType = 0;
-            item.TimeType = 0;
-            item.Content.VolumeCurve = VolumeCurve.CreateDefault(item.Content.Duration);
+            //item.Content.Beginning = TimeSpan.Zero;
+            //item.Content.DurationType = 0;
+            //item.TimeType = 0;
+            //item.Content.VolumeCurve = VolumeCurve.CreateDefault(item.Content.Duration);
             //item.Settings =
             //item.History = 
             //item.ItemType =
@@ -122,6 +122,7 @@ namespace Opyum.Structures.PlaylistSupport
             return SourceType.None;
         }
 
-        protected IContent InstantiateContentFromContentType(SourceType type) => FileContent.Create(Path);// <-------------------    CHANGE ASAP    -------------------> //
+        //protected IContent InstantiateContentFromContentType(SourceType type) => FileContent.Create(Path);// <-------------------    CHANGE ASAP    -------------------> //
+        protected IContent InstantiateContentFromContentType(SourceType type) => throw new NotImplementedException();
     }
 }

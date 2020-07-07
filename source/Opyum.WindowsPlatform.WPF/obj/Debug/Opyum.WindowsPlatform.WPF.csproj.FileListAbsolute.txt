@@ -26,6 +26,8 @@ D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Windows\MainWindow.bam
 D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.g.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.Properties.Resources.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.GenerateResource.cache
-D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.CopyComplete
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.WPF.dll
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.WPF.pdb
+D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.WPF.dll
+D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.WPF.pdb
+D:\repos\Opyum\source\Opyum.WindowsPlatform.WPF\obj\Debug\Opyum.WindowsPlatform.WPF.csproj.CoreCompileInputs.cache

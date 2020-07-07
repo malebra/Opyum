@@ -11,3 +11,6 @@ D:\repos\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.pd
 D:\repos\Opyum\Debug\bin\Opyum.StandardPlayback.dll
 D:\repos\Opyum\Debug\bin\Opyum.StandardPlayback.pdb
 D:\repos\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.csproj.CopyComplete
+D:\repos\Opyum\builds\debug\bin\Opyum.StandardPlayback.dll
+D:\repos\Opyum\builds\debug\bin\Opyum.StandardPlayback.pdb
+D:\repos\Opyum\source\Opyum.StandardPlayback\obj\Debug\Opyum.StandardPlayback.csproj.CoreCompileInputs.cache

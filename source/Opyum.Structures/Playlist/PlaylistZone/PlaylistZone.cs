@@ -24,9 +24,12 @@
     /// to that part of the <see cref="Playlist"/> or have a copletely independant rule set in regards to the <see cref="Playlist"/>.
     /// </para>
     /// </summary>
-    [Opyum.Structures.Attributes.PlaylistItem]
+    [Opyum.Structures.Attributes.OpyumPlaylistItem]
     public class PlaylistZone : PlaylistItem
     {
-        
+        public PlaylistZone() : base()
+        {
+
+        }
     }
 }

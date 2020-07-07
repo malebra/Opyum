@@ -10,8 +10,6 @@ namespace Opyum.Structures.Playlist
         /// </summary>
         IContent Content { get; }
 
-
-        
         /// <summary>
         /// The type of the item.
         /// <para>Impropper assignment will throw an <see cref="InvalidOperationException"/></para>

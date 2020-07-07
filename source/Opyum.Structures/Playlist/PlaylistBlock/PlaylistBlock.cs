@@ -10,7 +10,7 @@ using System.Xml.Schema;
 
 namespace Opyum.Structures.Playlist
 {
-    [Opyum.Structures.Attributes.PlaylistItem]
+    [Opyum.Structures.Attributes.OpyumPlaylistItem]
     [Serializable]
     public class PlaylistBlock : IPlaylistItem, IEnumerable, IEnumerator, IDisposable, IXmlSerializable
     {

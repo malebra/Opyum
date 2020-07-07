@@ -13,3 +13,6 @@ D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.dll
 D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.pdb
 D:\repos\Opyum\Debug\bin\Opyum.OSInteraction.dll
 D:\repos\Opyum\Debug\bin\Opyum.OSInteraction.pdb
+D:\repos\Opyum\builds\debug\bin\Opyum.OSInteraction.dll
+D:\repos\Opyum\builds\debug\bin\Opyum.OSInteraction.pdb
+D:\repos\Opyum\source\Opyum.OSInteraction\obj\Debug\Opyum.OSInteraction.csproj.CoreCompileInputs.cache

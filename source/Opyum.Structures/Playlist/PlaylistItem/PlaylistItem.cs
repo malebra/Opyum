@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 
 namespace Opyum.Structures.Playlist
 {
-    [Opyum.Structures.Attributes.PlaylistItem]
+    [Opyum.Structures.Attributes.OpyumPlaylistItem]
     [Serializable]
-    public class PlaylistItem : IDisposable, IPlaylistItem
+    public class PlaylistItem : IPlaylistItem, IDisposable
     {
         /// <summary>
         /// The content to play from.
@@ -74,7 +74,7 @@ namespace Opyum.Structures.Playlist
 
 
 
-        private PlaylistItem()
+        protected PlaylistItem()
         {
 
         }
