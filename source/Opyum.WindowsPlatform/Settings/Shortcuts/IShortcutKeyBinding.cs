@@ -41,7 +41,7 @@ namespace Opyum.WindowsPlatform
         /// <summary>
         /// Is set when the particular keybing is disabled
         /// </summary>
-        bool IsDisabled { get; }
+        bool IsDisabled { get; set; }
 
         /// <summary>
         /// Is set when the particular keybing is a global shortcut
@@ -82,5 +82,18 @@ namespace Opyum.WindowsPlatform
         /// </summary>
         /// <param name="str"></param>
         void UpdateShortcutString(List<string> str);
-        }
+
+        /// <summary>
+        /// Clone the element into a new instance with same parameters
+        /// </summary>
+        /// <returns></returns>
+        IShortcutKeyBinding Clone();
+
+        /// <summary>
+        /// Loads the shortcut string and args data into the current shortcut key from the provided new one.
+        /// <para>It then returns itself.</para>
+        /// </summary>
+        /// <param name="keybinding"></param>
+        IShortcutKeyBinding UpdateDataFromKeybinding(IShortcutKeyBinding keybinding);
+    }
 }

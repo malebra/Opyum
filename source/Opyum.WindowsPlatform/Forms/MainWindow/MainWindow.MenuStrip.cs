@@ -12,7 +12,7 @@ namespace Opyum.WindowsPlatform
         }
 
         [OpyumShortcutMethod("hide_menu_strip", Description = "Show or hide the menu.", Action = "Hide menu")]
-        public void MenuStripOnCall()//object sender, EventArgs e)
+        public void MenuStripOnCall(string[] args = null)//object sender, EventArgs e)
         {
             //if (MenuStrip.Height > 70 && MenuStrip.Visible)
             //{

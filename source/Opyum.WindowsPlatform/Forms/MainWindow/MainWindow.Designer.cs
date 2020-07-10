@@ -144,6 +144,7 @@
             this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.fullScreenToolStripMenuItem.Tag = "fullscreen";
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
+            this.fullScreenToolStripMenuItem.Click += FullScreenModeChange;
             // 
             // preferencesToolStripMenuItem
             // 

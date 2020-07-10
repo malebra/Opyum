@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -8,6 +11,8 @@ namespace Opyum.WindowsPlatform.Settings
 {
     public static class ShortcutResolver
     {
+        static object callerObject { get; set; }
+        static string _scString = string.Empty;
         static bool _keysPressedTimerSet = false;
         static readonly int timerDuration = 750;
         static System.Timers.Timer _keysPressedTimer = new System.Timers.Timer(timerDuration);
@@ -27,8 +32,29 @@ namespace Opyum.WindowsPlatform.Settings
             {
                 return;
             }
+            callerObject = sender;
             KeysPressed.Add(e.KeyData);
-            compareShortcutSequence(sender);
+            compareShortcutSequence();
+        }
+
+        /// <summary>
+        /// Get the string of the shortcut pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static string GetShortcutString(object sender, KeyEventArgs e)
+        {
+            var value = e.KeyData & ~(Keys.Modifiers | Keys.ControlKey | Keys.Menu | Keys.RButton | Keys.LButton);
+            if (value == 0)
+            {
+                return _scString;
+            }
+            KeysConverter kc = new KeysConverter();
+            _scString += (_scString == string.Empty ? "" : ", ") + ((e.KeyData & Keys.Control) != 0 ? "Ctrl+" : "") + ((e.KeyData & Keys.Alt) != 0 ? "Alt+" : "") + ((e.KeyData & Keys.Shift) != 0 ? "Shift+" : "") + kc.ConvertToString(null, CultureInfo.CurrentCulture, e.KeyCode);
+
+            runKeysPressedTimer();
+            return _scString;
         }
 
 
@@ -43,7 +69,7 @@ namespace Opyum.WindowsPlatform.Settings
                 _keysPressedTimer = new System.Timers.Timer(timerDuration);
             }
 
-            _keysPressedTimer.Elapsed += keysPressedTimerEventCall;
+            _keysPressedTimer.Elapsed += keysPressedTimerEventCall; 
             _keysPressedTimer.Start();
             _keysPressedTimerSet = true;
         }
@@ -56,14 +82,13 @@ namespace Opyum.WindowsPlatform.Settings
             {
                 try
                 {
-                    var tt = _shortcutCompareList.Where(x => (x.ShortcutKeys.Count == KeysPressed.Count) && (KeysPressed.Where(t => x.ShortcutKeys.Contains(t)).Count() == KeysPressed.Count))?.First();
-                    //MainWindow.Window.Invoke((Delegate)tt.Function);
-                    if (((Delegate)tt.Function).Target.GetType().IsAssignableFrom(typeof(System.Windows.Forms.Control)))
+                    if (callerObject is Control && ((Control)callerObject).InvokeRequired && KeysPressed != null & KeysPressed.Count > 0)
                     {
-                        ((Control)((Delegate)tt.Function).Target).Invoke((Delegate)tt.Function);
+                        ((Control)callerObject).Invoke(new MethodInvoker(() => _shortcutCompareList?.Where(a => a.ShortcutKeys.SequenceEqual(KeysPressed))?.FirstOrDefault()?.Run(callerObject)));
+                        KeysPressed.Clear();
                     }
                 }
-                catch (InvalidOperationException)
+                catch (InvalidOperationException err)
                 {
                     
                 };
@@ -74,9 +99,10 @@ namespace Opyum.WindowsPlatform.Settings
             KeysPressed.Clear();
             _shortcutCompareList = null;
             _keysPressedTimerSet = false;
+            _scString = string.Empty;
         }
 
-        static void compareShortcutSequence(object caller)
+        static void compareShortcutSequence()
         {
             //check if there are already some detected keys pressed
             if (_shortcutCompareList == null)
@@ -89,15 +115,15 @@ namespace Opyum.WindowsPlatform.Settings
                 _shortcutCompareList = _shortcutCompareList?.Where(i => KeysPressed.Where(x => i.ShortcutKeys.Contains(x)).Count() == KeysPressed.Count).ToList();
             }
             //if there are none potentila KeyBindings
-            if (_shortcutCompareList == null || _shortcutCompareList.Count <= 0)
+            if (_shortcutCompareList == null || _shortcutCompareList.Count == 0)
             {
                 KeysPressed.Clear();
                 _shortcutCompareList = null;
                 return;
             }
-            else if (_shortcutCompareList.Count() == 1 && KeysPressed.Count == _shortcutCompareList.First().ShortcutKeys.Count)
+            else if (_shortcutCompareList.Count() == 1 && KeysPressed.SequenceEqual(_shortcutCompareList.First().ShortcutKeys))
             {
-                _shortcutCompareList?.First().Run(caller);
+                _shortcutCompareList?.FirstOrDefault()?.Run(callerObject);
             }
             else
             {
@@ -108,5 +134,7 @@ namespace Opyum.WindowsPlatform.Settings
             _shortcutCompareList = null;
             return;
         }
+
+        
     }
 }

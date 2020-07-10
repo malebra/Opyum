@@ -18,9 +18,9 @@ namespace Opyum.WindowsPlatform
         }
 
         [OpyumShortcutMethod("open_settings", Action = "Open settings", Description = "Opens the settings.")]
-        public void OpenSettings()
+        public void OpenSettings(string[] args = null)
         {
-            Settings.SettingsForm.OpenSettings();
+            Settings.SettingsEditor.OpenSettings();
         }
     }
 }

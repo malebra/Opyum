@@ -20,8 +20,8 @@ D:\repos\Opyum\Debug\Opyum.WindowsPlatform.pdb
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csproj.CopyComplete
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.dll
 D:\repos\Opyum\Debug\bin\Opyum.WindowsPlatform.pdb
-D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Settings.SettingsForm.resources
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.csproj.CoreCompileInputs.cache
 D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.dll
 D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.pdb
 D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Forms.Settings.ShortcutPanelElement.resources
+D:\repos\Opyum\source\Opyum.WindowsPlatform\obj\Debug\Opyum.WindowsPlatform.Settings.SettingsEditor.resources

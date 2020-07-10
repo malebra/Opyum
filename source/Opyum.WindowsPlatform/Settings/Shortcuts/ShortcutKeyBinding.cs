@@ -1,4 +1,5 @@
-﻿using Opyum.WindowsPlatform.Settings;
+﻿using Newtonsoft.Json;
+using Opyum.WindowsPlatform.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Opyum.WindowsPlatform
 {
-    public class ShortcutKeyBinding : IShortcutKeyBinding, IDisposable
+    public class ShortcutKeyBinding : IShortcutKeyBinding, IDisposable, ISettingsElement<IShortcutKeyBinding>
     {
         /// <summary>
         /// The string linking the Method and the <see cref="ShortcutKeyBinding"/>
@@ -18,6 +19,7 @@ namespace Opyum.WindowsPlatform
         /// <summary>
         /// The <see cref="System.Collections.Generic.List{T}"/> of <see cref="Keys"/> the make up the shortcut.
         /// </summary>
+        [JsonIgnore]
         public List<Keys> ShortcutKeys { get => _shortcutKeys; set { _shortcutKeys = value; updateShortcutString(); } }
         List<Keys> _shortcutKeys = new List<Keys>();
 
@@ -31,7 +33,8 @@ namespace Opyum.WindowsPlatform
         /// <summary>
         /// Is set when the particular keybing is disabled
         /// </summary>
-        public bool IsDisabled { get; protected set; } = false;
+        [JsonIgnore]
+        public bool IsDisabled { get; set; } = false;
 
         /// <summary>
         /// Is set when the particular keybing is a global shortcut
@@ -41,28 +44,31 @@ namespace Opyum.WindowsPlatform
         /// <summary>
         /// The Description of the shortcut
         /// </summary>
+        [JsonIgnore]
         public string Description { get; set; } = string.Empty;
 
         /// <summary>
         /// What action the shortcut will take when it has been called.
         /// <para>i.e. Making the window fullscreen etc.</para>
         /// </summary>
+        [JsonIgnore]
         public string Action { get; set; }
 
         /// <summary>
         /// The <see cref="object"/> containing the function delegate
         /// </summary>
+        [JsonIgnore]
         public object Function { get; protected set; }
 
         /// <summary>
         /// The arguments of the shortcut
         /// </summary>
-        public List<string> Args { get; set; }
+        public List<string> Args { get; set; } = null;
 
 
 
 
-        public delegate void DELEGATE();
+        public delegate void DELEGATE(string[] args = null);
         public event EventHandler FunctionRequest;
 
 
@@ -158,7 +164,7 @@ namespace Opyum.WindowsPlatform
         /// </summary>
         public void Run()
         {
-            ((DELEGATE)Function)?.Invoke();
+            ((DELEGATE)Function)?.Invoke(Args?.ToArray());
         }
 
         /// <summary>
@@ -167,9 +173,9 @@ namespace Opyum.WindowsPlatform
         /// <param name="callObject">The object to invoke the <see cref="System.Action"/> from.</param>
         public void Run(object callObject)
         {
-            if (Function != null)
+            if (Function != null && callObject != null)
             {
-                ((Action)Delegate.CreateDelegate(typeof(Action), callObject, ((Delegate)Function).GetMethodInfo())).Invoke(); 
+                ((DELEGATE)Delegate.CreateDelegate(typeof(DELEGATE), callObject, ((DELEGATE)Function).GetMethodInfo()))?.Invoke(Args?.ToArray());
             }
         }
 
@@ -185,6 +191,38 @@ namespace Opyum.WindowsPlatform
                 return false;
             }
             return keys.SequenceEqual(_shortcutKeys);
+        }
+
+        /// <summary>
+        /// Clone the element into a new instance with same parameters
+        /// </summary>
+        /// <returns></returns>
+        public IShortcutKeyBinding Clone()
+        {
+            return new ShortcutKeyBinding()
+            {
+                Command = this.Command.ToString(),
+                _shortcut = new List<string>(this._shortcut),
+                _shortcutKeys = new List<Keys>(this._shortcutKeys),
+                IsDisabled = this.IsDisabled,
+                Global = this.Global,
+                Action = this.Action.ToString(),
+                Description = this.Description
+            };
+        }
+
+        /// <summary>
+        /// Loads the shortcut string and args data into the current shortcut key from the provided new one.
+        /// <para>It then returns itself.</para>
+        /// </summary>
+        /// <param name="keybinding"></param>
+        public IShortcutKeyBinding UpdateDataFromKeybinding(IShortcutKeyBinding keybinding)
+        {
+            Shortcut = keybinding.Shortcut == null ? new List<string>() : new List<string>(keybinding.Shortcut);
+            Global = keybinding.Global;
+            IsDisabled = keybinding.IsDisabled;
+            Args = keybinding.Args == null ? null : new List<string>(keybinding.Args);
+            return this;
         }
 
 
