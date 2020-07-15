@@ -39,14 +39,12 @@ namespace Opyum.WindowsPlatform.Settings
             {
                 try
                 {
-                    if (file == @"D:\repos\Opyum\builds\debug\bin\Opyum.WindowsPlatform.dll")
-                    {
-
-                    }
-                    list.AddRange(Assembly.LoadFile(file)?.GetTypes()
-                            ?.SelectMany(t => t?.GetMethods()
-                                ?.Where(m => m?.GetCustomAttribute<OpyumShortcutMethodAttribute>() != null && !(bool)SettingsManager.GlobalSettings?.Shortcuts?.Exists(x => x.Command == m.GetCustomAttribute<OpyumShortcutMethodAttribute>()?.Command)))
-                            ?.Select(s => GetKeybindingFromMethodInfo(s))?.ToList());
+                    list.AddRange(Assembly.LoadFile(file)
+                        ?.GetTypes()
+                        ?.SelectMany(t => t?.GetMethods()
+                            ?.Where(m => m?.GetCustomAttribute<OpyumShortcutMethodAttribute>() != null && !(bool)SettingsManager.GlobalSettings?.Shortcuts?.Exists(x => x.Command == m.GetCustomAttribute<OpyumShortcutMethodAttribute>()?.Command)))
+                        ?.Select(s => GetKeybindingFromMethodInfo(s))
+                        ?.ToList());
                 }
                 catch (InvalidOperationException)
                 {
