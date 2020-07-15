@@ -17,7 +17,7 @@ namespace Opyum.WindowsPlatform.Settings
         public void ApplyButton_Action(object sender, EventArgs e)
         {
             SettingsManager.GlobalSettings = NewSettings;
-            SettingsInterpreter.SaveSettings();
+            SettingsManager.SaveSettings();
         }
 
         public void CancelButton_Action(object sender, EventArgs e)

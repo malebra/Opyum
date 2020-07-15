@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System;
 using Opyum.WindowsPlatform.Forms.Settings;
+using Opyum.Structures.Global;
 
 namespace Opyum.WindowsPlatform.Settings
 {

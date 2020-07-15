@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Opyum.WindowsPlatform.Settings
 {
@@ -55,6 +56,44 @@ namespace Opyum.WindowsPlatform.Settings
 
             runKeysPressedTimer();
             return _scString;
+        }
+
+        /// <summary>
+        /// Get the string of the shortcut pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="keys"></param>
+        /// <returns></returns>
+        public static string GetShortcutString(object sender, List<Keys> keys)
+        {
+            KeysConverter kc = new KeysConverter();
+            try
+            {
+                return string.Join(", ", keys?.Select(k => kc.ConvertToString(null, CultureInfo.CurrentCulture, k)));
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Get the string of the shortcut pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="keys"></param>
+        /// <returns></returns>
+        public static List<string> GetShortcutStringList(List<Keys> keys)
+        {
+            KeysConverter kc = new KeysConverter();
+            try
+            {
+                return keys?.Select(k => kc.ConvertToString(null, CultureInfo.CurrentCulture, k)).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<string>();
+            }
         }
 
 
@@ -107,7 +146,7 @@ namespace Opyum.WindowsPlatform.Settings
             //check if there are already some detected keys pressed
             if (_shortcutCompareList == null)
             {
-                _shortcutCompareList = SettingsManager.GlobalSettings?.Shortcuts?.Where(i => i.ShortcutKeys.First() == KeysPressed.First()).ToList();
+                _shortcutCompareList = SettingsManager.GlobalSettings?.Shortcuts?.Where(i => i.ShortcutKeys?.Count > 0 && i.ShortcutKeys?.First() == KeysPressed.First())?.ToList();
             }
             //if there are already some keys pressed, shorten the number of potential methods to summon.
             else

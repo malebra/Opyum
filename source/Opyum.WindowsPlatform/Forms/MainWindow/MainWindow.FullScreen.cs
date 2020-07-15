@@ -47,7 +47,7 @@ namespace Opyum.WindowsPlatform
         public event ScreenModeEvent ScreenModeChanged;
 
         //This function is activated when the application is put into fullscreenmode
-        [OpyumShortcutMethod("fullscreen", Keys.F11, Description = "Switch between fullscreen and windowed view.", Action = "Fullscreen")]
+        [OpyumShortcutMethod("fullscreen", new[] { Keys.F11 }, Description = "Switch between fullscreen and windowed view.", Action = "Fullscreen")]
         public void FullScreenModeChange(string[] args = null)
         {
             if (ScreenViewMode == ScreenMode.FullScreen)

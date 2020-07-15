@@ -33,7 +33,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewshortcuts = new System.Windows.Forms.ListView();
+            this.listviewshortcuts = new System.Windows.Forms.ListView();
             this.Action = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Shortcut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,25 +52,25 @@ namespace Opyum.WindowsPlatform.Forms.Settings
             // 
             // listViewshortcuts
             // 
-            this.listViewshortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listviewshortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewshortcuts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listviewshortcuts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Action,
             this.Shortcut,
             this.Global,
             this.Disabled,
             this.Description});
-            this.listViewshortcuts.FullRowSelect = true;
-            this.listViewshortcuts.GridLines = true;
-            this.listViewshortcuts.HideSelection = false;
-            this.listViewshortcuts.Location = new System.Drawing.Point(3, 32);
-            this.listViewshortcuts.MultiSelect = false;
-            this.listViewshortcuts.Name = "listViewshortcuts";
-            this.listViewshortcuts.Size = new System.Drawing.Size(494, 302);
-            this.listViewshortcuts.TabIndex = 3;
-            this.listViewshortcuts.UseCompatibleStateImageBehavior = false;
-            this.listViewshortcuts.View = System.Windows.Forms.View.Details;
+            this.listviewshortcuts.FullRowSelect = true;
+            this.listviewshortcuts.GridLines = true;
+            this.listviewshortcuts.HideSelection = false;
+            this.listviewshortcuts.Location = new System.Drawing.Point(3, 32);
+            this.listviewshortcuts.MultiSelect = false;
+            this.listviewshortcuts.Name = "listViewshortcuts";
+            this.listviewshortcuts.Size = new System.Drawing.Size(494, 302);
+            this.listviewshortcuts.TabIndex = 3;
+            this.listviewshortcuts.UseCompatibleStateImageBehavior = false;
+            this.listviewshortcuts.View = System.Windows.Forms.View.Details;
             // 
             // Action
             // 
@@ -159,6 +159,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
             this.isGlobalCheckBox.TabIndex = 6;
             this.isGlobalCheckBox.Text = "Global Shortcut";
             this.isGlobalCheckBox.UseVisualStyleBackColor = true;
+            this.isGlobalCheckBox.Enabled = false;
             // 
             // isDisabledCheckBox
             // 
@@ -170,6 +171,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
             this.isDisabledCheckBox.TabIndex = 7;
             this.isDisabledCheckBox.Text = "Disabled";
             this.isDisabledCheckBox.UseVisualStyleBackColor = true;
+            this.isDisabledCheckBox.Enabled = false;
             // 
             // Global
             // 
@@ -203,7 +205,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
             this.Controls.Add(this.textBoxShortcut);
             this.Controls.Add(this.ShortcutTextLabel);
             this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.listViewshortcuts);
+            this.Controls.Add(this.listviewshortcuts);
             this.Name = "ShortcutPanelElement";
             this.Size = new System.Drawing.Size(500, 400);
             this.ResumeLayout(false);
@@ -213,7 +215,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
 
         #endregion
 
-        private System.Windows.Forms.ListView listViewshortcuts;
+        private System.Windows.Forms.ListView listviewshortcuts;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.ColumnHeader Action;
         private System.Windows.Forms.ColumnHeader Shortcut;

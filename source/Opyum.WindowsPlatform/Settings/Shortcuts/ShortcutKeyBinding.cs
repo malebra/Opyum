@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Windows.Forms;
 
@@ -263,6 +264,16 @@ namespace Opyum.WindowsPlatform
 
 
         #endregion
+
+        public static ShortcutKeyBinding GenerateKeyBinding(string command, List<string> shortcut, string action, string description)
+        {
+            return new ShortcutKeyBinding() { Command = command, Shortcut = shortcut, Action = action, Description = description };
+        }
+
+        public static ShortcutKeyBinding GenerateKeyBinding(string command, List<Keys> shortcuts, string action, string description)
+        {
+            return GenerateKeyBinding(command, ShortcutResolver.GetShortcutStringList(shortcuts), action, description);
+        }
 
         static string checkSpecialKeys(string str)
         {

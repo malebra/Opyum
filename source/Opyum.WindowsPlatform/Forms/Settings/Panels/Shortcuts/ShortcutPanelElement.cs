@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Opyum.Structures.Attributes;
-using Opyum.Structures.Playlist;
-using System.Configuration;
 using Opyum.WindowsPlatform.Settings;
 using System.Reflection;
 using Opyum.WindowsPlatform.Attributes;
-using Opyum.WindowsPlatform.Settings;
 using System.IO;
 using static System.Windows.Forms.ListView;
 using System.Collections;
+using Opyum.Structures.Global;
 
 namespace Opyum.WindowsPlatform.Forms.Settings
 {
@@ -31,44 +25,74 @@ namespace Opyum.WindowsPlatform.Forms.Settings
         {
             InitializeComponent();
             this.KeyDown += KeyPressResolve;
-            this.listViewshortcuts.ItemSelectionChanged += ItemSelected;
+            this.listviewshortcuts.ItemSelectionChanged += ItemSelected;
+            this.isGlobalCheckBox.CheckedChanged += globalChecked;
+            this.isDisabledCheckBox.CheckedChanged += disabledChecked;
             this.Show();
             
         }
 
         private void ItemSelected(object sender, EventArgs e)
         {
-            if (listViewshortcuts.SelectedItems != null && listViewshortcuts.SelectedItems.Count > 0)
+            if (listviewshortcuts.SelectedItems != null && listviewshortcuts.SelectedItems.Count > 0)
             {
-                textBoxShortcut.Text = string.Join(", ", ((IShortcutKeyBinding)listViewshortcuts.SelectedItems[0].Tag).Shortcut);
-                isGlobalCheckBox.Checked = ((IShortcutKeyBinding)listViewshortcuts.SelectedItems[0].Tag).Global;
-                isDisabledCheckBox.Checked = ((IShortcutKeyBinding)listViewshortcuts.SelectedItems[0].Tag).IsDisabled;
+                textBoxShortcut.Text = string.Join(", ", ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Shortcut);
+                isGlobalCheckBox.Enabled = true;
+                isGlobalCheckBox.Checked = ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Global;
+                isDisabledCheckBox.Enabled = true;
+                isDisabledCheckBox.Checked = ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).IsDisabled;
+            }
+            else
+            {
+                isGlobalCheckBox.Checked = false;
+                isDisabledCheckBox.Checked = false;
+                isGlobalCheckBox.Enabled = false;
+                isDisabledCheckBox.Enabled = false;
+                textBoxShortcut.Text = string.Empty;
+            }
+        }
+
+        private void globalChecked(object sender, EventArgs e)
+        {
+            if (listviewshortcuts.SelectedItems.Count > 0)
+            {
+
+            }
+        }
+
+        private void disabledChecked(object sender, EventArgs e)
+        {
+            if (listviewshortcuts.SelectedItems.Count > 0)
+            {
+
             }
         }
 
 
         public object LoadElements()
         {
-            //var directory = Path.GetDirectoryName(Uri.UnescapeDataString((new UriBuilder(Assembly.GetExecutingAssembly().CodeBase)).Path));
-            //var files = Directory.CreateDirectory(directory).GetFiles(searchPattern: "*.dll", searchOption: SearchOption.AllDirectories).Where(a => a.FullName.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))?.Select(u => u.FullName);
-            //List<OpyumShortcutMethodAttribute> sclist = new List<OpyumShortcutMethodAttribute>();
+            ////var directory = Path.GetDirectoryName(Uri.UnescapeDataString((new UriBuilder(Assembly.GetExecutingAssembly().CodeBase)).Path));
+            ////var files = Directory.CreateDirectory(directory).GetFiles(searchPattern: "*.dll", searchOption: SearchOption.AllDirectories).Where(a => a.FullName.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))?.Select(u => u.FullName);
+            ////List<OpyumShortcutMethodAttribute> sclist = new List<OpyumShortcutMethodAttribute>();
 
-            //foreach (var item in files)
-            //{
-            //    try
-            //    {
-            //        sclist.AddRange(Assembly.LoadFile(item)?.GetTypes()?.SelectMany(t => t.GetMethods()?.Select(m => m.GetCustomAttribute<OpyumShortcutMethodAttribute>()))?.Where(h => h != null));
-            //    }
-            //    catch (Exception)
-            //    {
-            //        continue;
-            //    }
-            //}
-            var p = Assembly.GetExecutingAssembly().GetTypes()?.SelectMany(g => g.GetMethods().Select(u => u.GetCustomAttribute<OpyumShortcutMethodAttribute>()))?.Where(f => f != null);
+            ////foreach (var item in files)
+            ////{
+            ////    try
+            ////    {
+            ////        sclist.AddRange(Assembly.LoadFile(item)?.GetTypes()?.SelectMany(t => t.GetMethods()?.Select(m => m.GetCustomAttribute<OpyumShortcutMethodAttribute>()))?.Where(h => h != null));
+            ////    }
+            ////    catch (Exception)
+            ////    {
+            ////        continue;
+            ////    }
+            ////}
+            //var p = Assembly.GetExecutingAssembly().GetTypes()?.SelectMany(g => g.GetMethods().Select(u => u.GetCustomAttribute<OpyumShortcutMethodAttribute>()))?.Where(f => f != null);
 
-            //Data = new List<ListViewItem>(sclist.Select(l => GenerateItem(l)));
+            ////Data = new List<ListViewItem>(sclist.Select(l => GenerateItem(l)));
+
+            var p = SettingsEditor.Settings?.NewSettings?.Shortcuts;
             Data = p?.Select(g => GenerateItem(g)).ToList();
-            listViewshortcuts.Items.AddRange(Data.ToArray());
+            listviewshortcuts.Items.AddRange(Data.ToArray());
             return this;
 
         }
@@ -103,20 +127,24 @@ namespace Opyum.WindowsPlatform.Forms.Settings
         {
             if (textBoxSearch.Text != string.Empty && textBoxSearch != null)
             {
-                listViewshortcuts.Items.Clear();
-                listViewshortcuts.Items.AddRange(Data.Where(a => textBoxSearch?.Text?.ToLower()?.Split(' ')?.Select(b => (bool)a.SubItems[0].Text.ToLower()?.Contains(b) && b != string.Empty)?.Where(b => (bool)b)?.FirstOrDefault() == true ? true : false)?.ToArray());//listViewshortcuts.Items.AddRange((new List<ListViewItem>(lst))?.Where(a => textBoxSearch?.Text?.ToLower()?.Split(' ')?.Select(b => (bool)a.SubItems[0].Text.ToLower()?.Contains(b) && b != string.Empty)?.Where(b => (bool)b)?.FirstOrDefault() == true ? true : false)?.ToArray());
+                listviewshortcuts.Items.Clear();
+                listviewshortcuts.Items.AddRange(Data.Where(a => textBoxSearch?.Text?.ToLower()?.Split(' ')?.Select(b => (bool)a.SubItems[0].Text.ToLower()?.Contains(b) && b != string.Empty)?.Where(b => (bool)b)?.FirstOrDefault() == true ? true : false)?.ToArray());//listViewshortcuts.Items.AddRange((new List<ListViewItem>(lst))?.Where(a => textBoxSearch?.Text?.ToLower()?.Split(' ')?.Select(b => (bool)a.SubItems[0].Text.ToLower()?.Contains(b) && b != string.Empty)?.Where(b => (bool)b)?.FirstOrDefault() == true ? true : false)?.ToArray());
             }
         }
 
         //clear the search
         private void buttonClearSearch_Click(object sender, EventArgs e)
         {
-            listViewshortcuts?.Items.Clear();
+            listviewshortcuts?.Items.Clear();
             textBoxSearch.Text = string.Empty;
-            listViewshortcuts.Items.AddRange(Data.ToArray());
+            listviewshortcuts.Items.AddRange(Data.ToArray());
         }
 
-
+        /// <summary>
+        /// Get the shortcut when pressed on the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void getShortcut(object sender, KeyEventArgs e)
         {
             textBoxShortcut.Clear();
@@ -127,35 +155,44 @@ namespace Opyum.WindowsPlatform.Forms.Settings
         private void buttonSaveShortcut_Click(object sender, EventArgs e)
         {
             
-            if (listViewshortcuts.SelectedItems.Count == 1 && textBoxShortcut.Text != string.Empty)
+            if (listviewshortcuts.SelectedItems.Count == 1 && textBoxShortcut.Text != string.Empty)
             {
+                //check if the shortcut is already in use
                 var existing = Data.Where(a => a.SubItems[1].Text == textBoxShortcut.Text);
-                if (existing.Count() > 0 && existing.FirstOrDefault() != listViewshortcuts.SelectedItems[0])
+                if (existing.Count() > 0 && existing.FirstOrDefault() != listviewshortcuts.SelectedItems[0])
                 {
+                    //asks if the olds shortcut should be deleted
                     if (MessageBox.Show($"This string is already in use by \"{existing?.FirstOrDefault()?.SubItems[0].Text}\".\nDo you want to owerwrite it?\n\nWARNING: the old shortcut will be deleted!", "nWARNING: shortcut already in use!", MessageBoxButtons.YesNo, icon: MessageBoxIcon.Warning) == DialogResult.No)
                     {
                         return;
                     }
+                    //if the shortcut should be replaced
                     else
                     {
+                        //create a list that will contain the operations that need to be executed
                         List<UndoRedoMethodCapsule> lst = new List<UndoRedoMethodCapsule>();
+                        //empty the old shortcut
                         var cone = ((IShortcutKeyBinding)existing?.FirstOrDefault().Tag).Clone();
                         (cone.Global, cone.IsDisabled, cone.Shortcut) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked, new List<string>());
                         lst.Add(new UndoRedoMethodCapsule(ChangeShortcut, existing?.FirstOrDefault(), cone, this));
 
-                        cone = ((IShortcutKeyBinding)listViewshortcuts.SelectedItems[0].Tag).Clone();
+                        //create the new shortcut
+                        cone = ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Clone();
                         (cone.Global, cone.IsDisabled, cone.Shortcut) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked, new List<string>(textBoxShortcut.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries)));
-                        lst.Add(new UndoRedoMethodCapsule(ChangeShortcut, listViewshortcuts.SelectedItems[0], cone, this));
+                        lst.Add(new UndoRedoMethodCapsule(ChangeShortcut, listviewshortcuts.SelectedItems[0], cone, this));
 
+                        //requiest to execute the operation
                         UnredoStack.DoMany(lst);
                         return;
                     }
                 }
-                var clone = ((ShortcutKeyBinding)listViewshortcuts.SelectedItems[0].Tag).Clone();
+                //if the new shortcut is not already in use
+                var clone = ((ShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Clone();
                 clone.Shortcut = new List<string>(textBoxShortcut.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries));
                 (clone.Global, clone.IsDisabled) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked);
 
-                UnredoStack.Do(ChangeShortcut, listViewshortcuts.SelectedItems[0],  clone, this);
+                //requiest to execute the operation
+                UnredoStack.Do(ChangeShortcut, listviewshortcuts.SelectedItems[0],  clone, this);
             }
         }
 
@@ -163,13 +200,15 @@ namespace Opyum.WindowsPlatform.Forms.Settings
         {
             if (o is ListViewItem && srt is IShortcutKeyBinding)
             {
+                //grab the old shortcut
                 var old = ((IShortcutKeyBinding)((ListViewItem)o).Tag).Clone();
+                //update the shortcut info
                 ((IShortcutKeyBinding)((ListViewItem)o).Tag).UpdateDataFromKeybinding((IShortcutKeyBinding)srt);
-                //((ListViewItem)o).SubItems[1].Text = string.Join(", ", ((IShortcutKeyBinding)((ListViewItem)o).Tag).Shortcut);
-                var f = GenerateItem((IShortcutKeyBinding)((ListViewItem)o).Tag);
+
+                //update all the subitems in the selected item ListView
                 for (int i = 0;  i < ((ListViewItem)o).SubItems.Count;  i++)
                 {
-                    ((ListViewItem)o).SubItems[i] = f.SubItems[i];
+                    ((ListViewItem)o).SubItems[i] = GenerateItem((IShortcutKeyBinding)((ListViewItem)o).Tag).SubItems[i];
                 }
                 return old; 
             }

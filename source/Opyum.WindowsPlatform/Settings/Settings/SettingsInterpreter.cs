@@ -20,7 +20,7 @@ namespace Opyum.WindowsPlatform.Settings
         /// Load settings from the default location
         /// <para>Gets all the files in the Settings directory and loads them</para>
         /// </summary>
-        public static SettingsContainer Load()
+        public static SettingsContainer LoadSettings()
         {
             return Load(Directory.CreateDirectory(SettingsManager.GetSettingsDirectoryPath()).GetFiles().Select(x => x.FullName));
         }
@@ -47,7 +47,11 @@ namespace Opyum.WindowsPlatform.Settings
             }
             //converge all the key-value json pairs one object
             JsonSettings = $"{{{JsonSettings}}}";
-            return JsonConvert.DeserializeObject<SettingsContainer>(JsonSettings);
+            var gg = JsonConvert.DeserializeObject<SettingsContainer>(JsonSettings);
+
+            
+
+            return gg;
         }
 
         internal static string GetJsonFormFile(string file)
@@ -87,39 +91,7 @@ namespace Opyum.WindowsPlatform.Settings
             return $"\"{Path.GetFileNameWithoutExtension(file)}\":{fileText}";
         }
 
-
-        public static void SaveSettings()
-        {
-            foreach (var item in SettingsManager.GlobalSettings.GetType().GetProperties())
-            {
-                if (item.Name == "Item")
-                {
-                    continue;
-                }
-                string text = string.Empty;
-                var obj = item.GetValue(SettingsManager.GlobalSettings);
-                if (obj is IList)
-                {
-                    text = $"[\n{GetListText((IList)obj).Replace("{", "\t{")}\n]";
-                }
-                else
-                {
-                    text = JsonConvert.SerializeObject(item.GetValue(SettingsManager.GlobalSettings), Formatting.Indented);
-                }
-                
-
-                //using (StreamWriter file = File.OpenCreate($"{SettingsManager.GetSettingsDirectoryPath()}\\{name}.json")
-                //{
-                //    //JsonSerializer serializer = new JsonSerializer();
-                //    //serializer.Serialize(file, obj);
-
-
-                //}
-                File.WriteAllText($"{SettingsManager.GetSettingsDirectoryPath()}\\{item.Name}.json", text);
-            }
-        }
-
-        private static string GetListText(IList obj)
+        internal static string GetListText(IList obj)
         {
             string text = string.Empty;
             foreach (var item in obj)

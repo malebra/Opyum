@@ -91,6 +91,9 @@
     <Compile Include="Global\Logger\Logger.cs" />
     <Compile Include="Global\Settings\ISettingElement.cs" />
     <Compile Include="Global\Settings\SettingElement.cs" />
+    <Compile Include="Global\UndoRedo\IUndoRedoable.cs" />
+    <Compile Include="Global\UndoRedo\UndoRedoMethodCapsule.cs" />
+    <Compile Include="Global\UndoRedo\UndoRedoStack.cs" />
     <Compile Include="PlaylistSupport\JSONConverter\JSONConverter.cs" />
     <Compile Include="PlaylistSupport\ItemSupporter\ItemSupporter.cs" />
     <Compile Include="Playlist\Attributes\Classes\ContentCreatorAssistantAttribute.cs" />

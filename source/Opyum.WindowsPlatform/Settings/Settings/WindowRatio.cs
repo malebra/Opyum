@@ -9,11 +9,6 @@ namespace Opyum.WindowsPlatform
     public class WindowRatio
     {
         public static double Ratio => (double)16 / 9;
-        //{
-        //    get
-        //    {
-        //        return (double)16 / 9;
-        //    }
-        //}
+        
     }
 }

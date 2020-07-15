@@ -172,8 +172,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings\UndoRedo\IUndoRedoable.cs" />
-    <Compile Include="Settings\UndoRedo\UndoRedoStack.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\MainWindow\MainWindow.resx">
@@ -194,7 +192,6 @@
   <ItemGroup>
     <None Include="Classes\Colors\ColorAttribute.cs.disable" />
     <None Include="Classes\Colors\MainWindowColorSettings.cs.disable" />
-    <Compile Include="Settings\UndoRedo\UndoRedoMethodCapsule.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

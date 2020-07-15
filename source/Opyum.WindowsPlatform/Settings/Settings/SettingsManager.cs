@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 
@@ -23,7 +25,45 @@ namespace Opyum.WindowsPlatform.Settings
 
         public static void LoadSettings()
         {
-            GlobalSettings = SettingsInterpreter.Load();
+            GlobalSettings = SettingsInterpreter.LoadSettings();
+
+            //get all shortcuts from the entire program, remove their default shortcuts and add to shortcut list
+            GlobalSettings?.Shortcuts.AddRange(ShortcutManager.GetShortcutsFromAssembliesInexecutingFolder());
+        }
+
+
+        public static void SaveSettings()
+        {
+            //SettingsManager.GlobalSettings?.Shortcuts = SettingsManager.GlobalSettings?.Shortcuts?.OrderBy(u => u.Command).ToList();
+            SettingsManager.GlobalSettings?.Shortcuts?.Sort((x, y) => x.Action.CompareTo(y.Action));
+
+
+            foreach (var item in SettingsManager.GlobalSettings.GetType().GetProperties())
+            {
+                if (item.Name == "Item")
+                {
+                    continue;
+                }
+                string text = string.Empty;
+                var obj = item.GetValue(SettingsManager.GlobalSettings);
+                if (obj is IList)
+                {
+                    text = $"[\n{SettingsInterpreter.GetListText((IList)obj).Replace("{", "\t{")}\n]";
+                }
+                else
+                {
+                    text = JsonConvert.SerializeObject(item.GetValue(SettingsManager.GlobalSettings), Formatting.Indented);
+                }
+
+                try
+                {
+                    File.WriteAllText($"{SettingsManager.GetSettingsDirectoryPath()}\\{item.Name}.json", text);
+                }
+                catch (Exception q)
+                {
+                    throw q;
+                }
+            }
         }
 
         public static void UpdateSettingsFromFile(string path)

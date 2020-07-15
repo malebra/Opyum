@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Opyum.WindowsPlatform.Attributes
 {
@@ -18,13 +19,20 @@ namespace Opyum.WindowsPlatform.Attributes
             All.Add(this);
         }
 
-        public OpyumShortcutMethodAttribute(string command, Keys shortcut)
+        public OpyumShortcutMethodAttribute(string command, List<Keys> shortcut)
         {
             Command = command;
             DefaultShortcut = shortcut;
             All.Add(this);
         }
 
-        public Keys DefaultShortcut { get; protected set; } = Keys.None;
+        public OpyumShortcutMethodAttribute(string command, Keys[] shortcut)
+        {
+            Command = command;
+            DefaultShortcut = shortcut.ToList();
+            All.Add(this);
+        }
+
+        public List<Keys> DefaultShortcut { get; protected set; } = new List<Keys>();
     }
 }
