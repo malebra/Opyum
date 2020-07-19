@@ -1,0 +1,40 @@
+0000000000000000000000000000000000000000 c38a02b1b8fe883c7e1ab61c1e9661bbc555557e malebra <borno.stojak@hotmail.com> 1542266947 -0800	clone: from https://github.com/malebra/Opyum.git
+c38a02b1b8fe883c7e1ab61c1e9661bbc555557e a7972a58e0ae36c13ea334806d5be3f639a4d3b4 malebra <borno.stojak@hotmail.com> 1542879387 +0100	commit: Udated Shortcut handling
+a7972a58e0ae36c13ea334806d5be3f639a4d3b4 bfbee8f973e29e16dd8297629328837d2556d20c malebra <borno.stojak@hotmail.com> 1543108114 +0100	commit: Udated
+bfbee8f973e29e16dd8297629328837d2556d20c 04f89df8139dd9bfd31599c60c4a275fb7b4625a malebra <borno.stojak@hotmail.com> 1543169855 +0100	commit: New Update
+04f89df8139dd9bfd31599c60c4a275fb7b4625a 69fe8365fc2f58234a5a7e828e62d1e661d9a127 malebra <borno.stojak@gmail.com> 1543170526 +0100	commit: peenutzs
+69fe8365fc2f58234a5a7e828e62d1e661d9a127 dc579b82e453f9d585df729a6751b336fa831eb4 malebra <borno.stojak@gmail.com> 1543170629 +0100	commit: revert
+dc579b82e453f9d585df729a6751b336fa831eb4 2ed582da4085a3002e9acef4abd597ed1c62fe07 malebra <bornos.stojak@hotmail.com> 1553750215 +0100	commit: Some things were changed, but not much of sustanence
+2ed582da4085a3002e9acef4abd597ed1c62fe07 34af6ffe664973d99eb58e0a9288a90b69e3eeed malebra <bornos.stojak@hotmail.com> 1554485316 +0200	commit: Edited AudioBase
+34af6ffe664973d99eb58e0a9288a90b69e3eeed e7705c2ebdcb0e49b2a80e018bfd8597c794b1c7 malebra <bornos.stojak@hotmail.com> 1556213219 +0200	commit: Update.... i don't know
+e7705c2ebdcb0e49b2a80e018bfd8597c794b1c7 ccc7c806eafc4cdccb8b02720754af5d1b448853 malebra <bornos.stojak@hotmail.com> 1556213386 +0200	commit: Update.... i don't know
+ccc7c806eafc4cdccb8b02720754af5d1b448853 ab2e73fb3bdffc636c179ec69de1c9f060d6047f malebra <bornos.stojak@hotmail.com> 1556213556 +0200	commit: M
+ab2e73fb3bdffc636c179ec69de1c9f060d6047f 10ca353c4fc87074191d73ebbf93a3c3207778ea malebra <borno.stojak@hotmail.com> 1556241498 +0200	commit: s
+10ca353c4fc87074191d73ebbf93a3c3207778ea ed145c6bc37a87a44e5824b61ea6cf5cef275467 malebra <borno.stojak@hotmail.com> 1556241614 +0200	commit: s
+ed145c6bc37a87a44e5824b61ea6cf5cef275467 07967cc13c1a9f373b96fb4b822f450edb31ba5c malebra <borno.stojak@hotmail.com> 1556241664 +0200	commit: s
+07967cc13c1a9f373b96fb4b822f450edb31ba5c 3317c7bed9fab839aa3f981340411bc638bce254 malebra <borno.stojak@hotmail.com> 1556400547 +0200	commit: File on loading will stream to memory
+3317c7bed9fab839aa3f981340411bc638bce254 d11a84b299dad79c2efcdeddf84066c29270a4d8 malebra <borno.stojak@hotmail.com> 1556476628 +0200	commit: Changes to AudioFileMemoryStream
+d11a84b299dad79c2efcdeddf84066c29270a4d8 c8390fedf11033683c3451ee50d83bf9e6e09d06 malebra <borno.stojak@hotmail.com> 1556478393 +0200	commit: Beautifying text
+c8390fedf11033683c3451ee50d83bf9e6e09d06 cb0d307a84c959837a9abd0a4331e5ef069300ad malebra <borno.stojak@hotmail.com> 1557229862 +0200	commit: Mimimum changes made
+cb0d307a84c959837a9abd0a4331e5ef069300ad c3668621235cf837cfda5c860c3d9e81b95d0f03 malebra <borno.stojak@hotmail.com> 1557237113 +0200	commit: Modifications
+c3668621235cf837cfda5c860c3d9e81b95d0f03 46215bd0ecbc95347eb334320bc8d129553a92e8 malebra <borno.stojak@hotmail.com> 1557312508 +0200	commit: Changes made to the FileFromMemoryStream.cs file.
+46215bd0ecbc95347eb334320bc8d129553a92e8 62446d18a68d048532deefb85e8907dc2904395b malebra <borno.stojak@hotmail.com> 1558012735 +0200	commit: Importing AudioBase into the Structures library
+62446d18a68d048532deefb85e8907dc2904395b 78d60b5dae0beeae6d0d84badb3384f90d3dccf3 malebra <borno.stojak@hotmail.com> 1558015795 +0200	commit: Small changes to PlaylistItem
+78d60b5dae0beeae6d0d84badb3384f90d3dccf3 8912d115e959fb3036ad0e0b3a7e95225424fe49 malebra <borno.stojak@hotmail.com> 1558447425 +0200	commit: FileFromMemoryStream.cs - Reload() method needs to be adjusted to work properly. Also Load and Reload now use Task insted of ThreadPool
+8912d115e959fb3036ad0e0b3a7e95225424fe49 6b288e9a9bfd9b100ab4af3666b711fc547e8892 malebra <borno.stojak@hotmail.com> 1559254723 +0200	commit: Changed part of the PlaylistItem Structure
+6b288e9a9bfd9b100ab4af3666b711fc547e8892 5decfd7deb81d6a0e2b793c0c5aca837ba4a37eb malebra <borno.stojak@hotmail.com> 1560122794 +0200	commit: I have no idea at this time.
+5decfd7deb81d6a0e2b793c0c5aca837ba4a37eb 828c842ad80247b0b283a5e851144c8e480b4ada malebra <borno.stojak@hotmail.com> 1561739844 +0200	commit: Shit, so much to do. Basically nothing done so far. Just get to work already.
+828c842ad80247b0b283a5e851144c8e480b4ada ab987df87c658365aee09b7af23f07de12ddfe6b malebra <borno.stojak@hotmail.com> 1570193915 +0200	commit: Structural chages to project, no functional changes
+ab987df87c658365aee09b7af23f07de12ddfe6b a8f48815eecadee4e6cb3adff233cc1c2fe847a2 malebra <borno.stojak@gmail.com> 1570194680 +0200	commit: Structural chages to project, no functional changes
+a8f48815eecadee4e6cb3adff233cc1c2fe847a2 57631ab0a41c276015996e7f8f0a445ad16898b3 malebra <borno.stojak@gmail.com> 1570194778 +0200	commit: Structural chages to project, no functional changes
+57631ab0a41c276015996e7f8f0a445ad16898b3 b6ae98aeb51e5ebad18a258f9dcd9a936e9acfec malebra <borno.stojak@hotmail.com> 1574541529 +0100	commit: Some renaming
+b6ae98aeb51e5ebad18a258f9dcd9a936e9acfec 1f40976598afaccf8642cfe3036e633c794307eb malebra <borno.stojak@hotmail.com> 1575908093 +0100	commit: Major overhaul
+1f40976598afaccf8642cfe3036e633c794307eb 0807e4fc0df7a24a8d8c9ba360860b812645c185 malebra <borno.stojak@hotmail.com> 1575908268 +0100	commit: Major overhaulž
+0807e4fc0df7a24a8d8c9ba360860b812645c185 2407abc431e4bc78956967575fcdea8bdf733f03 malebra <borno.stojak@hotmail.com> 1583495779 +0100	commit: Major overhaul in progress
+2407abc431e4bc78956967575fcdea8bdf733f03 79783c1d273ecc9637942e6549a596ae56c215b1 malebra <borno.stojak@hotmail.com> 1594087570 +0200	commit: Improving Shortcut Management
+79783c1d273ecc9637942e6549a596ae56c215b1 02233fd535a0ac7d4214c8afb097e32496357fb5 malebra <borno.stojak@gmail.com> 1594088303 +0200	commit: Improving Shortcut Management
+02233fd535a0ac7d4214c8afb097e32496357fb5 ebfa32ab4fc12e9342f4b9f790f8bbed81d9c46d malebra <borno.stojak@gmail.com> 1594088342 +0200	commit: Improving Shortcut Management
+ebfa32ab4fc12e9342f4b9f790f8bbed81d9c46d 28d79ffdb784290caf276a84961f829a1afb439d malebra <braofthemale@gmail.com> 1594383436 +0200	commit: Shortcut settings 99% done.
+28d79ffdb784290caf276a84961f829a1afb439d dbf2c516b162da4b583196ce8066d6ab1e0aad5d malebra <braofthemale@gmail.com> 1594805298 +0200	commit: Removed unnecessary projects
+dbf2c516b162da4b583196ce8066d6ab1e0aad5d 4c2fcff359f8cd83bd4f446aa290c262c6a32019 malebra <braofthemale@gmail.com> 1594805387 +0200	commit: Removed unnecessary projects
+4c2fcff359f8cd83bd4f446aa290c262c6a32019 c9ffe60d3425a25539c7be8f6fbcce10a2ee13bc malebra <braofthemale@gmail.com> 1594805538 +0200	commit: Removed unnecessary projects
