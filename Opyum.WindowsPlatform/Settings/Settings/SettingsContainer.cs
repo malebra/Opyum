@@ -25,7 +25,7 @@ namespace Opyum.WindowsPlatform.Settings
             return new SettingsContainer()
             {
                 Shortcuts = this?.Shortcuts?.Select(x => (ShortcutKeyBinding)x.Clone())?.ToList(),
-                Colors = this.Colors.Select(h => h.Clone()).ToList()
+                Colors = this?.Colors?.Select(h => h.Clone()).ToList()
             };
         }
 

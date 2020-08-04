@@ -141,18 +141,6 @@ namespace Opyum.WindowsPlatform.Forms.Settings
             }
         }
 
-        /// <summary>
-        /// Get the shortcut when pressed on the textbox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void getShortcut(object sender, KeyEventArgs e)
-        {
-            textBoxShortcut.Clear();
-            textBoxShortcut.Text = ShortcutResolver.GetShortcutString(sender, e);
-            textBoxShortcut.Text = textBoxShortcut.Text == "Back" ? "" : textBoxShortcut.Text;
-        }
-
         private void buttonSaveShortcut_Click(object sender, EventArgs e)
         {
             
@@ -229,6 +217,18 @@ namespace Opyum.WindowsPlatform.Forms.Settings
                     SettingsEditor.Settings?.UndoRedo?.Redo();
                 } 
             }
+        }
+
+        /// <summary>
+        /// Get the shortcut when pressed on the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void getShortcut(object sender, KeyEventArgs e)
+        {
+            textBoxShortcut.Clear();
+            var text = ShortcutResolver.GetShortcutString(sender, e);
+            textBoxShortcut.Text = text == "Back" ? "" : text;
         }
 
         public void Undo()

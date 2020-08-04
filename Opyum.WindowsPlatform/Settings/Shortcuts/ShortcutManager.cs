@@ -2,9 +2,11 @@
 using Opyum.WindowsPlatform.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 
 namespace Opyum.WindowsPlatform.Settings
 {
@@ -13,7 +15,7 @@ namespace Opyum.WindowsPlatform.Settings
         private static Dictionary<string, MethodInfo> CommandMethods = null;
 
         static int _errorCount { get; set; } = 0;
-        internal static void SetUpShortcutsOnRequest(object arg, EventArgs e)
+        public static void SetUpShortcutsOnRequest(object arg, EventArgs e)
         {
             //var info = Assembly.GetExecutingAssembly().GetTypes().SelectMany(i => i.GetMethods().Where(m => m.GetCustomAttributes(typeof(OpyumShortcutMethodAttribute)).Count() > 0)).ToArray();
             if (CommandMethods == null)
@@ -24,13 +26,14 @@ namespace Opyum.WindowsPlatform.Settings
             MethodInfo method = CommandMethods?.Where(m => m.Key == ((IShortcutKeyBinding)arg).Command)?.FirstOrDefault().Value;
             if (method != null)
             {
+                var attr = method.GetCustomAttribute<OpyumShortcutMethodAttribute>();
                 ((IShortcutKeyBinding)arg).AddFunction(Delegate.CreateDelegate(typeof(ShortcutKeyBinding.DELEGATE), null, method));
-                ((IShortcutKeyBinding)arg).Description = ((OpyumShortcutMethodAttribute)method.GetCustomAttribute(typeof(OpyumShortcutMethodAttribute))).Description;
-                ((IShortcutKeyBinding)arg).Action = ((OpyumShortcutMethodAttribute)method.GetCustomAttribute(typeof(OpyumShortcutMethodAttribute))).Action;
+                ((IShortcutKeyBinding)arg).Description = attr.Description;
+                ((IShortcutKeyBinding)arg).Action = attr.Action;
             }
         }
 
-        internal static List<ShortcutKeyBinding> GetAllUnbindedShortcuts()
+        public static List<ShortcutKeyBinding> GetAllUnbindedShortcuts()
         {
             if (CommandMethods == null)
             {
@@ -63,10 +66,11 @@ namespace Opyum.WindowsPlatform.Settings
             }
 
             var directory = Path.GetDirectoryName(Uri.UnescapeDataString((new UriBuilder(Assembly.GetExecutingAssembly().CodeBase)).Path));
-            var files = Directory.CreateDirectory(directory)
-                        ?.GetFiles(searchPattern: "*.dll", searchOption: SearchOption.AllDirectories)
-                        ?.Where(a => a.FullName.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))
-                        ?.Select(u => u.FullName);
+            var files = Directory//.CreateDirectory(directory)
+                        .EnumerateFiles(directory)
+                        //?.GetFiles(searchPattern: "*.dll|*.exe", searchOption: SearchOption.AllDirectories)
+                        ?.Where(a => a.ToLower().EndsWith(".dll", StringComparison.OrdinalIgnoreCase) || a.ToLower().EndsWith(".exe", StringComparison.OrdinalIgnoreCase));
+                        //?.Select(u => u.FullName);
 
             List<KeyValuePair<string, MethodInfo>> add = new List<KeyValuePair<string, MethodInfo>>();
             foreach (var file in files)
@@ -82,21 +86,21 @@ namespace Opyum.WindowsPlatform.Settings
                 }
                 catch (Exception e)
                 {
-                    if (e is InvalidOperationException || e is ReflectionTypeLoadException)
+                    if (e is InvalidOperationException || e is ReflectionTypeLoadException || e is BadImageFormatException || e is FileLoadException || e is FileNotFoundException)
                     {
                         continue; 
                     }
                     throw e;
                 }
             }
-            
+
             foreach (var item in add?.Distinct())
             {
                 CommandMethods.Add(item.Key, item.Value);
             }
         }
 
-        internal static List<ShortcutKeyBinding> GetUdatedShortcuts(string path)
+        public static List<ShortcutKeyBinding> GetUdatedShortcuts(string path)
         {
             string fileText = SettingsInterpreter.GetJsonFormFile(path);
             var temp = new List<ShortcutKeyBinding>(JsonConvert.DeserializeObject<SettingsContainer>(fileText).Shortcuts);
