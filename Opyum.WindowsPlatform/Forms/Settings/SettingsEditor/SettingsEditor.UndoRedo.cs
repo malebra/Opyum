@@ -9,7 +9,7 @@ namespace Opyum.WindowsPlatform.Settings
 {
     public partial class SettingsEditor
     {
-        internal UndoRedoStack UndoRedo = new UndoRedoStack();
+        internal UndoRedoStackV2 UndoRedo = new UndoRedoStackV2();
 
         private void UpdareUponUndoRedoStackChange(object sender, EventArgs e)
         {

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System;
 using Opyum.WindowsPlatform.Forms.Settings;
 using Opyum.Structures.Global;
+using Opyum.Engine.Settings;
 using Opyum.Structures.Playlist;
 using Autofac;
 

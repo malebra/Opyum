@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Opyum.Engine.Settings;
 using Opyum.WindowsPlatform.Settings;
 
 namespace Opyum.WindowsPlatform

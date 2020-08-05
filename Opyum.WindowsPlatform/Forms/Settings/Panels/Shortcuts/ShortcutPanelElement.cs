@@ -6,11 +6,13 @@ using System.Windows.Forms;
 using Opyum.Structures.Attributes;
 using Opyum.WindowsPlatform.Settings;
 using System.Reflection;
-using Opyum.WindowsPlatform.Attributes;
+using Opyum.Engine.Attributes;
 using System.IO;
 using static System.Windows.Forms.ListView;
 using System.Collections;
 using Opyum.Structures.Global;
+using Opyum.Engine;
+using Opyum.Engine.Settings;
 
 namespace Opyum.WindowsPlatform.Forms.Settings
 {
@@ -132,7 +134,7 @@ namespace Opyum.WindowsPlatform.Forms.Settings
                 {
                     var arg = ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Clone();
                     arg.Clear();
-                    SettingsEditor.Settings?.UndoRedo?.Do(ChangeShortcut, listviewshortcuts.SelectedItems[0], arg, this);
+                    SettingsEditor.Settings?.UndoRedo?.Do(new ChangeShortcutWorker((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag, arg, listviewshortcuts.SelectedItems[0]));
                 }
                 catch (Exception err)
                 {
@@ -159,16 +161,16 @@ namespace Opyum.WindowsPlatform.Forms.Settings
                     else
                     {
                         //create a list that will contain the operations that need to be executed
-                        List<UndoRedoMethodCapsule> lst = new List<UndoRedoMethodCapsule>();
+                        List<IUndoRedoWorker> lst = new List<IUndoRedoWorker>();
                         //empty the old shortcut
                         var cone = ((IShortcutKeyBinding)existing?.FirstOrDefault().Tag).Clone();
                         (cone.Global, cone.IsDisabled, cone.Shortcut) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked, new List<string>());
-                        lst.Add(new UndoRedoMethodCapsule(ChangeShortcut, existing?.FirstOrDefault(), cone, this));
+                        lst.Add(new ChangeShortcutWorker((IShortcutKeyBinding)existing?.FirstOrDefault().Tag, cone, existing?.FirstOrDefault()));
 
                         //create the new shortcut
                         cone = ((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag).Clone();
                         (cone.Global, cone.IsDisabled, cone.Shortcut) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked, new List<string>(textBoxShortcut.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries)));
-                        lst.Add(new UndoRedoMethodCapsule(ChangeShortcut, listviewshortcuts.SelectedItems[0], cone, this));
+                        lst.Add(new ChangeShortcutWorker((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag, cone, listviewshortcuts.SelectedItems[0]));
 
                         //requiest to execute the operation
                         SettingsEditor.Settings?.UndoRedo?.DoMany(lst);
@@ -181,27 +183,8 @@ namespace Opyum.WindowsPlatform.Forms.Settings
                 (clone.Global, clone.IsDisabled) = (isGlobalCheckBox.Checked, isDisabledCheckBox.Checked);
 
                 //requiest to execute the operation
-                SettingsEditor.Settings?.UndoRedo?.Do(ChangeShortcut, listviewshortcuts.SelectedItems[0],  clone, this);
+                SettingsEditor.Settings?.UndoRedo?.Do(new ChangeShortcutWorker((IShortcutKeyBinding)listviewshortcuts.SelectedItems[0].Tag,  clone, listviewshortcuts.SelectedItems[0]));
             }
-        }
-
-        public object ChangeShortcut(object o, object srt)
-        {
-            if (o is ListViewItem && srt is IShortcutKeyBinding)
-            {
-                //grab the old shortcut
-                var old = ((IShortcutKeyBinding)((ListViewItem)o).Tag).Clone();
-                //update the shortcut info
-                ((IShortcutKeyBinding)((ListViewItem)o).Tag).UpdateDataFromKeybinding((IShortcutKeyBinding)srt);
-
-                //update all the subitems in the selected item ListView
-                for (int i = 0;  i < ((ListViewItem)o).SubItems.Count;  i++)
-                {
-                    ((ListViewItem)o).SubItems[i] = GenerateItem((IShortcutKeyBinding)((ListViewItem)o).Tag).SubItems[i];
-                }
-                return old; 
-            }
-            return new List<string>();
         }
 
         public void KeyPressResolve(object sender, KeyEventArgs e)

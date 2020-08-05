@@ -100,6 +100,7 @@ namespace Opyum.Structures.Global
             }
         }
 
+
         /// <summary>
         /// When called will execute the methode in <paramref name= "work" /> and Invoke it from the caller also saved in <paramref name="work"/> object.
         /// </summary>

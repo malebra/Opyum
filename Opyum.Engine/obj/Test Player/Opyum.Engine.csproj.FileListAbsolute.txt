@@ -1,0 +1,7 @@
+C:\Users\nozia\repos\Opyum\builds\test_player\Opyum.Engine.dll
+C:\Users\nozia\repos\Opyum\builds\test_player\Opyum.Engine.pdb
+C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Test Player\Opyum.Engine.csprojAssemblyReference.cache
+C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Test Player\Opyum.Engine.csproj.CoreCompileInputs.cache
+C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Test Player\Opyum.Engine.csproj.CopyComplete
+C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Test Player\Opyum.Engine.dll
+C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Test Player\Opyum.Engine.pdb

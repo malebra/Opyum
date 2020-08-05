@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Opyum.Engine;
+using Opyum.Engine.Settings;
 
 namespace Opyum.WindowsPlatform
 {

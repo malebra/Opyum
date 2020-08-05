@@ -86,11 +86,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ContainerConfigs\ContainerConfig.cs" />
-    <Compile Include="Classes\FileWork.cs" />
-    <Compile Include="Classes\IUndoRedo.cs" />
     <Compile Include="Forms\Settings\Panels\CustomPanelControls\TextBoxForShortcutCapture.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\Panels\Shortcuts\ChangeShortcutWorker.cs" />
+    <None Include="Forms\Settings\Panels\Shortcuts\ShortcutPanelElement - Copy.cs.old">
+      <SubType>UserControl</SubType>
+    </None>
+    <Compile Include="Forms\Settings\Panels\Shortcuts\ShortcutPanelElement - Copy.Designer.cs">
+      <DependentUpon>ShortcutPanelElement - Copy.cs.old</DependentUpon>
     </Compile>
     <Compile Include="Forms\Settings\SettingsEditor\SettingsEditor.ButtonActions.cs">
       <SubType>Form</SubType>
@@ -98,7 +102,6 @@
     <Compile Include="Forms\Settings\SettingsEditor\SettingsEditor.UndoRedo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\Settings\ISettingsElement.cs" />
     <Compile Include="Forms\Settings\ISettingsPanel.cs" />
     <Compile Include="Forms\Settings\Panels\Shortcuts\ShortcutPanelElement.cs">
       <SubType>UserControl</SubType>
@@ -109,21 +112,6 @@
     <Compile Include="Forms\Settings\SettingsEditor\SettingsEditor.Setup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Colors\ColorContainer.cs" />
-    <Compile Include="Settings\Settings\ISettingElement.cs" />
-    <Compile Include="Settings\Settings\Paths.cs" />
-    <Compile Include="Settings\Settings\SettingsContainer.cs" />
-    <Compile Include="Settings\Settings\SettingsManager.cs" />
-    <Compile Include="Settings\Settings\SettingsInterpreter.cs" />
-    <Compile Include="Settings\Shortcuts\ISettingsElement.cs" />
-    <Compile Include="Settings\Shortcuts\ShortcutResolver.cs" />
-    <Compile Include="Settings\Shortcuts\ShortcutManager.cs" />
-    <Compile Include="Settings\Settings\WindowRatio.cs" />
-    <Compile Include="Settings\Shortcuts\IShortcutKeyBinding.cs" />
-    <Compile Include="Settings\Shortcuts\ShortcutKeyBinding.cs" />
-    <Compile Include="Attributes\OpyumShortcutMethodAttribute.cs" />
-    <Compile Include="Classes\Xml\XmlJSONConverter.cs" />
-    <Compile Include="Classes\Xml\XmlToString.cs" />
     <Compile Include="Forms\MainWindow\MainWindow.Communications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +168,9 @@
     <EmbeddedResource Include="Forms\MainWindow\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\Panels\Shortcuts\ShortcutPanelElement - Copy.resx">
+      <DependentUpon>ShortcutPanelElement - Copy.cs.old</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\Panels\Shortcuts\ShortcutPanelElement.resx">
       <DependentUpon>ShortcutPanelElement.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,11 +184,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Classes\Colors\ColorAttribute.cs.disable" />
-    <None Include="Classes\Colors\MainWindowColorSettings.cs.disable" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Opyum.Engine\Opyum.Engine.csproj">
+      <Project>{3d14afd7-5bbf-4ed8-ab01-e680daa6e1fd}</Project>
+      <Name>Opyum.Engine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Opyum.OSInteraction\Opyum.OSInteraction.csproj">
       <Project>{ba831fff-2b78-41e7-9cd7-a258fcdef1ee}</Project>
       <Name>Opyum.OSInteraction</Name>
@@ -211,7 +204,6 @@
       <Name>Opyum.Structures</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

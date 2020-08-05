@@ -7,3 +7,10 @@ D:\repos\Opyum\source\Opyum.Structures\obj\Test Player\Opyum.Structures.pdb
 D:\repos\Opyum\source\Opyum.Structures\obj\Test Player\Opyum.Structures.csproj.CoreCompileInputs.cache
 D:\repos\Opyum\builds\test_player\bin\Opyum.Structures.dll
 D:\repos\Opyum\builds\test_player\bin\Opyum.Structures.pdb
+C:\Users\nozia\repos\Opyum\builds\test_player\bin\Opyum.Structures.dll
+C:\Users\nozia\repos\Opyum\builds\test_player\bin\Opyum.Structures.pdb
+C:\Users\nozia\repos\Opyum\src\Opyum.Structures\obj\Test Player\Opyum.Structures.csprojAssemblyReference.cache
+C:\Users\nozia\repos\Opyum\src\Opyum.Structures\obj\Test Player\Opyum.Structures.csproj.CoreCompileInputs.cache
+C:\Users\nozia\repos\Opyum\src\Opyum.Structures\obj\Test Player\Opyum.Structures.csproj.CopyComplete
+C:\Users\nozia\repos\Opyum\src\Opyum.Structures\obj\Test Player\Opyum.Structures.dll
+C:\Users\nozia\repos\Opyum\src\Opyum.Structures\obj\Test Player\Opyum.Structures.pdb

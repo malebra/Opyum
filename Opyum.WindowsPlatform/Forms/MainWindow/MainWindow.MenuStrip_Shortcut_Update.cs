@@ -1,4 +1,5 @@
-﻿using Opyum.WindowsPlatform.Settings;
+﻿using Opyum.Engine.Settings;
+using Opyum.WindowsPlatform.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

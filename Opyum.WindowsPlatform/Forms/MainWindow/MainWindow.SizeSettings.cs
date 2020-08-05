@@ -17,33 +17,33 @@ namespace Opyum.WindowsPlatform
 
             if (this.Size.Width != _oldSize.Width)
             {
-                WidthAdjustment();
+                //WidthAdjustment();
             }
             else
             {
-                HeightAdjustment();
+                //HeightAdjustment();
             }
             _oldSize = this.Size;
             this.SizeChanged += SizeSettings;
         }
 
-		void HeightAdjustment()
-        {
-            double w = this.Size.Height * WindowRatio.Ratio;
-            double h = w * (1 / WindowRatio.Ratio);
+		//void HeightAdjustment()
+  //      {
+  //          double w = this.Size.Height * WindowRatio.Ratio;
+  //          double h = w * (1 / WindowRatio.Ratio);
 
-            this.Width = (int)w;
-            this.Height = (int)h;
+  //          this.Width = (int)w;
+  //          this.Height = (int)h;
 
 
             
-        }
+  //      }
 
-		void WidthAdjustment()
-        {
-            base.Height = (int)((double)this.Size.Width * (double)(1 / WindowRatio.Ratio));
-            base.Width = (int)((double)this.Size.Height * WindowRatio.Ratio);
-            _oldSize = this.Size;
-        }
+		//void WidthAdjustment()
+  //      {
+  //          base.Height = (int)((double)this.Size.Width * (double)(1 / WindowRatio.Ratio));
+  //          base.Width = (int)((double)this.Size.Height * WindowRatio.Ratio);
+  //          _oldSize = this.Size;
+  //      }
     }
 }

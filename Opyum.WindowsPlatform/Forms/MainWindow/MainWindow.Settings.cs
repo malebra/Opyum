@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 using Opyum.WindowsPlatform.Settings;
-using Opyum.WindowsPlatform.Attributes;
+using Opyum.Engine.Attributes;
 
 namespace Opyum.WindowsPlatform
 {

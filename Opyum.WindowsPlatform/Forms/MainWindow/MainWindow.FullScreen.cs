@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Opyum.Structures.Attributes;
 using Opyum.WindowsPlatform.Settings;
-using Opyum.WindowsPlatform.Attributes;
+using Opyum.Engine.Attributes;
 
 namespace Opyum.WindowsPlatform
 {
