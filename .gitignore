@@ -1,0 +1,4 @@
+builds/debug
+builds/release
+builds/test_player
+!builds/README.md

@@ -1,5 +1,0 @@
-C:\Users\nozia\repos\Opyum\builds\release\bin\Opyum.Engine.dll
-C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Release\Opyum.Engine.csprojAssemblyReference.cache
-C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Release\Opyum.Engine.csproj.CoreCompileInputs.cache
-C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Release\Opyum.Engine.csproj.CopyComplete
-C:\Users\nozia\repos\Opyum\src\Opyum.Engine\obj\Release\Opyum.Engine.dll
